@@ -1,0 +1,28 @@
+# Site settings
+name: Stat 585 at ISU
+title: Data Technologies for Statistics
+email: hofmann@iastate.edu
+description: Not all data lives in nice, clean spreadsheets, not all data fits in a computer's main memory. 
+# Build settings
+markdown: kramdown
+url: http://localhost:4000
+markdown: kramdown
+navigation:
+- text: Home
+  url: /index.html
+- text: Syllabus
+  url: /syllabus.html
+- text: Help
+  url: /help.html
+- text: Blog
+  url: /blog
+  layout:
+    - post
+    - blog
+collections:
+  blog:
+    output: true
+    permalink: /blog/:path
+  topics:
+    output: true
+    permalink: /blog/:path/
