@@ -2,7 +2,7 @@
 name: Stat 585 at ISU
 title: Data Technologies for Statistics
 email: hofmann@iastate.edu
-description: Not all data lives in nice, clean spreadsheets, not all data fits in a computer's main memory. 
+description: Not all data lives in nice, clean spreadsheets, not all data fits in a computer's main memory.
 # Build settings
 markdown: kramdown
 url: http://localhost:4000
@@ -10,7 +10,7 @@ markdown: kramdown
 navigation:
 - text: Home
   url: /index.html
-- text: Syllabus
+- text: Schedule
   url: /syllabus.html
 - text: Help
   url: /help.html
