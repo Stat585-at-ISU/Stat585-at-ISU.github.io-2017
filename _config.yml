@@ -12,8 +12,8 @@ navigation:
   url: /index.html
 - text: Schedule
   url: /syllabus.html
-- text: Help
-  url: /help.html
+- text: Labs
+  url: /labs.html
 - text: Blog
   url: /blog
   layout:
