@@ -7,7 +7,7 @@ root: ../
 Readings will be assigned regularly. You are asked to write a blog entry in response to a related question. More details will follow.
 </p>
 
-<!--<h2>Topics</h2>-->
+<h2>Topics</h2>
 
 {% assign now = site.time | date: '%s' %}
 
@@ -20,6 +20,6 @@ Readings will be assigned regularly. You are asked to write a blog entry in resp
   <li>
   	  <a href="{{ topic.topic }}">{{ topic.short-topic }}</a>
   	  <span>{% if now <= due_unix %} (due {{ due }}) {% endif %}</span>
-  </li>	
+  </li>
   {% endfor %}
 </ol>
