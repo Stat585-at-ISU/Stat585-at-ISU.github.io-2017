@@ -1,0 +1,20 @@
+---
+title: "Literate Programming"
+author: "Akshay Yadav"
+topic: "01"
+layout: post
+root: ../../../
+---
+
+###Homology Detection in Bioinformatics
+
+A lot of my work is based on the tabular output of the tool BLAST (Basic Local Alignment Search Tool). This tool is used to search query sequences against the database of DNA/protein sequences and the output contains following columns
+```
+<qseqid> <sseqid> <pident> <length> <mismatch> <gapopen> <qlen> <qstart> <qend> <slen> <sstart> <send> <evalue> <bitscore>
+
+```
+The first 2 columns contain the IDs of query and subject sequence that is found as 'hit' in the database search with the query. The remaining cols contain various types of quantities that describe the quality of matching between the query and the subject sequence.
+One of the main uses of the BLAST tabular output is to find and infer homologous sequences for each query
+sequence. This can be achieved by setting user defined cutoffs on the numeric quantites in columns 4-12 where all the subject sequences (in column 2) from the database that satisfy the cutoffs will be regarded as true homologs of the query sequence in column 1
+
+If I have to define a function for inferring homologuous sequences, literate programming can help me to describe and present the detail workings of the function, like the number and type of arguments and the return formats. The power of literate programming can also help me to explain, in a clear and natural way, the exact workflow of the function when a particular set of cutoff parameters are specified. For example, if the user provides pident (percent identity) cutoff value, all the query - subject pairs that are above this cutoff will be retained and for each query, the set of subject sequences will be returned as homologs of the query.

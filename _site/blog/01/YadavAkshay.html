@@ -69,20 +69,23 @@
     <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Literate Programming...</h1>
-    <p class="post-meta">Jan 25, 2017 • Gaurav Kandoi</p>
+    <h1 class="post-title">Literate Programming</h1>
+    <p class="post-meta">Jan 25, 2017 • Akshay Yadav</p>
   </header>
 
   <article class="post-content">
-    <p>Let’s admit, we have all written codes of which we are not proud off. Ignoring the fact that the code was inefficient, the main reason why we are not proud of it is because it’s unreadable.</p>
+    <p>###Homology Detection in Bioinformatics</p>
 
-<p>Looking back at some of my codes, I couldn’t do anything but laugh and cry at the same time. I ask myself, how am I supposed to comprehend this? It all seems like an alien language to me now. Having cursed people for maintaining poor to no documentation of packages/tools I’ve needed to use, a deeper question then strikes me, “If I can’t read my own code, how is someone few years down the lane who is starting on their research journey supposed to understand it?”</p>
+<p>A lot of my work is based on the tabular output of the tool BLAST (Basic Local Alignment Search Tool). This tool is used to search query sequences against the database of DNA/protein sequences and the output contains following columns</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;qseqid&gt; &lt;sseqid&gt; &lt;pident&gt; &lt;length&gt; &lt;mismatch&gt; &lt;gapopen&gt; &lt;qlen&gt; &lt;qstart&gt; &lt;qend&gt; &lt;slen&gt; &lt;sstart&gt; &lt;send&gt; &lt;evalue&gt; &lt;bitscore&gt;
 
-<p>Although I’vent used much of ‘literate programming’ myself, I appreciate people for doing so when I’m using their code. After watching through this lecture, I’m sure to appreicate other’s efforts not only for coming up with a clever algorithmic solution, but also for beautifully explaining it to the world. With that said, I’ve only recently begun to start commenting on my codes. While I understand it’s not even close to the essence of literate programming, but we’ve to start somewhere!</p>
+</code></pre>
+</div>
+<p>The first 2 columns contain the IDs of query and subject sequence that is found as ‘hit’ in the database search with the query. The remaining cols contain various types of quantities that describe the quality of matching between the query and the subject sequence.
+One of the main uses of the BLAST tabular output is to find and infer homologous sequences for each query
+sequence. This can be achieved by setting user defined cutoffs on the numeric quantites in columns 4-12 where all the subject sequences (in column 2) from the database that satisfy the cutoffs will be regarded as true homologs of the query sequence in column 1</p>
 
-<p>The whole point of writting literate programs is to make reading codes more enjoyable. With great sigh, I can say that I’vent enjoyed reading through hundreds of lines of codes with no comments whatsoever. Donald Knuth, emphasises a very important point about the way we write code. While it’s true that most code written in academia is only to ‘accomplish’ the task in hand, it isn’t without a doubt that such a code is messy and might seem foreign to anyone, including the person who wrote it.</p>
-
-<p>Looking around, I realize that I’m not sailing alone on this boat. There are several like me, who are frustrated with the practice of poor code writing. Maybe it’s the attitude, time-crunch or the sense that no one cares about the code we write for some analysis during our school. But, incorporating best practices in writing and maintaining codes will go a long way. Not only will it make our code more understandable, someone might actually use it and thank us. Being exposed to the pain Knuth went through that led him to develop an entire new way of programming, I feel more motivated than ever to incorporate better bext practices in my codes. I’ll try to incorporate more comments/notes in my code and will try to soon transition to more formal ways of writing ‘literate programs’!</p>
+<p>If I have to define a function for inferring homologuous sequences, literate programming can help me to describe and present the detail workings of the function, like the number and type of arguments and the return formats. The power of literate programming can also help me to explain, in a clear and natural way, the exact workflow of the function when a particular set of cutoff parameters are specified. For example, if the user provides pident (percent identity) cutoff value, all the query - subject pairs that are above this cutoff will be retained and for each query, the set of subject sequences will be returned as homologs of the query.</p>
 
   </article>
 
