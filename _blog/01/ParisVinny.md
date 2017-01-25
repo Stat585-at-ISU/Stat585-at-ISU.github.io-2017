@@ -1,3 +1,11 @@
+---
+title: "Literate Programming"
+author: "Vinny Paris"
+topic: "01"
+layout: post
+root: ../../../
+---
+
 Something I found really interesting that he did in his book was to use the really nice "blurb -> code" where he would give a 
 paragraph giving you the general attack pattern of what the following does and then  he writes the code in some language 
 in something that maybe looks like psudeo-code.
