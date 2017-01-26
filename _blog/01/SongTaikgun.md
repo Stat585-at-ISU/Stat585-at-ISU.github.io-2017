@@ -1,15 +1,8 @@
 ---
 title: "Literate Programming..."
 author: "Taikgun Song"
-header-includes:
-   - \usepackage{amsmath}
-   - \usepackage{graphicx}
-output:
-  html_document:
-    toc: true
-    number_sections: false
-    theme: united
-fontsize: 12pt
+topic: "01"
+layout: post
 root: ../../../
 ---
 
