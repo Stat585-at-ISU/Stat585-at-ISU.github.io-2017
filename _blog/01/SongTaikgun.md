@@ -18,6 +18,7 @@ If the code is written a while ago or if one is referring to a script from anoth
 It has been a while since I have been using Rmarkdown or LaTeX for my school work. One thing I liked the most is that I could compile code chunks and documents at the same time. This is great because writing my homework is now much easier since I could plot graphs and images in my document directly with embed code chunks.
 
 <center>
+
 ![Dear Leader Comrade General approves this blog post](https://s28.postimg.org/qdeqv13z1/MSP10021cgfc578ahcfbg3i000056ab69d01c30h34b.gif)
 
 </center>
