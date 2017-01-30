@@ -1,0 +1,15 @@
+---
+title: "Split-Apply-Combine: Blog 2"
+author: "Ryan Morgan"
+topic: "02"
+layout: post
+root: ../../../
+---
+**Which (base R) functions do you know that support the split-apply-combine strategy? In your opinion, are these sufficient - state why or why not?**
+
+Some examples of functions in base R that support the split-apply-combine strategy include tapply(), apply(), lapply(), or aggregate(). The article describes the split-apply-combine strategy as using the method of breaking a big problem into manageable pieces, operating on each piece independently, and then putting all the pieces together. This seems to perfectly describe what the goal is of the apply and aggregate functions. In my opinion, these functions aren’t sufficient. It may just be due to my laziness and not stopping to completely understand these functions, but it seems like every time I try and use the aggregate() or one of the apply functions, it takes me a few attempts to actually get the function to do what I want it to. After reading Hadley Wickham’s article, the plyr package seems a lot easier to use and understand. It may just be that I never stopped to try and read an article about the other functions, but the plyr package seems to be a lot more user friendly.
+
+**Using a dataset of your choice, describe how you can use the split-apply-combine strategy for a part of the data analysis.**
+
+An easy example of a dataset where a split-apply-combine strategy could be used is the temperature datasets we have worked with in class. When looking at temperature measurements over a period of time, an obvious question to ask is how have the temperatures changed over time? Using a split-apply-combine strategy makes it possible to tackle this problem in several different ways.  One way you might explore this question is to find the mean temperature per month for different decades and see how these values have changed at various weather stations. For example, you could try and see if Fort Dodge’s Januaries in the 2000’s are warmer than Fort Dodge’s Januaries in the 1920’s. Using the split-apply-combine strategy, you would want to split the dataset into the different decades. Instead of having one large set of data with all of the temperature measurements, you would have all of the temperature measurements for the 1910’s, the 1920’s, the 1930’s, etc. You would then split these smaller datasets into data sets of each month. For example, the 1910’s dataset would be split into the Januaries, Februaries, Marches, etc. After this splitting has taken place, you would find the mean of each of the new datasets. After you have applied the mean function, you would combine all of the means to analyze how the have changed over time. It would also be possible to use this method for lengths of time other than decades (perhaps 5 year periods), different lengths of time other than months (instead of comparing Januaries over time you could compare Winters over time), and statistics other than the mean (maybe the median, minimum, or maximum). 
+

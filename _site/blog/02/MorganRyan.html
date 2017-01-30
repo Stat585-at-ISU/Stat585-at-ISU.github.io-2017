@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Data Technologies for Statistics at Iowa State University.">
+    <meta name="author" content="Heike Hofmann <hofmann@iastate.edu>">
+    <!-- By The original uploader was Dick107 at English Wikipedia [GFDL (http://www.gnu.org/copyleft/fdl.html) or CC-BY-SA-3.0 (http://creativecommons.org/licenses/by-sa/3.0/)], via Wikimedia Commons https://commons.wikimedia.org/wiki/File%3APunch-card-5081.jpg-->
+
+    <title>Stat 585</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../css/extra.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../../../index.html">Stat 585</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              
+              
+      				  
+      				  
+      				  <li class="">
+      					<a href="/index.html">Home</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/syllabus.html">Schedule</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/labs.html">Labs</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="active">
+      					<a href="/blog">Blog</a>
+      				  </li>
+      				
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="https://bb.its.iastate.edu" target="_blank">BlackBoard</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+    <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Split-Apply-Combine: Blog 2</h1>
+    <p class="post-meta">Jan 30, 2017 • Ryan Morgan</p>
+  </header>
+
+  <article class="post-content">
+    <p><strong>Which (base R) functions do you know that support the split-apply-combine strategy? In your opinion, are these sufficient - state why or why not?</strong></p>
+
+<p>Some examples of functions in base R that support the split-apply-combine strategy include tapply(), apply(), lapply(), or aggregate(). The article describes the split-apply-combine strategy as using the method of breaking a big problem into manageable pieces, operating on each piece independently, and then putting all the pieces together. This seems to perfectly describe what the goal is of the apply and aggregate functions. In my opinion, these functions aren’t sufficient. It may just be due to my laziness and not stopping to completely understand these functions, but it seems like every time I try and use the aggregate() or one of the apply functions, it takes me a few attempts to actually get the function to do what I want it to. After reading Hadley Wickham’s article, the plyr package seems a lot easier to use and understand. It may just be that I never stopped to try and read an article about the other functions, but the plyr package seems to be a lot more user friendly.</p>
+
+<p><strong>Using a dataset of your choice, describe how you can use the split-apply-combine strategy for a part of the data analysis.</strong></p>
+
+<p>An easy example of a dataset where a split-apply-combine strategy could be used is the temperature datasets we have worked with in class. When looking at temperature measurements over a period of time, an obvious question to ask is how have the temperatures changed over time? Using a split-apply-combine strategy makes it possible to tackle this problem in several different ways.  One way you might explore this question is to find the mean temperature per month for different decades and see how these values have changed at various weather stations. For example, you could try and see if Fort Dodge’s Januaries in the 2000’s are warmer than Fort Dodge’s Januaries in the 1920’s. Using the split-apply-combine strategy, you would want to split the dataset into the different decades. Instead of having one large set of data with all of the temperature measurements, you would have all of the temperature measurements for the 1910’s, the 1920’s, the 1930’s, etc. You would then split these smaller datasets into data sets of each month. For example, the 1910’s dataset would be split into the Januaries, Februaries, Marches, etc. After this splitting has taken place, you would find the mean of each of the new datasets. After you have applied the mean function, you would combine all of the means to analyze how the have changed over time. It would also be possible to use this method for lengths of time other than decades (perhaps 5 year periods), different lengths of time other than months (instead of comparing Januaries over time you could compare Winters over time), and statistics other than the mean (maybe the median, minimum, or maximum).</p>
+
+
+  </article>
+
+</div>
+
+      
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../scripts/jquery.min.js"></script>
+    <script src="../../../scripts/bootstrap.min.js"></script>
+  </body>
+</html>
