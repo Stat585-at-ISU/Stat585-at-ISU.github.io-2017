@@ -69,21 +69,22 @@
     <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Literate Programming...</h1>
-    <p class="post-meta">Feb 1, 2017 • Haiyang Zhang</p>
+    <h1 class="post-title">Split-Apply-Combine Strategy </h1>
+    <p class="post-meta">Feb 1, 2017 • Xiangmei Zhang</p>
   </header>
 
   <article class="post-content">
-    <p>I think literate programming is a very good way to write computational code with comments and a clear way to combine the codes 
-with the author’s thoughts in the readable version. As Donald Knuth mentioned in the video, rather than writing the code in a 
-computational logic or mathematics logic, it’s better and more clear to write the code in the order we’d like to think.</p>
+    <ol>
+  <li><strong>Which (base R) functions do you know that support the split-apply-combine strategy? In your opinion, are these sufficient - state why or why not?</strong>.</li>
+</ol>
 
-<p>I started learning R in my first year of Grad School. The old way I composed my homework or project was to copy and paste the 
-report to a Word document,and typed my explanation of my answer into the document later. It was not a very good way to compelet 
-the work considering the effiency. I haven’t thought about changing my style until the course 544. I learned how to use R 
-Markdown in that class. It saved me a lot time on doing all my assignments. And as I learned from some of my classmates, using 
-LaTeX is actually very easy and can save a lot time even more, even if it looks hard at the first glance. I never used LaTeX 
-before, but I want to give a try in the future to do my homework, project and creative componet.</p>
+<p>Based on my knowledge, R functions that support the split-apply-combine strategy include apply(), lapply(), tapply(), sapply(), split(), aggregate(). And another clumsy way is writing a loop function according to the specific question. Apparently, loop function is not an efficient solution to get information because it will take much more time than *apply() functions. To be honest, I usually can not tell apart apply(), lapply(), tapply(), sapply(), I think they are good for use when I need to apply a simple function to split data, but not so sufficient if multiple functions needed to be done.</p>
+
+<ol>
+  <li><strong>Using a dataset of your choice, describe how you can use the split-apply-combine strategy for a part of the data analysis.</strong></li>
+</ol>
+
+<p>I think the split-apply-combine strategy can be commonly used in a multi-factor dataset when we want to check how the factors affect the response variable. For example, in French_fries data, one simple case is to analyze oil type main effects on potato flavor, to answer this question, we need to split the data according to oil type treatment, and apply mean function to all split part then combine lsmeans for all treatments.</p>
 
   </article>
 

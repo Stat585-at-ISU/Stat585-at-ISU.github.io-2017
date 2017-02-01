@@ -69,21 +69,21 @@
     <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Literate Programming...</h1>
-    <p class="post-meta">Feb 1, 2017 • Haiyang Zhang</p>
+    <h1 class="post-title">Split-Apply-Combine...</h1>
+    <p class="post-meta">Feb 1, 2017 • Lawrence Hii</p>
   </header>
 
   <article class="post-content">
-    <p>I think literate programming is a very good way to write computational code with comments and a clear way to combine the codes 
-with the author’s thoughts in the readable version. As Donald Knuth mentioned in the video, rather than writing the code in a 
-computational logic or mathematics logic, it’s better and more clear to write the code in the order we’d like to think.</p>
+    <h2 id="function-that-supports-the-split-apply-combine-strategy">Function that supports the split-apply-combine strategy</h2>
 
-<p>I started learning R in my first year of Grad School. The old way I composed my homework or project was to copy and paste the 
-report to a Word document,and typed my explanation of my answer into the document later. It was not a very good way to compelet 
-the work considering the effiency. I haven’t thought about changing my style until the course 544. I learned how to use R 
-Markdown in that class. It saved me a lot time on doing all my assignments. And as I learned from some of my classmates, using 
-LaTeX is actually very easy and can save a lot time even more, even if it looks hard at the first glance. I never used LaTeX 
-before, but I want to give a try in the future to do my homework, project and creative componet.</p>
+<p>The basic one that I can think of is the sort() function in R. I took an algorithm class from computer science department this past summer. We learned that most sorting or ordering function in Excel or SQL or others are using Merge-Sort idea which is also one of the split-apply-combine strategies. For example, when we sort, let say “statistics” alphabetically, the system technically keeps breaking down the words (array) in to half length until granular level like a tree. Then at the lowest level the system orders and combines and move back up.</p>
+
+<p>This process is way more efficient than creating loop to compare first character to the rest of the characters etc.</p>
+
+<p>Here is the link of the picture for merge-sort: https://s3.amazonaws.com/ka-cs-algorithms/merge_sort_recursion.png</p>
+
+<h2 id="example-of-dataset">Example of dataset</h2>
+<p>We can use AirPassengers dataset here. We can remove the seasonality trend from time series using split-apply-combine strategy. I will plot the raw graph and identify if there is a seasonal trend, maybe every 12 months. Then I can split the data by 12 months and take average of each 12 months and combine them and look at the average trend.</p>
 
   </article>
 

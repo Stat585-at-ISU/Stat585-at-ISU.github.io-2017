@@ -69,21 +69,24 @@
     <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Literate Programming...</h1>
-    <p class="post-meta">Feb 1, 2017 • Haiyang Zhang</p>
+    <h1 class="post-title">Split-Apply-Combine...</h1>
+    <p class="post-meta">Feb 1, 2017 • Vinny Paris</p>
   </header>
 
   <article class="post-content">
-    <p>I think literate programming is a very good way to write computational code with comments and a clear way to combine the codes 
-with the author’s thoughts in the readable version. As Donald Knuth mentioned in the video, rather than writing the code in a 
-computational logic or mathematics logic, it’s better and more clear to write the code in the order we’d like to think.</p>
+    <p>I have used aggregate and subset to some extent in R. Honestly I’m still not sold on plyr’s filter over base
+subset since there doesn’t appear to be a huge gain in effeciency. But I am a fan of the ply functions from the little I used of them. Also, I never realized the naming convention beofre now. I always thought the letters were just some random not useful 
+techincal thing, not the I/O formats. I’m really glad I learned that :) I’m really honestly not that familiar with any base R
+that does well with combining outside of cbind() and rbind(). As such, I think the base alone is pretty inadequate.</p>
 
-<p>I started learning R in my first year of Grad School. The old way I composed my homework or project was to copy and paste the 
-report to a Word document,and typed my explanation of my answer into the document later. It was not a very good way to compelet 
-the work considering the effiency. I haven’t thought about changing my style until the course 544. I learned how to use R 
-Markdown in that class. It saved me a lot time on doing all my assignments. And as I learned from some of my classmates, using 
-LaTeX is actually very easy and can save a lot time even more, even if it looks hard at the first glance. I never used LaTeX 
-before, but I want to give a try in the future to do my homework, project and creative componet.</p>
+<p>For data that benefits from this would actually be data from the World Fact Book ran by the CIA. I used it in my undergraduate
+for a project and the cool thing is it gives you a lot of economic variables (the class was an econometrics course) but the issue was
+that there were a lot of variables that I needed to derive out of the data (long term growth rates of gdp per capita 
+took mulitple steps to find). So for example you might want to find energy production per person relative to the average of the 
+OECD nations. You could break the data set into countries and then from there find their populations and energy production 
+levels. Then find the ratio of these numbers. Also, we will want to find the subset of all nations that are in the OECD and find that
+group average. After that we can subtract if off of the ratios we found earlier. Then we can add it back into the orgianl data so that it
+can be used in analysis against other variables.</p>
 
   </article>
 
