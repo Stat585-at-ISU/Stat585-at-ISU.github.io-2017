@@ -66,124 +66,30 @@
         </div><!--/.container-fluid -->
       </nav>
 
-    
+    <div class="post">
 
+  <header class="post-header">
+    <h1 class="post-title">Split-Apply-Combine</h1>
+    <p class="post-meta">Feb 1, 2017 • Benjamin Buzzee</p>
+  </header>
 
+  <article class="post-content">
+    <p>I’m aware of the apply family of functions in base R, as well as functions like aggregate and sweep. For combining data
+I’m only aware of cbind, rbind, and adding arguments to c() or data.frame() to expand a vector or dataframe. One problem I have
+with the base R apply family is that it is difficult to remember all the variations and identify which one is appropriate for the task at hand. Plyr’s intuitive naming scheme for the 12 key functions goes a long way in overcoming this challenge.</p>
 
-<ol class="breadcrumb">
+<p>In STAT 579 we analyzed microarray gene expression data using base R and it was quite difficult. The dataset came from the
+Diurnal Papaya Project through the Donald Danforth Plant Science Center. The experiment exposed plants to differing amounts of light before measuring gene expressions. The experiment was
+repeated twice, and genes were compared via euclidean distance after standardization. A key part of this analysis was 
+taking an average across replications, substracting the row means, and scaling by the row standard deviation.</p>
 
-  
-  
-  <li class=>
-    
-    <a href=../../../blog/>blog</a>
-    
-  </li>
+<p>Using the split-apply-combine strategy outlined in the article, first we would take a subset of just the first row or two. Then
+we would figure out exactly what we wanted to accomplish and write appropriate functions while testing them on the small subset.
+Then we would use the appropriate plyr function to apply the standardizaiton function to the original dataset.</p>
 
-  
-  
-  <li class=active>
-     
-      03
-    
-  </li>
+  </article>
 
-</ol>
-
-<h2 id="background">Background:</h2>
-
-<p>Read the paper <a href="https://pdfs.semanticscholar.org/d779/6f85dabccd18673f382c100fc06f55e8b501.pdf">A layered grammar of graphics</a> by Hadley Wickham (<em>Journal of Computational and Graphical Statistics</em>, 19(1), 2010, 3-28.)</p>
-
-<p>Write a blog post addressing the question: <em>How does having a grammar help with creating charts?</em></p>
-
-<h2 id="instructions">Instructions:</h2>
-
-<p>Go to <a href="https://github.com/Stat585-at-ISU/blog">https://github.com/Stat585-at-ISU/blog</a> for instructions about how to prepare and submit your blog post.</p>
-
-<h2 id="class-posts">Class posts:</h2>
-
-<ul>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-</ul>
-
+</div>
 
       
     </div> <!-- /container -->
