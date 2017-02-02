@@ -74,21 +74,25 @@
   </header>
 
   <article class="post-content">
-    Write a blog post addressing the questions: 
+    <p>Write a blog post addressing the questions:</p>
 
-1. **Which (base R) functions do you know that support the split-apply-combine strategy? In your opinion, are these sufficient - state why or why not?**. 
+<ol>
+  <li><strong>Which (base R) functions do you know that support the split-apply-combine strategy? In your opinion, are these sufficient - state why or why not?</strong>.</li>
+</ol>
 
-I used many apply functions before, such as apply(), mapply(), lapply(), aggregate(). They are sufficient most of the time, but I always need to code several different functions to get things done. For example, I need to use subset() at first to subset the needed dataset, and apply some functions to it, then use melt() to combine them in the end. So, they can get things done, just clunky. 
+<p>I used many apply functions before, such as apply(), mapply(), lapply(), aggregate(). They are sufficient most of the time, but I always need to code several different functions to get things done. For example, I need to use subset() at first to subset the needed dataset, and apply some functions to it, then use melt() to combine them in the end. So, they can get things done, just clunky.</p>
 
+<ol>
+  <li><strong>Using a dataset of your choice, describe how you can use the split-apply-combine strategy for a part of the data analysis.</strong>
+I continue to use the french_fries dataset we learned in class. I want to see the main effect on time for the rating of potato. So, I split the data using group-by, and apply the summarise function to find mean and standard deviation for the rating of potato. From the output, it’s the mean of rating of potato decreases as time increases, and standard deviations stay around 3.5.</li>
+</ol>
 
-2. **Using a dataset of your choice, describe how you can use the split-apply-combine strategy for a part of the data analysis.**
-I continue to use the french_fries dataset we learned in class. I want to see the main effect on time for the rating of potato. So, I split the data using group-by, and apply the summarise function to find mean and standard deviation for the rating of potato. From the output, it's the mean of rating of potato decreases as time increases, and standard deviations stay around 3.5. 
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">french_fries</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">group_by</span><span class="p">(</span><span class="n">time</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">summarise</span><span class="p">(</span><span class="n">mean_potato</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">potato</span><span class="p">,</span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">),</span><span class="w"> 
+            </span><span class="n">sd_potato</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sd</span><span class="p">(</span><span class="n">potato</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">))</span></code></pre></figure>
 
-french_fries %>%
-  group_by(time) %>%
-  summarise(mean_potato = mean(potato,na.rm=TRUE), 
-            sd_potato = sd(potato, na.rm=TRUE))
-
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in eval(expr, envir, enclos): object 'french_fries' not found</code></pre></figure>
 
 
   </article>
