@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Data Technologies for Statistics at Iowa State University.">
+    <meta name="author" content="Heike Hofmann <hofmann@iastate.edu>">
+    <!-- By The original uploader was Dick107 at English Wikipedia [GFDL (http://www.gnu.org/copyleft/fdl.html) or CC-BY-SA-3.0 (http://creativecommons.org/licenses/by-sa/3.0/)], via Wikimedia Commons https://commons.wikimedia.org/wiki/File%3APunch-card-5081.jpg-->
+
+    <title>Stat 585</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../css/extra.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../../../index.html">Stat 585</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              
+              
+      				  
+      				  
+      				  <li class="">
+      					<a href="/index.html">Home</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/syllabus.html">Schedule</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/labs.html">Labs</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="active">
+      					<a href="/blog">Blog</a>
+      				  </li>
+      				
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="https://bb.its.iastate.edu" target="_blank">BlackBoard</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+    <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Split-Apply-Combine</h1>
+    <p class="post-meta">Feb 2, 2017 • Haley Jeppson</p>
+  </header>
+
+  <article class="post-content">
+    <p>The data analysis strategy of <strong>Split-Apply-Combine</strong> creates a concise description of the basic operations that occur at the start of most analyses. The split-apply-combine procedure is to <strong>split</strong> your data into pieces, <strong>apply</strong> a function to each piece, and <strong>combine</strong> those pieces back together with the results.</p>
+
+<h4 id="1-which-base-r-functions-do-you-know-that-support-the-split-apply-combine-strategy-in-your-opinion-are-these-sufficient---state-why-or-why-not">1. Which (base R) functions do you know that support the split-apply-combine strategy? In your opinion, are these sufficient - state why or why not?</h4>
+
+<p>There are several base <code class="highlighter-rouge">R</code> functions that support the split-apply-combine strategy. A few of the more commonly used functions include <code class="highlighter-rouge">subset()</code>, <code class="highlighter-rouge">split()</code>, <code class="highlighter-rouge">with()</code>, <code class="highlighter-rouge">by()</code>, <code class="highlighter-rouge">apply()</code>, <code class="highlighter-rouge">sapply()</code>, <code class="highlighter-rouge">lapply()</code>, <code class="highlighter-rouge">tapply()</code>, <code class="highlighter-rouge">aggregate()</code>, <code class="highlighter-rouge">rbind()</code>, and <code class="highlighter-rouge">cbind()</code>. These functions can be combined in different combinations to tackle any task <code class="highlighter-rouge">plyr</code> can complete, but the functions are more rigid in their abilities and the syntax is inconsistent. It is also possible to write custom functions using <code class="highlighter-rouge">for()</code> loops to do your analysis; however, this requires you to write a lot of code simply for bookkeeping purposes.</p>
+
+<p>In my opinion, the key advantage of using <code class="highlighter-rouge">plyr</code> (and now <code class="highlighter-rouge">dplyr</code> in combination with the other <code class="highlighter-rouge">tidyverse</code> packages) is that after you overcome the learning curve, programming becomes more intuitive and concise. In addition, I think that it becomes easier to reproduce your code.</p>
+
+<h4 id="2-using-a-dataset-of-your-choice-describe-how-you-can-use-the-split-apply-combine-strategy-for-a-part-of-the-data-analysis">2. Using a dataset of your choice, describe how you can use the split-apply-combine strategy for a part of the data analysis.</h4>
+
+<p>To find a dataset I went to FiveThirtyEight’s github repository that contains a collection of some of the datasets used in FiveThirtyEight’s articles. Hoping to avoid any dataset involving politics or current events for the evening, I chose to use the <code class="highlighter-rouge">tarantino</code> dataset, a complete catalog of every time someone cursed or bled out in a Quentin Tarantino movie. Using the split-apply-combine strategy with the <code class="highlighter-rouge">dplyr</code> package, I worked to recreate part of the analysis done by FiveThirtyEight.</p>
+
+<p>After reading in the data, I first summarized the data by getting the total counts for curses and deaths in each movie and then created a new variable that is a curse to death ratio for each movie.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">films</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">read_csv</span><span class="p">(</span><span class="w"> </span><span class="n">curl</span><span class="p">(</span><span class="s2">"https://raw.githubusercontent.com/fivethirtyeight/data/master/tarantino/tarantino.csv"</span><span class="p">))</span><span class="w">
+
+</span><span class="n">films</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">count</span><span class="p">(</span><span class="n">movie</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">group_by</span><span class="p">(</span><span class="n">movie</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">summarize</span><span class="p">(</span><span class="n">curses</span><span class="o">=</span><span class="n">n</span><span class="p">[</span><span class="n">type</span><span class="o">==</span><span class="s2">"word"</span><span class="p">],</span><span class="w"> </span><span class="n">deaths</span><span class="o">=</span><span class="n">n</span><span class="p">[</span><span class="n">type</span><span class="o">==</span><span class="s2">"death"</span><span class="p">],</span><span class="w"> </span><span class="n">curse_ratio</span><span class="o">=</span><span class="n">curses</span><span class="o">/</span><span class="n">deaths</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">arrange</span><span class="p">(</span><span class="n">desc</span><span class="p">(</span><span class="n">curse_ratio</span><span class="p">))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in count(., movie, type): object 'movie' not found</code></pre></figure>
+
+<p>I then combined the split-apply-combine strategy with the <code class="highlighter-rouge">dplyr</code> and <code class="highlighter-rouge">ggplot2</code> packages, to visualize how the number of curse words and deaths accumulate throughout the time span of each movie.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">films</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">group_by</span><span class="p">(</span><span class="n">movie</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">mutate</span><span class="p">(</span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="n">rank</span><span class="p">(</span><span class="n">minutes_in</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">ggplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">minutes_in</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="o">=</span><span class="n">movie</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">geom_line</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="m">1</span><span class="p">)</span><span class="o">+</span><span class="n">facet_grid</span><span class="p">(</span><span class="n">type</span><span class="o">~</span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="n">scale</span><span class="o">=</span><span class="s2">"free"</span><span class="p">)</span></code></pre></figure>
+
+<p><img src=".figure/BuzzeeBenjamin-unnamed-chunk-3-1.png" title="center" alt="center" style="display: block; margin: auto;" /></p>
+
+
+  </article>
+
+</div>
+
+      
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../scripts/jquery.min.js"></script>
+    <script src="../../../scripts/bootstrap.min.js"></script>
+  </body>
+</html>
