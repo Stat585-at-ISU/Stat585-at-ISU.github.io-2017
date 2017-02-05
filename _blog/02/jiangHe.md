@@ -28,6 +28,7 @@ french_fries %>%
 
 
 {% highlight text %}
-## Error in eval(expr, envir, enclos): object 'french_fries' not found
+##   mean_potato sd_potato
+## 1    6.952518  3.584403
 {% endhighlight %}
 

@@ -56,7 +56,7 @@ I then combined the split-apply-combine strategy with the `dplyr` and `ggplot2` 
 films %>% group_by(movie, type) %>% mutate(count =rank(minutes_in)) %>% ggplot(aes(x=minutes_in, y=count, color=movie)) + geom_line(size=1)+facet_grid(type~., scale="free")
 {% endhighlight %}
 
-<img src=".figure/BuzzeeBenjamin-unnamed-chunk-3-1.png" title="center" alt="center" style="display: block; margin: auto;" />
+<img src="../figure/02/JeppsonHaley-unnamed-chunk-3-1.png" title="center" alt="center" style="display: block; margin: auto;" />
 
 
 

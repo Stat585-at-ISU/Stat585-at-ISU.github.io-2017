@@ -23,4 +23,4 @@ insectMean %>% ggplot(aes(x = spray, y = mean, group = 1, colour = spray)) +
     title = "Insects killed by Insecticides") + theme(plot.title = element_text(hjust = 0.5))
 {% endhighlight %}
 
-![center](.figure/BuzzeeBenjamin-unnamed-chunk-1-1.png)
+![center](../figure/02/JainAshish-unnamed-chunk-1-1.png)

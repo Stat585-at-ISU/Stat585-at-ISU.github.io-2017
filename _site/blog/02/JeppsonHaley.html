@@ -70,7 +70,7 @@
 
   <header class="post-header">
     <h1 class="post-title">Split-Apply-Combine</h1>
-    <p class="post-meta">Feb 3, 2017 • Haley Jeppson</p>
+    <p class="post-meta">Feb 5, 2017 • Haley Jeppson</p>
   </header>
 
   <article class="post-content">
@@ -98,7 +98,7 @@
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">films</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">group_by</span><span class="p">(</span><span class="n">movie</span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">mutate</span><span class="p">(</span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="n">rank</span><span class="p">(</span><span class="n">minutes_in</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">ggplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">minutes_in</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="o">=</span><span class="n">movie</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">geom_line</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="m">1</span><span class="p">)</span><span class="o">+</span><span class="n">facet_grid</span><span class="p">(</span><span class="n">type</span><span class="o">~</span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="n">scale</span><span class="o">=</span><span class="s2">"free"</span><span class="p">)</span></code></pre></figure>
 
-<p><img src=".figure/BuzzeeBenjamin-unnamed-chunk-3-1.png" title="center" alt="center" style="display: block; margin: auto;" /></p>
+<p><img src="../figure/02/JeppsonHaley-unnamed-chunk-3-1.png" title="center" alt="center" style="display: block; margin: auto;" /></p>
 
 
   </article>
