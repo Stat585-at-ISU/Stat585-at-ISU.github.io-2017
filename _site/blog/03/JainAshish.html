@@ -69,23 +69,16 @@
     <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Literate Programming</h1>
-    <p class="post-meta">Feb 8, 2017 • Akshay Yadav</p>
+    <h1 class="post-title">A Layered Grammar of Graphics</h1>
+    <p class="post-meta">Feb 8, 2017 • Ashish Jain</p>
   </header>
 
   <article class="post-content">
-    <p>###Homology Detection in Bioinformatics</p>
+    <p><strong>How does having a grammar help with creating charts?</strong></p>
 
-<p>A lot of my work is based on the tabular output of the tool BLAST (Basic Local Alignment Search Tool). This tool is used to search query sequences against the database of DNA/protein sequences and the output contains following columns</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>&lt;qseqid&gt; &lt;sseqid&gt; &lt;pident&gt; &lt;length&gt; &lt;mismatch&gt; &lt;gapopen&gt; &lt;qlen&gt; &lt;qstart&gt; &lt;qend&gt; &lt;slen&gt; &lt;sstart&gt; &lt;send&gt; &lt;evalue&gt; &lt;bitscore&gt;
+<p>Grammer is defined as a general set of structural rules which governs the composition of different structure in a natural language. For example, in English, the grammar governs the composition of clauses, phrases, and words. These set of rules not only provides certain guidelines but also helps in understanding a particular language thereby making it easier to use it effectively. Similarly, the layered grammar of graphics lay down a certain set of rules and instructions which help us in understanding the logic behind creating graphs and make its easier to draw them. Building plot by using layered grammar is similar to building sentences using grammar in English. Being a graduate student, I know the importance of making of beautiful and explanatory graphs in research, especially for the publications.</p>
 
-</code></pre>
-</div>
-<p>The first 2 columns contain the IDs of query and subject sequence that is found as ‘hit’ in the database search with the query. The remaining cols contain various types of quantities that describe the quality of matching between the query and the subject sequence.
-One of the main uses of the BLAST tabular output is to find and infer homologous sequences for each query
-sequence. This can be achieved by setting user defined cutoffs on the numeric quantites in columns 4-12 where all the subject sequences (in column 2) from the database that satisfy the cutoffs will be regarded as true homologs of the query sequence in column 1</p>
-
-<p>If I have to define a function for inferring homologuous sequences, literate programming can help me to describe and present the detail workings of the function, like the number and type of arguments and the return formats. The power of literate programming can also help me to explain, in a clear and natural way, the exact workflow of the function when a particular set of cutoff parameters are specified. For example, if the user provides pident (percent identity) cutoff value, all the query - subject pairs that are above this cutoff will be retained and for each query, the set of subject sequences will be returned as homologs of the query.</p>
+<p>In the paper <strong>“A Layered Grammer of Graphics”</strong> by <em>Hadley Wickham</em> a very nice and detailed explanation of the grammar of graphics is written especially about <em>ggplot2</em> and its usage. They have talked about the different layers using which a graphic is being created using <em>ggplot2</em>. There are five major components in <em>ggplot2</em> which has been explained in the paper. It includes dataset and its mapping, layers of geometric objects, scale for the dataset, a coordinate system, and facet specification. Using these components we can develop a nice and explanatory chart/graphics. The most important thing about having a layered grammar is that it provides flexibility to the user. By using different layers a user can explore many different things which are not possible by using basic plots functions. In addition to that, it is a lot easier to make changes or manipulate a graph due to its layered structure. We don’t have to deal with any complex code. In the paper, the integration of different components by using layered grammar has been explained really well by using the <em>layer()</em> function. It has made me think that how easy it is to plot complicated charts and graphs in <em>ggplot2</em> as compared to basic plots in R.</p>
 
   </article>
 
