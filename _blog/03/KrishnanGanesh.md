@@ -1,6 +1,6 @@
 ---
 title: "A Layered Grammar of Graphics"
-author: "Firstname Lastname"
+author: "Krishnan Ganesh"
 topic: "03"
 layout: post
 root: ../../../
