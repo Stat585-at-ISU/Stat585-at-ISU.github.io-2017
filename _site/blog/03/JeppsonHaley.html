@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Data Technologies for Statistics at Iowa State University.">
+    <meta name="author" content="Heike Hofmann <hofmann@iastate.edu>">
+    <!-- By The original uploader was Dick107 at English Wikipedia [GFDL (http://www.gnu.org/copyleft/fdl.html) or CC-BY-SA-3.0 (http://creativecommons.org/licenses/by-sa/3.0/)], via Wikimedia Commons https://commons.wikimedia.org/wiki/File%3APunch-card-5081.jpg-->
+
+    <title>Stat 585</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../css/extra.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../../../index.html">Stat 585</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              
+              
+      				  
+      				  
+      				  <li class="">
+      					<a href="/index.html">Home</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/syllabus.html">Schedule</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/labs.html">Labs</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="active">
+      					<a href="/blog">Blog</a>
+      				  </li>
+      				
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="https://bb.its.iastate.edu" target="_blank">BlackBoard</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+    <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">A Layered Grammar of Graphics</h1>
+    <p class="post-meta">Feb 9, 2017 • Haley Jeppson</p>
+  </header>
+
+  <article class="post-content">
+    <hr />
+
+<h3 id="how-does-having-a-grammar-help-with-creating-charts">How does having a grammar help with creating charts?</h3>
+
+<p>The motivation behind the grammar of graphics seems similar to that of literate programming and the split-apply-combine strategy – when tackling a complicated task, it is advantageous to tackle it one step at a time. Having a grammar of graphics allows for you to see a plot as a construction of a small number of building blocks.</p>
+
+<p>In <code class="highlighter-rouge">ggplot2</code>, the layered grammar specifies the following five large building blocks which can then be broken into smaller blocks:</p>
+
+<ol>
+  <li><strong>Defaults</strong>
+    <ul>
+      <li>A dataset</li>
+      <li>A set of aesthetic mappings</li>
+    </ul>
+  </li>
+  <li><strong>Layers</strong>
+    <ul>
+      <li>A statistical transformation i.e. <code class="highlighter-rouge">stat_bin</code></li>
+      <li>A geometric object i.e. <code class="highlighter-rouge">geom_line</code> or <code class="highlighter-rouge">geom_point</code></li>
+      <li>A position adjustment   i.e. stacking or dodging bar charts, or adding jitter to points</li>
+      <li>(optional) a dataset</li>
+      <li>(optional) a set of aesthetic mappings</li>
+    </ul>
+  </li>
+  <li><strong>Scales</strong></li>
+  <li><strong>Coordinate system</strong></li>
+  <li><strong>Facets</strong></li>
+</ol>
+
+<p>Viewing a plot in terms of these building blocks significantly simplifies the task of making complex, multi-layered visualizations. Similar to how a grammar of a language assists in constructing meaningful sentences out of a set of words, a grammar of graphics assists in constructing a meaningful graphic out of a set of graphical elements.</p>
+
+<p>Interestingly, many graphs share many features of their construction. As Wickham points out in <em>A Layered Grammar of Graphics</em>, when applying the grammar, a pie chart is only different from a stacked bar geom drawn in that it is plotted in a polar coordinate system rather than a cartesian coordinate system. Having a grammar allows for the similarities and differences in different types of graphs to be better recognized.</p>
+
+<p>Understanding the underlying components of a graphic does more than help you in composing the plot, it aids in the interpretation of the final graphic and in the development of new software for statistical graphics not already supported. Additionally, I think the true advantage of having a grammar is that when it is easier for us to create and interpret the graphic, it allows us to spend more time and energy on refining our plot and creating the <em>right</em> graphic for our data and audience.</p>
+
+  </article>
+
+</div>
+
+      
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../scripts/jquery.min.js"></script>
+    <script src="../../../scripts/bootstrap.min.js"></script>
+  </body>
+</html>
