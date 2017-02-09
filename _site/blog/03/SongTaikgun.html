@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Data Technologies for Statistics at Iowa State University.">
+    <meta name="author" content="Heike Hofmann <hofmann@iastate.edu>">
+    <!-- By The original uploader was Dick107 at English Wikipedia [GFDL (http://www.gnu.org/copyleft/fdl.html) or CC-BY-SA-3.0 (http://creativecommons.org/licenses/by-sa/3.0/)], via Wikimedia Commons https://commons.wikimedia.org/wiki/File%3APunch-card-5081.jpg-->
+
+    <title>Stat 585</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../css/extra.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../../../index.html">Stat 585</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              
+              
+      				  
+      				  
+      				  <li class="">
+      					<a href="/index.html">Home</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/syllabus.html">Schedule</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/labs.html">Labs</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="active">
+      					<a href="/blog">Blog</a>
+      				  </li>
+      				
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="https://bb.its.iastate.edu" target="_blank">BlackBoard</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+    <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">A Layered Grammar of Graphics</h1>
+    <p class="post-meta">Feb 9, 2017 • Taikgun Song</p>
+  </header>
+
+  <article class="post-content">
+    <p><em>How does having a grammar help with creating charts?</em></p>
+
+<p>If I define <strong>grammar</strong> as a set of rules accounting for some constructions, grammar graphics would be a set of rules for constructing graphical display. Having grammatical structure may seem to limit flexibility, however, I was convinced it might be the opposite after reading <a href="https://pdfs.semanticscholar.org/d779/6f85dabccd18673f382c100fc06f55e8b501.pdf">A layered grammar of graphics</a> by Dr. Wickham.</p>
+
+<p>This flexibility is achieved by establishing a systematic structure for components that are necessary for graphics. Thus, assuming that these components are independent of one another and by changing one or more components, different graphics could be generated in a coherent fashion. These different components are then combined to form a <em>layer</em> which is responsible for creating the objects that are recognized on the plot. Dr. Wickham proposed five categories of components that determines a layer: data, aesthetic mappings, statistical transformations, geometric object and position adjustment. Since all layers share these five components, one could interactively update plots or change single feature at a time. Finally, a graphics could be constructed by multiple <em>layers</em> along with <em>scale</em>, <em>coordinate system</em>, and <em>faceting</em> by embedding the layered grammar into existing programming language.</p>
+
+<p>Additional positive effect of having grammar of graphic is that the grammatical structure allows to develop some tools that possibly identify common mistakes or provide templates.</p>
+
+<p>Thus, grammar helps with creating charts by giving flexibility and by providing templates and possible tools.</p>
+
+  </article>
+
+</div>
+
+      
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../scripts/jquery.min.js"></script>
+    <script src="../../../scripts/bootstrap.min.js"></script>
+  </body>
+</html>

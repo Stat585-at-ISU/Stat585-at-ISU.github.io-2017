@@ -1,0 +1,13 @@
+---
+title: "Layers Are Still In Style"
+author: "Kiegan Rice"
+topic: "03"
+layout: post
+root: ../../../
+---
+
+## How does having a grammar help with creating charts?
+
+A grammar helps with the specification, organization, communication, and visual appeal of the information we are trying to convey when we create charts. When we create charts from data, we are taking numbers and categories and transforming them into a visual object that allows us to more clearly and succinctly see patterns in our data. It allows us to have a meet and greet with our data, face-to-face, and see it in a whole new way. Having a clear grammar in place to create that chart allows us to more easily create useful charts and allows us to use those charts in a more meaningful way. When we can break a chart down into layers, we can make sure that 1) our chart is actually representing what we want it to represent, and 2) it is easy to make changes to that chart to investigate different pieces of our data. Being able to easily make changes is what allows us to use those charts in a more meaningful way. We can change the colors, shapes, and sizes of our data points in a point geom if we want to add more detail or make a certain characteristic pop. These also allow us to see patterns visually, without having to look at numerical summaries. We can change the geom that we are using for our data if we want to look at a different aspect of it, or inspect a different relationship. We can add more variables into our grammar to inspect how that variable comes into play with the relationship we are already investigating in our chart. And the best part is, because it is a clear grammar, the language of that chart is easily communicated. As we have talked about with the tidyverse package, being able to essentially "read the code like a sentence" to explain what exactly that code is doing to create that chart makes it more accessible to statisticians (and statistical chart lovers) of all types of abilities. I also think this ties back a little bit into the literate programming subject we learned about. If you have a good system in place, and one that is created carefully and meant to be understandable to those using it, you will be able to better understand it yourself in the future. 
+
+Charts (statistical graphics) are one of the best ways to communicate information. As they say, "a picture is worth a thousand words", and in some cases a chart is worth 20,000 data points. Being able to see the big picture of a dataset OR focus in on a small aspect of it using the same framework is something that is truly amazing, and it has unending uses for statisticians, computer scientists, or anyone who works with any type of data. 

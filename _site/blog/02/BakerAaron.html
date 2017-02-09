@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Data Technologies for Statistics at Iowa State University.">
+    <meta name="author" content="Heike Hofmann <hofmann@iastate.edu>">
+    <!-- By The original uploader was Dick107 at English Wikipedia [GFDL (http://www.gnu.org/copyleft/fdl.html) or CC-BY-SA-3.0 (http://creativecommons.org/licenses/by-sa/3.0/)], via Wikimedia Commons https://commons.wikimedia.org/wiki/File%3APunch-card-5081.jpg-->
+
+    <title>Stat 585</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../css/extra.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../../../index.html">Stat 585</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              
+              
+      				  
+      				  
+      				  <li class="">
+      					<a href="/index.html">Home</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/syllabus.html">Schedule</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/labs.html">Labs</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="active">
+      					<a href="/blog">Blog</a>
+      				  </li>
+      				
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="https://bb.its.iastate.edu" target="_blank">BlackBoard</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+    <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Split-Apply-Combine...</h1>
+    <p class="post-meta">Feb 9, 2017 • Aaron Baker</p>
+  </header>
+
+  <article class="post-content">
+    <h1 id="function-that-supports-the-split-apply-combine-strategy">Function that supports the split-apply-combine strategy</h1>
+
+<p>The functions that I am familiar with come from the base apply functions within R. I am quite familiar with them and using them to nest within one another to do quite complicated sets of functions together that work quite elegantly.</p>
+
+<p>Having said that, there have been an occasion or two where I was stumped and had to resort to more ‘hard code’/loop style methods that were ugly and hard to read through and not the easiest to code, either. These functions work by parsing lists, matrices, and arrays based on thinks like column, row, list item, or value within a certain row.</p>
+
+<p>Though it is not natural to me yet, I can see how the pipe can make coding more language rfriendly and more linear and ‘direct’ in its thought pattern in accordance to the function of the program itself. This makes it easier to read, go back to 5 months later and understand for myself, and to share with collaborators without them having to go through a headache to understand the stink what I just done.</p>
+
+<h1 id="example-of-dataset">Example of dataset</h1>
+
+<p>In the lecture notes we used the french fry data set as an example. Here, we could use the french fry data and the apply functions to combine the negative and positive aspects into a single measure for each row of overall quality, subset it by say, time and treatment (along with the function subset), and then on each subset calculate the average and standard devation of these overall scores to see how the scores change over time.</p>
+
+
+  </article>
+
+</div>
+
+      
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../scripts/jquery.min.js"></script>
+    <script src="../../../scripts/bootstrap.min.js"></script>
+  </body>
+</html>
