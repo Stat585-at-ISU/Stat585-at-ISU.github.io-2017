@@ -69,15 +69,29 @@
     <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Literate Programming...</h1>
-    <p class="post-meta">Feb 12, 2017 • Lawrence Hii</p>
+    <h1 class="post-title">Working with date and time</h1>
+    <p class="post-meta">Feb 12, 2017 • Xiangmei Zhang</p>
   </header>
 
   <article class="post-content">
-    <h2 id="blog-1-literate-programming">Blog 1: Literate Programming</h2>
-<p>This is the first time for me hearing about the literate programming. In the past, I have been involved in programming from VBA, SQL to R now. One of the biggest issue with codes is documentation. Literate programming will be helpful here for programmer to write the code without worrying about documentation.</p>
+    <ul>
+  <li>What are intervals, durations, periods, and instants?</li>
+</ul>
 
-<p>Another is that literate programming not only beneficial to programmer, also the person who executing the code. For example, writing a gibbs sampling code seems complicated. Implementing literate programming will be helpful here. Literate programming will also be helpful in teamwork or when collaborating with other people.</p>
+<p>An instant is a specific moment in time, such as January 1st, 2012.</p>
+
+<p>An interval is a span of time that occurs between two specific instants and always have a positive length. But it is not very useful for date-time calculations.</p>
+
+<p>A duration is a generic time span that we can use for calculation, it will have an exact length in second units.</p>
+
+<p>A period is a non exact time span in larger units, such as minutes or years, and the length of these units varies over time.</p>
+
+<ul>
+  <li>(Why) do we need these distinctions?</li>
+</ul>
+
+<p>I think we do need all these 4 type of time record, so that we can use instants to read and identify the exact time point, and also perform accurate calculations with data times and handle time zones with duration object such as intervals, durations, periods class. By using duration type, we can have exact length in seconds. Periods can be added to instants, intervals and other periods. These distinctions make it much easier to work with date-time data.</p>
+
 
   </article>
 
