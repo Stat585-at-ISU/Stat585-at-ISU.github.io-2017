@@ -70,7 +70,7 @@
 
   <header class="post-header">
     <h1 class="post-title">Working with date and time</h1>
-    <p class="post-meta">Feb 14, 2017 • Xiangmei Zhang</p>
+    <p class="post-meta">Feb 14, 2017 • Dinesh Poddaturi</p>
   </header>
 
   <article class="post-content">
@@ -78,20 +78,25 @@
   <li>What are intervals, durations, periods, and instants?</li>
 </ul>
 
-<p>An instant is a specific moment in time, such as January 1st, 2012.</p>
+<p>Intervals, durations, periods and instants are time related objects in <em>lubridate</em>. By using these objects we can perform arithmetic operations with date-time in R.</p>
 
-<p>An interval is a span of time that occurs between two specific instants and always have a positive length. But it is not very useful for date-time calculations.</p>
+<p><em>Instant</em> is a specific moment in time in R. Every time we parse a date into R we create an instant object.</p>
 
-<p>A duration is a generic time span that we can use for calculation, it will have an exact length in second units.</p>
+<p><em>Intervals</em> is the duration of time between two instants. By subtracting two different instants we create an interval object or we can use the function <em>new_interval()</em> to create an interval object. By using <em>as.interval()</em> function, we can convert a timespan into an interval object.</p>
 
-<p>A period is a non exact time span in larger units, such as minutes or years, and the length of these units varies over time.</p>
+<p><em>Durations</em> is the time span between two instants in seconds. By using this object we can measure the exact time span since seconds always have the same length irrespective of leap years, leap seconds and daylight saving time. By using the function <em>new_duration()</em> a duration object can be created. For large duration it’s cumbersome to type the seconds (for example 1 hour is 3600seconds, 1 year is 31557600), lubridate has special functions to avoid this. Functions <em>dminutes(), dseconds(), dhours(), dyears()</em> convert everything written inside the parenthesis (an integer) to seconds and makes our job easier. We can add or subtract two different duration objects. We can create a <em>duration</em> object from <em>interval</em> and <em>period</em> objects.</p>
+
+<p><em>Periods</em> is the timespan between two instants in units larger than seconds like minutes, days, weeks, months, and years. By using the functions <em>seconds(), minutes(), hours(), days(), weeks(), months(),</em> and <em>years()</em> we can create a period object. Periods are used to model clock times accurately regardless of the leap seconds, leap days and DST changes. By using <em>as.period()</em> function, we can convert a timespan to <em>period</em> object.</p>
 
 <ul>
   <li>(Why) do we need these distinctions?</li>
 </ul>
 
-<p>I think we do need all these 4 type of time record, so that we can use instants to read and identify the exact time point, and also perform accurate calculations with data times and handle time zones with duration object such as intervals, durations, periods class. By using duration type, we can have exact length in seconds. Periods can be added to instants, intervals and other periods. These distinctions make it much easier to work with date-time data.</p>
+<p>As discussed in the paper we need these distinctions to perform any kind of operation on the date object.</p>
 
+<p>In the paper Hadley Wickham used a simple example “how many weeks are there between Halloween and Christmas?” In order to calculate the exact number of weeks first we need to get an <em>interval</em> object between Halloween and Christmas. This interval object gives us the timespan between these two days. We can calculate the exact number of weeks by dividing an <em>interval</em> object with <em>duration</em> object (since it uses seconds).</p>
+
+<p>Usually it is very confusing when dealing with daylight savings time and time zones. If we use <em>durations</em> object our results will be completely different, since we lose one hour in the spring and gain an hour in the fall. By using <em>periods</em> we can avoid the clock time changes caused by daylight savings, time zones and get the proper results.</p>
 
   </article>
 
