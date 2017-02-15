@@ -66,229 +66,30 @@
         </div><!--/.container-fluid -->
       </nav>
 
-    
+    <div class="post">
 
+  <header class="post-header">
+    <h1 class="post-title">Working with date and time</h1>
+    <p class="post-meta">Feb 15, 2017 • Taikgun Song</p>
+  </header>
 
-
-<ol class="breadcrumb">
-
-  
-  
-  <li class=>
-    
-    <a href=../../../blog/>blog</a>
-    
-  </li>
-
-  
-  
-  <li class=active>
-     
-      05
-    
-  </li>
-
-</ol>
-
-<h2 id="background">Background:</h2>
-
-<p>In class, we have briefly touched on working with S3 objects. There are various online sources on this subject available, e.g. Hadley Wickham’s chapter on <a href="http://adv-r.had.co.nz/OO-essentials.html#s3">S3 objects</a>, Cyclismo’s <a href="http://www.cyclismo.org/tutorial/R/s3Classes.html">tutorial</a>, Abishek Tiwari’s <a href="https://abhishek-tiwari.com/hacking/class-and-objects-in-r-s3-style">blog post</a>, …</p>
-
-<p>Write a blog post addressing <strong>one</strong> of these topics:</p>
+  <article class="post-content">
+    <p>The definitions of intervals, durations, periods, and instants are given below.</p>
 
 <ul>
-  <li>At an S3 class of your choice discuss a set of functions/methods/approaches that allow you to interact with the class. Make sure to give plenty of examples!</li>
-  <li>Explain how a user can define a new S3 class with objects and methods at a small example of your choice.</li>
+  <li>Instant: An instant is a specific moment in time. Requires date and time.</li>
+  <li>Interval: An interval is a span of time that occurs between two specific instants. Since instant is a specific moment, an interval cannot be ambiguous.</li>
+  <li>Duration: An exact measure of a span of time, preferably in seconds although other units could be converted into seconds.</li>
+  <li>Period: A non-exact measure of a span of time, usually units that are larger than seconds.</li>
 </ul>
 
-<h2 id="instructions">Instructions:</h2>
+<p>These distinctions are important for arithmetic with date and time.
+It is quite obvious that we need instants and an interval for a date-time calculation. However, the distinction between duration and period was interesting.
+My initial thought was isn’t having precise date-time, the better? But after reading the paper, I realized date-time arithmetic is more complicated than calculations with number. Period may be very useful since date-time arithmetic could be completed when leap years and daylight saving times are involved. Although there are certain patterns, it would be hard to write codes with exact measure when these factors are included.</p>
 
-<p>Go to <a href="https://github.com/Stat585-at-ISU/blog">https://github.com/Stat585-at-ISU/blog</a> for instructions about how to prepare and submit your blog post.</p>
+  </article>
 
-<h2 id="class-posts">Class posts:</h2>
-
-<ul>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-</ul>
-
+</div>
 
       
     </div> <!-- /container -->
