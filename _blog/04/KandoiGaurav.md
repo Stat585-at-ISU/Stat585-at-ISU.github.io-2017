@@ -20,7 +20,7 @@ paste("This is an instant:",now())
 
 
 {% highlight text %}
-## [1] "This is an instant: 2017-02-15 15:01:20"
+## [1] "This is an instant: 2017-02-16 09:52:37"
 {% endhighlight %}
 
 **Intervals**
@@ -35,7 +35,7 @@ paste("This is an Interval:", interval(today(),now()) )
 
 
 {% highlight text %}
-## [1] "This is an Interval: 2017-02-14 18:00:00 CST--2017-02-15 15:01:20 CST"
+## [1] "This is an Interval: 2017-02-15 18:00:00 CST--2017-02-16 09:52:37 CST"
 {% endhighlight %}
 
 **Durations**

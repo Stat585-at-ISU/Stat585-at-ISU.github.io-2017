@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Data Technologies for Statistics at Iowa State University.">
+    <meta name="author" content="Heike Hofmann <hofmann@iastate.edu>">
+    <!-- By The original uploader was Dick107 at English Wikipedia [GFDL (http://www.gnu.org/copyleft/fdl.html) or CC-BY-SA-3.0 (http://creativecommons.org/licenses/by-sa/3.0/)], via Wikimedia Commons https://commons.wikimedia.org/wiki/File%3APunch-card-5081.jpg-->
+
+    <title>Stat 585</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../css/extra.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../../../index.html">Stat 585</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              
+              
+      				  
+      				  
+      				  <li class="">
+      					<a href="/index.html">Home</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/syllabus.html">Schedule</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/labs.html">Labs</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="active">
+      					<a href="/blog">Blog</a>
+      				  </li>
+      				
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="https://bb.its.iastate.edu" target="_blank">BlackBoard</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+    <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Working with date and time</h1>
+    <p class="post-meta">Feb 16, 2017 • Chaohui Yuan</p>
+  </header>
+
+  <article class="post-content">
+    <ul>
+  <li>What are intervals, durations, periods, and instants?</li>
+  <li>An interval is a span of time that occurs between two specific instants. The length of an interval is 
+well-defined and in <code class="highlighter-rouge">lubridate</code>, interval is an object to be used to calcualte the span of two instant. 
+The length of an interval is never ambiguous, because we know when it occurs</li>
+  <li>A duration is a time span that record in second. In such way we will have exact the length.  The length 
+of a duration is invariant to leap years, leap seconds, and daylight savings time because durations are 
+measured in seconds. Durations have consistent lengths and can be easily compared to other durations.</li>
+  <li>Periods recond a time span in units larger than seconds, such as years, months, weeks, days, hours, and 
+minutes. We can use periods to accurately model clock times without knowing when events such as leap seconds, 
+leap days and DST changes occur.</li>
+  <li>
+    <p>An instant is a specific moment in time, such as January 1st, 2012. In <code class="highlighter-rouge">lubridate</code>, it recognizes any date-time 
+object that refers to a moment of time as an instant.</p>
+  </li>
+  <li>(Why) do we need these distinctions?
+Knowing the difference between those concept is necessary. First of all, we need to know what type of object we 
+are working with when we’re dealing with Time type of data, and what kind of operations we are allowed to use. 
+Not all time objects are be switched between each other. For example, periods can be added to instants, intervals,
+and other periods, but not to durations.  Second this package <code class="highlighter-rouge">lubridate</code> makes the way of working on time data 
+set much more easier, for example calculate the timespans, convert between different time zones, formate the date, 
+parse the date-time and so on.</li>
+</ul>
+
+
+  </article>
+
+</div>
+
+      
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../scripts/jquery.min.js"></script>
+    <script src="../../../scripts/bootstrap.min.js"></script>
+  </body>
+</html>

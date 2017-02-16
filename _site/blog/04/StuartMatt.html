@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Data Technologies for Statistics at Iowa State University.">
+    <meta name="author" content="Heike Hofmann <hofmann@iastate.edu>">
+    <!-- By The original uploader was Dick107 at English Wikipedia [GFDL (http://www.gnu.org/copyleft/fdl.html) or CC-BY-SA-3.0 (http://creativecommons.org/licenses/by-sa/3.0/)], via Wikimedia Commons https://commons.wikimedia.org/wiki/File%3APunch-card-5081.jpg-->
+
+    <title>Stat 585</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../css/extra.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../../../index.html">Stat 585</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              
+              
+      				  
+      				  
+      				  <li class="">
+      					<a href="/index.html">Home</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/syllabus.html">Schedule</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/labs.html">Labs</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="active">
+      					<a href="/blog">Blog</a>
+      				  </li>
+      				
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="https://bb.its.iastate.edu" target="_blank">BlackBoard</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+    <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Working with date and time</h1>
+    <p class="post-meta">Feb 16, 2017 • Matt Stuart</p>
+  </header>
+
+  <article class="post-content">
+    <h2 id="background">Background:</h2>
+
+<p>Read the paper <a href="http://www.jstatsoft.org/v40/i03/">Working with date and time: http://www.jstatsoft.org/v40/i03/</a></p>
+
+<p>Write a blog post addressing the questions:</p>
+
+<ul>
+  <li>What are intervals, durations, periods, and instants?</li>
+  <li>(Why) do we need these distinctions?</li>
+</ul>
+
+<h2 id="what-are-intervals-durations-periods-and-instants">What are intervals, durations, periods, and instants?</h2>
+
+<p>An instant is a specific moment in time, including the year, month, day, hour, minute and second.  An interval takes two separate instances and measures the amount of time in between them.  A duration is similar to an interval, except the start and end dates are removed to record the time.  Finally a period is a time span that is recorded in larger units such as years, months, weeks or days.  Periods can be recorded in seconds, but then the period would have the same properties as a duration.</p>
+
+<h2 id="do-we-need-these-distinctions">Do we need these distinctions?</h2>
+
+<p>These distinctions are needed to properly analyze date information in an analysis, so the proper conclusion can be made.  The big difference between intervals and durations is the length of time of an interval in unambiguous because the start and end time is known, while a duration’s length ultimately depends on when it begins.  Also, when analyzing time in terms of periods, the time lengths used in the analysis may not always have the same lenghts since, for instance, months or years never have the same number of days, meaning it is important to distinguish between a period and a duration.  Because of this, these distinctions are important when it comes to the analysis of time data.</p>
+
+  </article>
+
+</div>
+
+      
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../scripts/jquery.min.js"></script>
+    <script src="../../../scripts/bootstrap.min.js"></script>
+  </body>
+</html>
