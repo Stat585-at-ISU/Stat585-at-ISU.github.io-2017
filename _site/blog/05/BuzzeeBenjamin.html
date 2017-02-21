@@ -69,16 +69,24 @@
     <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">A Layered Grammar of Graphics</h1>
-    <p class="post-meta">Feb 21, 2017 • Haiyang Zhang</p>
+    <h1 class="post-title">The S3 class system</h1>
+    <p class="post-meta">Feb 21, 2017 • Ben Buzzee</p>
   </header>
 
   <article class="post-content">
-    <p><strong>How does having a grammar help with creating charts?</strong></p>
+    <h2 id="s3-classes">S3 Classes</h2>
 
-<p>Just like language grammar to make sentence better, the graphical grammar here is the foundation for making good graphs in programming language. It is my first time learning that there exists grammar of graphs, and I am inpressed by how powerful it is.</p>
-
-<p>The grammar form a good structure of creating graphs. The layer( ) command makes all the layers combined soomthly. The article also introduced the embedded grammar. When we have layered grammar embedded within an existing programming language, we can get compound graphic which displays a lot infomation in a same graph at once. So I think grammar does help creating charts not only easier, but actually also more clear for people to understand.</p>
+<p>New S3 classes in R can be constructed in two ways. The simplest way is to assign an existing object a class using
+the command class(x) &lt;- “class_name.” Another way is to use a constructor function that creates an object from and assigns a class name
+to the constructor’s argument. To illustrate the idea of classes we can use an example. Suppose we had two lists of animals. One
+is a list of animals we generally consider safe to be around and one consists of dangerous animals. We can create a new S3 class
+by assigning them a class attribute. The code would look like this: friendly &lt;- list(“dog”, “cat”); dangerous &lt;- (“bear,”alligator”)
+class(friendly) &lt;- safe; class(dangerous) &lt;- unsafe. We now have two objects with an S3 class, one with class safe, and the other with class
+unsafe. If we wanted to write a function that treated safe and unsafe objects differently, we would first start by writing a generic
+of the form: safety &lt;- function(x) UseMethod(“safety”), and then we would define a couple of methods, one for each class: safety.safe
+&lt;- function(x) { print(“These animals are safe to be around.”)} and safety.unsafe &lt;- function(x){print(“Avoid these animals.”)}.
+Both methods are of the form generic.class, where the generic is telling us that we want to use one of the subfunctions of safety,
+and the class tells us exactly which one to use.</p>
 
   </article>
 
