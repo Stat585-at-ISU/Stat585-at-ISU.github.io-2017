@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Data Technologies for Statistics at Iowa State University.">
+    <meta name="author" content="Heike Hofmann <hofmann@iastate.edu>">
+    <!-- By The original uploader was Dick107 at English Wikipedia [GFDL (http://www.gnu.org/copyleft/fdl.html) or CC-BY-SA-3.0 (http://creativecommons.org/licenses/by-sa/3.0/)], via Wikimedia Commons https://commons.wikimedia.org/wiki/File%3APunch-card-5081.jpg-->
+
+    <title>Stat 585</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../css/extra.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../../../index.html">Stat 585</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              
+              
+      				  
+      				  
+      				  <li class="">
+      					<a href="/index.html">Home</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/syllabus.html">Schedule</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/labs.html">Labs</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="active">
+      					<a href="/blog">Blog</a>
+      				  </li>
+      				
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="https://bb.its.iastate.edu" target="_blank">BlackBoard</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+    <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">The S3 class system</h1>
+    <p class="post-meta">Feb 22, 2017 • Lawrence Hii</p>
+  </header>
+
+  <article class="post-content">
+    <h2 id="how-s3-class-interacts-with-functionsmethodsapproaches-with-class-or-classes">How S3 class interacts with functions/methods/approaches with class or classes?</h2>
+
+<p>In R programming, most of the functions or packages we used are built based on S3 objects or S4 objects. These functions are build based on a couple things like classes, objects, methods, generic functions and other arguments. In general, generic function is like traffic officer. It checks on the class that was called in the function and see if it can match with the methods in the function. I will give couple example.</p>
+
+<p>Example1
+<code class="highlighter-rouge">x &lt;- rnorm(10)</code>
+<code class="highlighter-rouge">mean(x)</code></p>
+
+<p>Here mean is the generic function. And the class for the x is <code class="highlighter-rouge">numeric</code> but there is no mean method in the <code class="highlighter-rouge">rnorm</code> or the objects. Also, looking at mean, it can not take on all classes. There are <code class="highlighter-rouge">mean.default</code>, <code class="highlighter-rouge">mean.Date</code>, <code class="highlighter-rouge">mean.difftime</code>, <code class="highlighter-rouge">mean.difftime</code>, <code class="highlighter-rouge">mean.POSIXct</code> and <code class="highlighter-rouge">mean.POSIXlt</code>. However, if you use <code class="highlighter-rouge">mean.default(x)</code> will not work. <code class="highlighter-rouge">mean</code> is the generic function.</p>
+
+<p>Example2
+<code class="highlighter-rouge">x&lt;- data.frame(x= runif(10,0,1), y=rnorm(10))</code>
+<code class="highlighter-rouge">apply(x,2,mean)</code></p>
+
+<p>Here <code class="highlighter-rouge">data.frame</code> is the class and each column is objects. When we use <code class="highlighter-rouge">apply</code> here, we are calling generic functon <code class="highlighter-rouge">mean</code> and check if the class and methods match each other on each column so it can dispatch an appropriate methods or <code class="highlighter-rouge">mean</code> which is what we are looking here.</p>
+
+<p>Example3
+<code class="highlighter-rouge">x&lt;- data.frame(x= runif(10,0,1), y=rnorm(10))</code>
+<code class="highlighter-rouge">f &lt;- function (a){for (i in 1:length(10){if (a[i]&lt;0.5){a[i]=10} else {a[i] = 5}};print(a)}</code>
+<code class="highlighter-rouge">f(x)</code></p>
+
+<p>Here <code class="highlighter-rouge">x</code> class is <code class="highlighter-rouge">data.frame</code>. However, the function <code class="highlighter-rouge">f</code> is not working here because, the <code class="highlighter-rouge">f</code> functions are looking for a vector or data frame with one column class. We will get an error here.</p>
+
+<p>It is just fasinating me that for most packages there are a couple generic functions that almost always exist in a package like <code class="highlighter-rouge">summary</code>, <code class="highlighter-rouge">plot</code>, <code class="highlighter-rouge">print</code> etc.</p>
+
+  </article>
+
+</div>
+
+      
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../scripts/jquery.min.js"></script>
+    <script src="../../../scripts/bootstrap.min.js"></script>
+  </body>
+</html>
