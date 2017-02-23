@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Data Technologies for Statistics at Iowa State University.">
+    <meta name="author" content="Heike Hofmann <hofmann@iastate.edu>">
+    <!-- By The original uploader was Dick107 at English Wikipedia [GFDL (http://www.gnu.org/copyleft/fdl.html) or CC-BY-SA-3.0 (http://creativecommons.org/licenses/by-sa/3.0/)], via Wikimedia Commons https://commons.wikimedia.org/wiki/File%3APunch-card-5081.jpg-->
+
+    <title>Stat 585</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../css/extra.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../../../index.html">Stat 585</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              
+              
+      				  
+      				  
+      				  <li class="">
+      					<a href="/index.html">Home</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/syllabus.html">Schedule</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/labs.html">Labs</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="active">
+      					<a href="/blog">Blog</a>
+      				  </li>
+      				
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="https://bb.its.iastate.edu" target="_blank">BlackBoard</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+    <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">The S3 class system</h1>
+    <p class="post-meta">Feb 23, 2017 • Gaurav Kandoi</p>
+  </header>
+
+  <article class="post-content">
+    <p>#Explain how a user can define a new S3 class with objects and methods at a small example of your choice.</p>
+
+<p>Defining a new S3 class with objects is fairly straight forward in R. In fact, it can be as simple as following:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">genes</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">KRT1</span><span class="o">=</span><span class="m">0.4</span><span class="p">,</span><span class="n">BRCA1</span><span class="o">=</span><span class="m">0.2</span><span class="p">,</span><span class="n">ALDH</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="n">MAPK</span><span class="o">=</span><span class="m">2.8</span><span class="p">,</span><span class="n">IR10</span><span class="o">=</span><span class="m">1.5</span><span class="p">)</span><span class="w">
+</span><span class="nf">class</span><span class="p">(</span><span class="n">genes</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "list"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="nf">class</span><span class="p">(</span><span class="n">genes</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">append</span><span class="p">(</span><span class="nf">class</span><span class="p">(</span><span class="n">genes</span><span class="p">),</span><span class="s2">"GeneExpression"</span><span class="p">)</span><span class="w">
+</span><span class="nf">class</span><span class="p">(</span><span class="n">genes</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "list"           "GeneExpression"</code></pre></figure>
+
+<p>Suppose we have expression values of these 5 genes for 3 conditions and we want to find out the genes which have highest expression values in each of these conditions.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">condition1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">KRT</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="n">BRCA1</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="n">ALDH</span><span class="o">=</span><span class="m">5</span><span class="p">,</span><span class="n">MAPK</span><span class="o">=</span><span class="m">10</span><span class="p">,</span><span class="n">IR10</span><span class="o">=</span><span class="m">10</span><span class="p">)</span><span class="w">
+</span><span class="n">condition2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">KRT</span><span class="o">=</span><span class="m">0.2</span><span class="p">,</span><span class="n">BRCA1</span><span class="o">=</span><span class="m">20</span><span class="p">,</span><span class="n">ALDH</span><span class="o">=</span><span class="m">0.5</span><span class="p">,</span><span class="n">MAPK</span><span class="o">=</span><span class="m">10</span><span class="p">,</span><span class="n">IR10</span><span class="o">=</span><span class="m">1</span><span class="p">)</span><span class="w">
+</span><span class="n">condition3</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">KRT</span><span class="o">=</span><span class="m">15</span><span class="p">,</span><span class="n">BRCA1</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="n">ALDH</span><span class="o">=</span><span class="m">1.2</span><span class="p">,</span><span class="n">MAPK</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="n">IR10</span><span class="o">=</span><span class="m">0.1</span><span class="p">)</span><span class="w">
+</span><span class="n">expressions</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">condition1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">condition1</span><span class="p">,</span><span class="n">condition2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">condition2</span><span class="p">,</span><span class="n">condition3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">condition3</span><span class="p">)</span><span class="w">
+</span><span class="nf">class</span><span class="p">(</span><span class="n">expressions</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "list"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1">#Assign class "GeneExpression" to the object expressions
+</span><span class="w">
+</span><span class="nf">class</span><span class="p">(</span><span class="n">expressions</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">append</span><span class="p">(</span><span class="nf">class</span><span class="p">(</span><span class="n">expressions</span><span class="p">),</span><span class="s2">"GeneExpression"</span><span class="p">)</span><span class="w">
+</span><span class="nf">class</span><span class="p">(</span><span class="n">expressions</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "list"           "GeneExpression"</code></pre></figure>
+
+<p>We can now define a method, HighestExpression(), which will give us this information.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">HighestExpression</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nf">UseMethod</span><span class="p">(</span><span class="s2">"HighestExpression"</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="n">HighestExpression</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">){</span><span class="w">
+    </span><span class="nf">return</span><span class="p">(</span><span class="n">lapply</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="n">which.max</span><span class="p">(</span><span class="n">x</span><span class="p">)]))</span><span class="w">
+ </span><span class="p">}</span><span class="w">
+
+ </span><span class="n">HighestExpression</span><span class="p">(</span><span class="n">expressions</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## $condition1
+## $condition1$MAPK
+## [1] 10
+## 
+## 
+## $condition2
+## $condition2$BRCA1
+## [1] 20
+## 
+## 
+## $condition3
+## $condition3$KRT
+## [1] 15</code></pre></figure>
+
+
+  </article>
+
+</div>
+
+      
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../scripts/jquery.min.js"></script>
+    <script src="../../../scripts/bootstrap.min.js"></script>
+  </body>
+</html>

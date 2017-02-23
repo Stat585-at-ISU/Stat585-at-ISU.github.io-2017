@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Data Technologies for Statistics at Iowa State University.">
+    <meta name="author" content="Heike Hofmann <hofmann@iastate.edu>">
+    <!-- By The original uploader was Dick107 at English Wikipedia [GFDL (http://www.gnu.org/copyleft/fdl.html) or CC-BY-SA-3.0 (http://creativecommons.org/licenses/by-sa/3.0/)], via Wikimedia Commons https://commons.wikimedia.org/wiki/File%3APunch-card-5081.jpg-->
+
+    <title>Stat 585</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../css/extra.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../../../index.html">Stat 585</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              
+              
+      				  
+      				  
+      				  <li class="">
+      					<a href="/index.html">Home</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/syllabus.html">Schedule</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/labs.html">Labs</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="active">
+      					<a href="/blog">Blog</a>
+      				  </li>
+      				
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="https://bb.its.iastate.edu" target="_blank">BlackBoard</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+    <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">The S3 class system</h1>
+    <p class="post-meta">Feb 23, 2017 • Ashish Jain</p>
+  </header>
+
+  <article class="post-content">
+    <p>#Explain how a user can define a new S3 class with objects and methods at a small example of your choice.</p>
+
+<p>Before going through this material, I was not aware of the fact that R also uses object oriented programming (OOPs) concepts which are one of the main highlights of C++ and Java. I know these concepts are really important in designing and developing. In R, there are three object-oriented systems including S3, S4, and R5. In this post, I am going to show a basic workflow of defining and designing S3 system. In my example, I am going to define a DNASequence class which store a DNA Sequence and has methods which are used to analyze the DNA Sequence.</p>
+
+<p>##Creating an S3 class
+In this example, we are using the basic approach in which we are defining a <code class="highlighter-rouge">DNASequence</code> method which will first store some information about the <code class="highlighter-rouge">DNASequence</code> class in a list and then changes the class name of the list to DNASequence and return this <code class="highlighter-rouge">DNASequence</code> object.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1">#Class for doing various functions on a DNA sequence
+</span><span class="n">DNASequence</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">sequence</span><span class="p">,</span><span class="n">type</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+   </span><span class="n">out</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">seq</span><span class="o">=</span><span class="n">sequence</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="n">type</span><span class="p">)</span><span class="w">
+   </span><span class="c1">#class(out) &lt;- append(class(out),"DNASequence")
+</span><span class="w">   </span><span class="nf">class</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="s2">"DNASequence"</span><span class="w">
+   </span><span class="nf">invisible</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>##Create methods to analyze the DNASequence object
+In this step, we are creating methods associated with the <code class="highlighter-rouge">DNASequence</code> class. The approach which we are using is to define a function that exists outside of the class. In this, we are only defining the function for our specific <code class="highlighter-rouge">DNASequence</code> class. We can also define a method in a more generic way, and then a function specific to our class. In that case, the R environment chooses which function to invoke based on the type of the class of the argument. In our case, we defined three different functions which analyze the DNA sequence. The first function calculates the A (Adenine), T (Thymine), G (Guanine), C (Cytosine) base content in the DNA sequence. The second functions calculate the GC-rich content of the sequence which helps in studying bias in DNA repair and other processes. The final method searches a particular biologically important motif or conserved sequence in the given DNA Sequence.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1">#Count ATGC content
+</span><span class="n">getATGCContent</span><span class="o">&lt;-</span><span class="k">function</span><span class="p">(</span><span class="n">sequence</span><span class="p">)</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nf">UseMethod</span><span class="p">(</span><span class="s2">"getATGCContent"</span><span class="p">,</span><span class="n">sequence</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="n">getATGCContent.DNASequence</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">sequence</span><span class="p">){</span><span class="w">
+                </span><span class="n">sequence_split</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">strsplit</span><span class="p">(</span><span class="n">sequence</span><span class="o">$</span><span class="n">seq</span><span class="p">,</span><span class="w"> </span><span class="s2">""</span><span class="p">)[[</span><span class="m">1</span><span class="p">]]</span><span class="w">
+                </span><span class="n">Acount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Gcount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Ccount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Tcount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">;</span><span class="w">
+                </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">sequence_split</span><span class="p">)</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                  </span><span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">'A'</span><span class="p">){</span><span class="w">
+                    </span><span class="n">Acount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Acount</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="w">
+                  </span><span class="p">}</span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">'T'</span><span class="p">){</span><span class="w">
+                    </span><span class="n">Tcount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Tcount</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="w">
+                  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">'G'</span><span class="p">){</span><span class="w">
+                    </span><span class="n">Gcount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Gcount</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="w">
+                  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">'C'</span><span class="p">)</span><span class="w">
+                  </span><span class="p">{</span><span class="w">
+                    </span><span class="n">Ccount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Ccount</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="w">
+                  </span><span class="p">}</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+                </span><span class="nf">return</span><span class="p">(</span><span class="n">data.frame</span><span class="p">(</span><span class="n">A</span><span class="o">=</span><span class="n">Acount</span><span class="p">,</span><span class="nb">T</span><span class="o">=</span><span class="n">Tcount</span><span class="p">,</span><span class="n">G</span><span class="o">=</span><span class="n">Gcount</span><span class="p">,</span><span class="n">C</span><span class="o">=</span><span class="n">Ccount</span><span class="p">))</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+
+</span><span class="c1">#Calculate GC content
+</span><span class="n">getGCContent</span><span class="o">&lt;-</span><span class="k">function</span><span class="p">(</span><span class="n">sequence</span><span class="p">)</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nf">UseMethod</span><span class="p">(</span><span class="s2">"getGCContent"</span><span class="p">,</span><span class="n">sequence</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="n">getGCContent.DNASequence</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">sequence</span><span class="p">)</span><span class="w">
+</span><span class="p">{</span><span class="w">
+                </span><span class="n">nGCs</span><span class="o">&lt;-</span><span class="n">letterFrequency</span><span class="p">(</span><span class="n">BString</span><span class="p">(</span><span class="n">sequence</span><span class="o">$</span><span class="n">seq</span><span class="p">),</span><span class="s2">"GC"</span><span class="p">)</span><span class="w">
+                </span><span class="n">percentage</span><span class="o">&lt;-</span><span class="p">(</span><span class="n">nGCs</span><span class="o">/</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">strsplit</span><span class="p">(</span><span class="s2">"ATGCATGCATGCAATTGGCCATGCATGC"</span><span class="p">,</span><span class="w"> </span><span class="s2">""</span><span class="p">)[[</span><span class="m">1</span><span class="p">]])))</span><span class="o">*</span><span class="m">100</span><span class="w">
+                </span><span class="nf">return</span><span class="p">(</span><span class="n">paste0</span><span class="p">(</span><span class="s2">"GC content in this sequence is "</span><span class="p">,</span><span class="n">percentage</span><span class="p">,</span><span class="s2">"%"</span><span class="p">))</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="c1">#motif searching
+</span><span class="n">getMotifs</span><span class="o">&lt;-</span><span class="k">function</span><span class="p">(</span><span class="n">sequence</span><span class="p">,</span><span class="n">motif</span><span class="p">)</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nf">UseMethod</span><span class="p">(</span><span class="s2">"getMotifs"</span><span class="p">,</span><span class="n">sequence</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="n">getMotifs.DNASequence</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">sequence</span><span class="p">,</span><span class="n">motif</span><span class="p">)</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+                </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gregexpr</span><span class="p">(</span><span class="n">motif</span><span class="p">,</span><span class="w"> </span><span class="n">sequence</span><span class="o">$</span><span class="n">seq</span><span class="p">)</span><span class="w">
+                </span><span class="k">if</span><span class="p">(</span><span class="n">pos</span><span class="p">[[</span><span class="m">1</span><span class="p">]][</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">-1</span><span class="p">)</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                  </span><span class="n">print</span><span class="p">(</span><span class="s2">"Motif Not found."</span><span class="p">)</span><span class="w">
+                </span><span class="p">}</span><span class="k">else</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                </span><span class="n">print</span><span class="p">(</span><span class="s2">"Motif found at positions "</span><span class="p">)</span><span class="w">
+                </span><span class="n">print</span><span class="p">(</span><span class="n">pos</span><span class="p">[[</span><span class="m">1</span><span class="p">]])</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>##Creating DNASequence object and using class methods to analyze DNA Sequence</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">seq.object</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">DNASequence</span><span class="p">(</span><span class="s2">"ATGCATGCATGCAATTGGCCATGCATGC"</span><span class="p">,</span><span class="s2">"exon"</span><span class="p">)</span><span class="w">
+</span><span class="n">getGCContent</span><span class="p">(</span><span class="n">seq.object</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "GC content in this sequence is 50%"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">getATGCContent</span><span class="p">(</span><span class="n">seq.object</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##   A T G C
+## 1 7 7 7 7</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">getMotifs</span><span class="p">(</span><span class="n">seq.object</span><span class="p">,</span><span class="s2">"AT"</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "Motif found at positions "
+## [1]  1  5  9 14 21 25
+## attr(,"match.length")
+## [1] 2 2 2 2 2 2
+## attr(,"useBytes")
+## [1] TRUE</code></pre></figure>
+
+
+  </article>
+
+</div>
+
+      
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../scripts/jquery.min.js"></script>
+    <script src="../../../scripts/bootstrap.min.js"></script>
+  </body>
+</html>

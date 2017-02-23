@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Data Technologies for Statistics at Iowa State University.">
+    <meta name="author" content="Heike Hofmann <hofmann@iastate.edu>">
+    <!-- By The original uploader was Dick107 at English Wikipedia [GFDL (http://www.gnu.org/copyleft/fdl.html) or CC-BY-SA-3.0 (http://creativecommons.org/licenses/by-sa/3.0/)], via Wikimedia Commons https://commons.wikimedia.org/wiki/File%3APunch-card-5081.jpg-->
+
+    <title>Stat 585</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../css/extra.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../../../index.html">Stat 585</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              
+              
+      				  
+      				  
+      				  <li class="">
+      					<a href="/index.html">Home</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/syllabus.html">Schedule</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/labs.html">Labs</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="active">
+      					<a href="/blog">Blog</a>
+      				  </li>
+      				
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="https://bb.its.iastate.edu" target="_blank">BlackBoard</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+    <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">The S3 class system</h1>
+    <p class="post-meta">Feb 23, 2017 • Akshay Yadav</p>
+  </header>
+
+  <article class="post-content">
+    <p>####Explain how a user can define a new S3 class with objects and methods at a small example of your choice</p>
+
+<p>Classes are the central to implementation of Object Oriented Programming. These are kind of blue-prints for holding and processing particular types of data.</p>
+
+<p>We will look at S3 class type object-orientation in R. We will create a generic class for holding information on different types of vehicles and define methods for extracting this information.</p>
+
+<p>First, we will define some instances for the class <strong>vehicle</strong>. This is a little different from the classic object-oriented programming languages like JAVA where we first define the class and then instantiate it</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">car</span><span class="o">&lt;-</span><span class="nf">list</span><span class="p">(</span><span class="n">wheels</span><span class="o">=</span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="n">steering</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">capacity</span><span class="o">=</span><span class="m">4</span><span class="p">)</span><span class="w">
+</span><span class="n">bike</span><span class="o">&lt;-</span><span class="nf">list</span><span class="p">(</span><span class="n">wheels</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">steering</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">capacity</span><span class="o">=</span><span class="m">2</span><span class="p">)</span><span class="w">
+</span><span class="n">trailer</span><span class="o">&lt;-</span><span class="nf">list</span><span class="p">(</span><span class="n">wheels</span><span class="o">=</span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="n">steering</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">capacity</span><span class="o">=</span><span class="m">6</span><span class="p">)</span></code></pre></figure>
+
+<p>Assigning the class attribute <strong>vehicle</strong> to all the instances</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="nf">class</span><span class="p">(</span><span class="n">car</span><span class="p">)</span><span class="o">&lt;-</span><span class="n">append</span><span class="p">(</span><span class="nf">class</span><span class="p">(</span><span class="n">car</span><span class="p">),</span><span class="s2">"vehicle"</span><span class="p">)</span><span class="w">
+</span><span class="nf">class</span><span class="p">(</span><span class="n">bike</span><span class="p">)</span><span class="o">&lt;-</span><span class="n">append</span><span class="p">(</span><span class="nf">class</span><span class="p">(</span><span class="n">bike</span><span class="p">),</span><span class="s2">"vehicle"</span><span class="p">)</span><span class="w">
+</span><span class="nf">class</span><span class="p">(</span><span class="n">trailer</span><span class="p">)</span><span class="o">&lt;-</span><span class="n">append</span><span class="p">(</span><span class="nf">class</span><span class="p">(</span><span class="n">trailer</span><span class="p">),</span><span class="s2">"vehicle"</span><span class="p">)</span><span class="w">
+
+</span><span class="nf">class</span><span class="p">(</span><span class="n">car</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "list"    "vehicle"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="nf">class</span><span class="p">(</span><span class="n">bike</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "list"    "vehicle"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="nf">class</span><span class="p">(</span><span class="n">trailer</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "list"    "vehicle"</code></pre></figure>
+
+<p>We will define a method for getting the <strong>number of wheels</strong> for instances of class <strong>vehicle</strong></p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">getNwheels</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w">
+</span><span class="p">{</span><span class="w">
+     </span><span class="nf">UseMethod</span><span class="p">(</span><span class="s2">"getNwheels"</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+ </span><span class="n">getNwheels.vehicle</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w">
+ </span><span class="p">{</span><span class="w">
+    </span><span class="nf">return</span><span class="p">(</span><span class="n">x</span><span class="o">$</span><span class="n">wheels</span><span class="p">)</span><span class="w">
+ </span><span class="p">}</span></code></pre></figure>
+
+<p>Calling the <strong>vehicle</strong> class function <em>getNwheels()</em></p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">getNwheels</span><span class="p">(</span><span class="n">car</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 4</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">getNwheels</span><span class="p">(</span><span class="n">bike</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 2</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">getNwheels</span><span class="p">(</span><span class="n">trailer</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 6</code></pre></figure>
+
+
+  </article>
+
+</div>
+
+      
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../scripts/jquery.min.js"></script>
+    <script src="../../../scripts/bootstrap.min.js"></script>
+  </body>
+</html>

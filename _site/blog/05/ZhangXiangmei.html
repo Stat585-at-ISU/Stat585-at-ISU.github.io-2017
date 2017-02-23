@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Data Technologies for Statistics at Iowa State University.">
+    <meta name="author" content="Heike Hofmann <hofmann@iastate.edu>">
+    <!-- By The original uploader was Dick107 at English Wikipedia [GFDL (http://www.gnu.org/copyleft/fdl.html) or CC-BY-SA-3.0 (http://creativecommons.org/licenses/by-sa/3.0/)], via Wikimedia Commons https://commons.wikimedia.org/wiki/File%3APunch-card-5081.jpg-->
+
+    <title>Stat 585</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../css/extra.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../../../index.html">Stat 585</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              
+              
+      				  
+      				  
+      				  <li class="">
+      					<a href="/index.html">Home</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/syllabus.html">Schedule</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/labs.html">Labs</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="active">
+      					<a href="/blog">Blog</a>
+      				  </li>
+      				
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="https://bb.its.iastate.edu" target="_blank">BlackBoard</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+    <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">The S3 class system</h1>
+    <p class="post-meta">Feb 23, 2017 • Xiangmei Zhang</p>
+  </header>
+
+  <article class="post-content">
+    <p>Write a blog post addressing <strong>one</strong> of these topics:</p>
+
+<ul>
+  <li>At an S3 class of your choice discuss a set of functions/methods/approaches that allow you to interact with the class.</li>
+  <li>Explain how a user can define a new S3 class with objects and methods at a small example of your choice.</li>
+</ul>
+
+<p>For a given R object such as a vector, a matrix, a list or anything else we can change certain class type by simply attaching the ‘class’ attribute. S3 generics are methods belong to function, we can use a call “UseMethod()” to creat a method. Here is a small example.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">o</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"A"</span><span class="p">,</span><span class="s2">"B"</span><span class="p">,</span><span class="s2">"C"</span><span class="p">,</span><span class="s2">"D"</span><span class="p">,</span><span class="s2">"E"</span><span class="p">,</span><span class="s2">"F"</span><span class="p">)</span><span class="w"> </span><span class="err">#</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">vector</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">characters</span></code></pre></figure>
+
+<p>we can change object belongs to class type “grade” using the following codes:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="nf">class</span><span class="p">(</span><span class="n">o</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"grade"</span><span class="p">)</span><span class="w">  </span><span class="c1"># or use next line
+</span><span class="nf">attr</span><span class="p">(</span><span class="n">o</span><span class="p">,</span><span class="w"> </span><span class="s2">"class"</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s2">"grade"</span></code></pre></figure>
+
+<p>Now we can build a constructor and a simple method for “grade” class:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># Constructor function for "grade" class
+</span><span class="n">grade</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">){</span><span class="w">
+  </span><span class="n">structure</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">class</span><span class="o">=</span><span class="s2">"grade"</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="c1"># a simple method for "grade" class
+</span><span class="n">pass</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="nf">UseMethod</span><span class="p">(</span><span class="s2">"pass"</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="w">
+</span><span class="n">pass.grade</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">){</span><span class="w">
+  </span><span class="n">x.pass</span><span class="o">=</span><span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">&lt;=</span><span class="s2">"C"</span><span class="p">]</span><span class="w">
+  </span><span class="n">x.nopass</span><span class="o">=</span><span class="n">x</span><span class="p">[</span><span class="n">x</span><span class="o">&gt;</span><span class="s2">"C"</span><span class="p">]</span><span class="w">
+  </span><span class="n">cat</span><span class="p">(</span><span class="s2">"Grades pass the exam: "</span><span class="p">,</span><span class="n">x.pass</span><span class="p">,</span><span class="s2">"\n"</span><span class="p">)</span><span class="w">
+  </span><span class="n">cat</span><span class="p">(</span><span class="s2">"Grades fail the exam: "</span><span class="p">,</span><span class="n">x.nopass</span><span class="p">)</span><span class="w">
+  
+</span><span class="p">}</span></code></pre></figure>
+
+<p>Test the “grade” constructor and the new method”:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># create a new object of class "grade"
+</span><span class="n">new</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">grade</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s2">"C"</span><span class="p">,</span><span class="s2">"D"</span><span class="p">,</span><span class="s2">"G"</span><span class="p">,</span><span class="s2">"A"</span><span class="p">))</span><span class="w">
+</span><span class="n">methods</span><span class="p">(</span><span class="n">class</span><span class="o">=</span><span class="s2">"grade"</span><span class="p">)</span><span class="w"> </span><span class="err">#</span><span class="w"> </span><span class="n">check</span><span class="w"> </span><span class="n">methods</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">class</span><span class="w"> </span><span class="s2">"grade"</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] pass
+## see '?methods' for accessing help and source code</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">pass</span><span class="p">(</span><span class="n">o</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Grades pass the exam:  A B C 
+## Grades fail the exam:  D E F</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">pass</span><span class="p">(</span><span class="n">new</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Grades pass the exam:  C A 
+## Grades fail the exam:  D G</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">ftype</span><span class="p">(</span><span class="n">pass</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in eval(expr, envir, enclos): could not find function "ftype"</code></pre></figure>
+
+
+  </article>
+
+</div>
+
+      
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../scripts/jquery.min.js"></script>
+    <script src="../../../scripts/bootstrap.min.js"></script>
+  </body>
+</html>

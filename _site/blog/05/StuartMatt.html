@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Data Technologies for Statistics at Iowa State University.">
+    <meta name="author" content="Heike Hofmann <hofmann@iastate.edu>">
+    <!-- By The original uploader was Dick107 at English Wikipedia [GFDL (http://www.gnu.org/copyleft/fdl.html) or CC-BY-SA-3.0 (http://creativecommons.org/licenses/by-sa/3.0/)], via Wikimedia Commons https://commons.wikimedia.org/wiki/File%3APunch-card-5081.jpg-->
+
+    <title>Stat 585</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../css/extra.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../../../index.html">Stat 585</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              
+              
+      				  
+      				  
+      				  <li class="">
+      					<a href="/index.html">Home</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/syllabus.html">Schedule</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/labs.html">Labs</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="active">
+      					<a href="/blog">Blog</a>
+      				  </li>
+      				
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="https://bb.its.iastate.edu" target="_blank">BlackBoard</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+    <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">The S3 class system</h1>
+    <p class="post-meta">Feb 23, 2017 • Matt Stuart</p>
+  </header>
+
+  <article class="post-content">
+    <h2 id="background">Background:</h2>
+
+<p>In class, we have briefly touched on working with S3 objects. There are various online sources on this subject available, e.g. Hadley Wickham’s chapter on <a href="http://adv-r.had.co.nz/OO-essentials.html#s3">S3 objects</a>, Cyclismo’s <a href="http://www.cyclismo.org/tutorial/R/s3Classes.html">tutorial</a>, Abishek Tiwari’s <a href="https://abhishek-tiwari.com/hacking/class-and-objects-in-r-s3-style">blog post</a>, …</p>
+
+<h2 id="write-a-blog-post-addressing">Write a blog post addressing:</h2>
+
+<ul>
+  <li>At an S3 class of your choice discuss a set of functions/methods/approaches that allow you to interact with the class. Make sure to give plenty of examples!</li>
+</ul>
+
+<h2 id="interacting-with-the-lm-class">Interacting with the lm class</h2>
+
+<p>One of the most important parts in data analysis is fitting the data to a model, and the class “lm” has many important functions that allows me to interact with the class.  First and foremost, we can apply forward selection and backward elimination under the functions add1 and drop1 respectively to see how much better the model fit is when dealing with adding/dropping different variables to the model or adding/dropping interaction terms quadratic terms to the model.  Secondly, the summary function can provide estimates of each explanatory variable in the model, show its standard error and perform t-tests to test the significance of each individual term given all the other terms in the model.  The anova function can provide a similar test, using the Sum of Squares for each variable and factor to determine the significance of individual factors and variables given the others previously placed into the model.  What is also important is seeing if there is correlation between explanatory variables, and the vcov function can provide a variance-covariance matrix of those variables.  A visual aid for a model may also be useful in showing its significance, and the plot function can show the model graphically, provided the model is not too complicated.</p>
+
+<p>Finally, and what could be the most useful of model fitting, is the predict function.  The fitting of a model is an important step in data analysis, but the practicality of it is using new data for explanatory variables to predict values based on the fitted model.  This function can bring in a lm, plus a vector(s) of explanatory variables to predict new values.  Just as important, it can provide standard errors for the data to determine how much the predicted value can vary based on the fitted model.</p>
+
+  </article>
+
+</div>
+
+      
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../scripts/jquery.min.js"></script>
+    <script src="../../../scripts/bootstrap.min.js"></script>
+  </body>
+</html>

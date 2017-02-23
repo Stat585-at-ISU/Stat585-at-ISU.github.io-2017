@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Data Technologies for Statistics at Iowa State University.">
+    <meta name="author" content="Heike Hofmann <hofmann@iastate.edu>">
+    <!-- By The original uploader was Dick107 at English Wikipedia [GFDL (http://www.gnu.org/copyleft/fdl.html) or CC-BY-SA-3.0 (http://creativecommons.org/licenses/by-sa/3.0/)], via Wikimedia Commons https://commons.wikimedia.org/wiki/File%3APunch-card-5081.jpg-->
+
+    <title>Stat 585</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../css/extra.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../../../index.html">Stat 585</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              
+              
+      				  
+      				  
+      				  <li class="">
+      					<a href="/index.html">Home</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/syllabus.html">Schedule</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/labs.html">Labs</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="active">
+      					<a href="/blog">Blog</a>
+      				  </li>
+      				
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="https://bb.its.iastate.edu" target="_blank">BlackBoard</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+    <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">S3 flavors</h1>
+    <p class="post-meta">Feb 23, 2017 • Katie Will</p>
+  </header>
+
+  <article class="post-content">
+    <h4 id="explain-how-a-user-can-define-a-new-s3-class-with-objects-and-methods-at-a-small-example-of-your-choice">Explain how a user can define a new S3 class with objects and methods at a small example of your choice.</h4>
+
+<p>For this small example on S3 objects, lets assume we have two lists of ice cream flavors. The first list is of Blue Bunny seasonal flavors, and the second are of Edy’s slow churned flavors.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">BlueBunny</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="s2">"Peppermint Party"</span><span class="p">,</span><span class="w"> </span><span class="s2">"S'more Please"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Strawbunny Bliss"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Cocoa Bunny"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Cherrific Cheesecake"</span><span class="p">)</span><span class="w">
+</span><span class="n">Edys</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="s2">"Mississippi Mud Pie"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Vermont Maple Syrup"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Coffee"</span><span class="p">,</span><span class="w"> </span><span class="s2">"French Silk"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Cookies 'n Cream"</span><span class="p">)</span><span class="w"> 
+
+</span><span class="n">BlueBunny</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [[1]]
+## [1] "Peppermint Party"
+## 
+## [[2]]
+## [1] "S'more Please"
+## 
+## [[3]]
+## [1] "Strawbunny Bliss"
+## 
+## [[4]]
+## [1] "Cocoa Bunny"
+## 
+## [[5]]
+## [1] "Cherrific Cheesecake"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">Edys</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [[1]]
+## [1] "Mississippi Mud Pie"
+## 
+## [[2]]
+## [1] "Vermont Maple Syrup"
+## 
+## [[3]]
+## [1] "Coffee"
+## 
+## [[4]]
+## [1] "French Silk"
+## 
+## [[5]]
+## [1] "Cookies 'n Cream"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="nf">class</span><span class="p">(</span><span class="n">BlueBunny</span><span class="p">);</span><span class="w"> </span><span class="nf">class</span><span class="p">(</span><span class="n">Edys</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "list"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "list"</code></pre></figure>
+
+<p>Currently, the class of the two lists is “list” by default. If we wanted to change the class, we can do it by using class(object) &lt;- append(class(object), “class.name”). With this ice cream example, let’s set the class of the Blue Bunny flavors as <em>Seasonal</em> and the class of the Edy’s flavors as <em>SlowChurned</em>. This is done with the following two lines of code.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="nf">class</span><span class="p">(</span><span class="n">BlueBunny</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">append</span><span class="p">(</span><span class="nf">class</span><span class="p">(</span><span class="n">BlueBunny</span><span class="p">),</span><span class="s2">"Seasonal"</span><span class="p">)</span><span class="w">
+</span><span class="nf">class</span><span class="p">(</span><span class="n">Edys</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">append</span><span class="p">(</span><span class="nf">class</span><span class="p">(</span><span class="n">Edys</span><span class="p">),</span><span class="s2">"SlowChurned"</span><span class="p">)</span><span class="w">
+
+</span><span class="nf">class</span><span class="p">(</span><span class="n">BlueBunny</span><span class="p">);</span><span class="w"> </span><span class="nf">class</span><span class="p">(</span><span class="n">Edys</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "list"     "Seasonal"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "list"        "SlowChurned"</code></pre></figure>
+
+<p>Notice that now <em>BlueBunny</em> and <em>Edys</em> are of both class <em>list</em> as well as the ones we just assigned. With S3 objects, we can create methods that work for only a certain class. This last holdiay season, Blue Bunny’s holdidy flavor was Peppermint Party. So let’s create a function, <em>GetHoliday</em>, that will extract this flavor. This is done with the following two functions.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">GetHoliday</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nf">UseMethod</span><span class="p">(</span><span class="s2">"GetHoliday"</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">GetHoliday.Seasonal</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nf">return</span><span class="p">(</span><span class="n">x</span><span class="p">[[</span><span class="m">1</span><span class="p">]])</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">GetHoliday</span><span class="p">(</span><span class="n">BlueBunny</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "Peppermint Party"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="err">#</span><span class="n">GetHoliday</span><span class="p">(</span><span class="n">Edys</span><span class="p">)</span><span class="w"> </span><span class="err">##</span><span class="n">doesn</span><span class="err">'</span><span class="n">t</span><span class="w"> </span><span class="n">work</span></code></pre></figure>
+
+<p>Side note: If my regular expreassion knowledge was up to par, I could have gotton fancy and had the function search for the word “Peppermint” since that’s a common holiday flavor.</p>
+
+<p>Anyways, if we were to use the function <em>GetHoliday</em> on <em>Edys</em>, we would get an error saying: <strong>Error in UseMethod(“GetHoliday”, x) : no applicable method for ‘GetHoliday’ applied to an object of class “c(‘list’, ‘SlowChurned’)”</strong>. The function only works for <em>BlueBunny</em> because it is of class <em>Seasonal</em>. We could just as well create a function that only works for class <em>SlowChurned</em>.</p>
+
+  </article>
+
+</div>
+
+      
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../scripts/jquery.min.js"></script>
+    <script src="../../../scripts/bootstrap.min.js"></script>
+  </body>
+</html>

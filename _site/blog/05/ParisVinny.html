@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Data Technologies for Statistics at Iowa State University.">
+    <meta name="author" content="Heike Hofmann <hofmann@iastate.edu>">
+    <!-- By The original uploader was Dick107 at English Wikipedia [GFDL (http://www.gnu.org/copyleft/fdl.html) or CC-BY-SA-3.0 (http://creativecommons.org/licenses/by-sa/3.0/)], via Wikimedia Commons https://commons.wikimedia.org/wiki/File%3APunch-card-5081.jpg-->
+
+    <title>Stat 585</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../css/extra.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../../../index.html">Stat 585</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              
+              
+      				  
+      				  
+      				  <li class="">
+      					<a href="/index.html">Home</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/syllabus.html">Schedule</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/labs.html">Labs</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="active">
+      					<a href="/blog">Blog</a>
+      				  </li>
+      				
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="https://bb.its.iastate.edu" target="_blank">BlackBoard</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+    <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">S3 Objects</h1>
+    <p class="post-meta">Feb 23, 2017 • Vinny Paris</p>
+  </header>
+
+  <article class="post-content">
+    <p>So, I decided to make a little (stupid) function that will hold as a list some basic stuff about a Dungeons and Dragons character or for a Pathfinder character. They both get their own classes and I used Methods to return two seperate lines for each class. This is actually a real cool tool now that I know how methods work. I have always done some ugly (and I do mean ugly) ifelse statements to work around different objects getting passed to my self built functions.This really streamlines the process of knowing where you objects are going in the function instead of having to go down 8 levels worth of ifelse statements. It makes it easier to read once you know what the methods are doing and how to interpret classes. For the actual technique of giving them a class the best way appears to just be to use the append function on class(x)</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">DnD</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">which.person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">which.person</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">my.race</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Elf"</span><span class="p">,</span><span class="w"> </span><span class="n">which.level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">level</span><span class="p">,</span><span class="w"> </span><span class="n">which.class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">class</span><span class="p">)</span><span class="w">
+</span><span class="p">{</span><span class="w">
+
+        </span><span class="n">Player.1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="w">
+                </span><span class="n">Gamer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">which.person</span><span class="p">,</span><span class="w">
+                </span><span class="n">Race</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">my.race</span><span class="p">,</span><span class="w">
+                </span><span class="n">Level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">which.level</span><span class="p">,</span><span class="w">
+                </span><span class="n">Class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">which.class</span><span class="w">
+       </span><span class="p">)</span><span class="w">
+
+        </span><span class="nf">class</span><span class="p">(</span><span class="n">Player.1</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">append</span><span class="p">(</span><span class="nf">class</span><span class="p">(</span><span class="n">Player.1</span><span class="p">),</span><span class="s2">"DnD"</span><span class="p">)</span><span class="w">
+        </span><span class="nf">return</span><span class="p">(</span><span class="n">Player.1</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">Pathfinder</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">which.person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">which.person</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">my.race</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Elf"</span><span class="p">,</span><span class="w"> </span><span class="n">which.level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">level</span><span class="p">,</span><span class="w"> </span><span class="n">which.class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">class</span><span class="p">)</span><span class="w">
+</span><span class="p">{</span><span class="w">
+
+        </span><span class="n">Player.1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="w">
+                </span><span class="n">Gamer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">which.person</span><span class="p">,</span><span class="w">
+                </span><span class="n">Race</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">my.race</span><span class="p">,</span><span class="w">
+                </span><span class="n">Level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">which.level</span><span class="p">,</span><span class="w">
+                </span><span class="n">Class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">which.class</span><span class="w">
+       </span><span class="p">)</span><span class="w">
+
+        </span><span class="nf">class</span><span class="p">(</span><span class="n">Player.1</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">append</span><span class="p">(</span><span class="nf">class</span><span class="p">(</span><span class="n">Player.1</span><span class="p">),</span><span class="s2">"Pathfinder"</span><span class="p">)</span><span class="w">
+        </span><span class="nf">return</span><span class="p">(</span><span class="n">Player.1</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="c1">#Pathfinder is an old DnD-esq game if you are wondering. Very similar look though. 
+</span><span class="w">
+
+</span><span class="n">example</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">DnD</span><span class="p">(</span><span class="s2">"Vinny"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Half-Elf"</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="s2">"Cleric"</span><span class="p">)</span><span class="w">
+</span><span class="n">example</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## $Gamer
+## [1] "Vinny"
+## 
+## $Race
+## [1] "Half-Elf"
+## 
+## $Level
+## [1] 5
+## 
+## $Class
+## [1] "Cleric"
+## 
+## attr(,"class")
+## [1] "list" "DnD"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">ex2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">Pathfinder</span><span class="p">(</span><span class="s2">"Nick"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Human"</span><span class="p">,</span><span class="w"> </span><span class="m">8</span><span class="p">,</span><span class="w"> </span><span class="s2">"Druid"</span><span class="p">)</span><span class="w">
+</span><span class="n">ex2</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## $Gamer
+## [1] "Nick"
+## 
+## $Race
+## [1] "Human"
+## 
+## $Level
+## [1] 8
+## 
+## $Class
+## [1] "Druid"
+## 
+## attr(,"class")
+## [1] "list"       "Pathfinder"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">GamingCharacter</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">){</span><span class="w">
+  </span><span class="nf">UseMethod</span><span class="p">(</span><span class="s1">'GamingCharacter'</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">GamingCharacter.Pathfinder</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span><span class="n">print</span><span class="p">(</span><span class="s2">"Pathfinder, update already"</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">GamingCharacter.DnD</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">){</span><span class="w"> 
+  </span><span class="n">print</span><span class="p">(</span><span class="s2">"DnD object, Nerd!"</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">GamingCharacter.default</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+                </span><span class="n">print</span><span class="p">(</span><span class="s2">"Not a DnD Object"</span><span class="p">)</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+        
+</span><span class="n">GamingCharacter</span><span class="p">(</span><span class="n">ex2</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "Pathfinder, update already"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">GamingCharacter</span><span class="p">(</span><span class="n">example</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "DnD object, Nerd!"</code></pre></figure>
+
+
+  </article>
+
+</div>
+
+      
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../scripts/jquery.min.js"></script>
+    <script src="../../../scripts/bootstrap.min.js"></script>
+  </body>
+</html>

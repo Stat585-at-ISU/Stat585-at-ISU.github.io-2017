@@ -1,0 +1,46 @@
+---
+title: "The S3 class system"
+author: "Aaron Baker"
+topic: "05"
+layout: post
+root: ../../../
+---
+Below is an example of how to create a new S3 class. Now when I think of something new and shiny, I think of muscle cars. Don't ask me why as muscle cars are actually really old, but logic isn't the key here. Suppose that we wanted a new class, for some reason, to store within it the top 3 muscle car preferences of a car enthusiast, and their rankings on a scale of 1-10 of adoration, as well as say, the horsepower of their engine and mpg rating. The first step is to create a list that contains the information that we wish to store, like so
+```{r}
+#Create an object
+
+VROOM <- list(cars = c("car1", "car2", "car3"), Rating = c(10,10,10), HP = c(-999,-999,-999), MPG = c(-999,-999,-999))
+class(VROOM)
+
+#Assign the object VROOM to class classiccar
+class(VROOM) <- append(class(VROOM),"classiccar")
+class(VROOM)
+```
+Now the idea is that for this class, we might have special functions that apply uniquey to how it works that might work differently on a different S3 object (like mean). So, perhaps we want to know, by some far out gnarly reason, the mean and standard deviation of the rating and horsepower for a classiccar object(s). So, we create a function that will give us that information from a classiccar object.To not mess with the underlying "mean" function and to build from scratch I will use mean2.
+
+```{r}
+mean2 <- function(x)
+ {
+     UseMethod("mean2")
+ }
+
+ mean2.classiccar <- function(x)
+ {
+    return(c(mean(x$Rating), mean(x$HP)))
+ }
+
+ mean2(VROOM)
+
+```
+
+Here of course we would prefer perhaps the real outcome from say, some muscle car maniac:
+
+```{r}
+VROOM <- list(cars = c("1970 GTO 500", "1978 Superbee", "1968 Plymouth Road Runner"), Rating = c(10,9.8,9), HP = c(543,480,530), MPG = c(10.5,9.8,9))
+class(VROOM)
+class(VROOM) <- append(class(VROOM),"classiccar")
+
+mean2(VROOM)
+```
+
+And so the results will follow.

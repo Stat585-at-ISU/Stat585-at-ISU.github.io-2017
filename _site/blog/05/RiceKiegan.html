@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Data Technologies for Statistics at Iowa State University.">
+    <meta name="author" content="Heike Hofmann <hofmann@iastate.edu>">
+    <!-- By The original uploader was Dick107 at English Wikipedia [GFDL (http://www.gnu.org/copyleft/fdl.html) or CC-BY-SA-3.0 (http://creativecommons.org/licenses/by-sa/3.0/)], via Wikimedia Commons https://commons.wikimedia.org/wiki/File%3APunch-card-5081.jpg-->
+
+    <title>Stat 585</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../css/extra.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../../../index.html">Stat 585</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              
+              
+      				  
+      				  
+      				  <li class="">
+      					<a href="/index.html">Home</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/syllabus.html">Schedule</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/labs.html">Labs</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="active">
+      					<a href="/blog">Blog</a>
+      				  </li>
+      				
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="https://bb.its.iastate.edu" target="_blank">BlackBoard</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+    <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Creating an S3 class for pets</h1>
+    <p class="post-meta">Feb 23, 2017 • Kiegan Rice</p>
+  </header>
+
+  <article class="post-content">
+    <p>Out of the two options for this blog post, I have decided to focus on the second one:</p>
+
+<h2 id="explain-how-a-user-can-define-a-new-s3-class-with-objects-and-methods-at-a-small-example-of-your-choice">Explain how a user can define a new S3 class with objects and methods at a small example of your choice.</h2>
+
+<p>I will define a new S3 class with objects and methods. This S3 class will be focused on Pets, so that I can keep track of the pets that live at my house.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">Pets</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">isMammal</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="n">animalType</span><span class="o">=</span><span class="s2">"hedgehog"</span><span class="p">,</span><span class="n">breedType</span><span class="o">=</span><span class="s2">"African Pygmy"</span><span class="p">,</span><span class="n">exerciseToday</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span><span class="w">
+</span><span class="p">{</span><span class="w">
+        </span><span class="n">me</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="w">
+                </span><span class="n">hasBabies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">isMammal</span><span class="p">,</span><span class="w">
+                </span><span class="n">petType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">animalType</span><span class="p">,</span><span class="w">
+                </span><span class="n">breed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">breedType</span><span class="p">,</span><span class="w">
+                </span><span class="n">hasExercisedToday</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">exerciseToday</span><span class="w">
+       </span><span class="p">)</span><span class="w">
+        </span><span class="nf">class</span><span class="p">(</span><span class="n">me</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">append</span><span class="p">(</span><span class="nf">class</span><span class="p">(</span><span class="n">me</span><span class="p">),</span><span class="s2">"Pets"</span><span class="p">)</span><span class="w">
+        </span><span class="nf">return</span><span class="p">(</span><span class="n">me</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>Now that we have created this class, we can create new objects of this class by calling the function we have created. I will define two different pets (Obi and Oslo) using this class function.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">Obi</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">Pets</span><span class="p">()</span><span class="w">
+</span><span class="n">Obi</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## $hasBabies
+## [1] TRUE
+## 
+## $petType
+## [1] "hedgehog"
+## 
+## $breed
+## [1] "African Pygmy"
+## 
+## $hasExercisedToday
+## [1] FALSE
+## 
+## attr(,"class")
+## [1] "list" "Pets"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">Oslo</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">Pets</span><span class="p">(</span><span class="n">isMammal</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">animalType</span><span class="o">=</span><span class="s2">"dog"</span><span class="p">,</span><span class="w"> </span><span class="n">breedType</span><span class="o">=</span><span class="s2">"Poochon"</span><span class="p">,</span><span class="w"> </span><span class="n">exerciseToday</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span><span class="w">
+</span><span class="n">Oslo</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## $hasBabies
+## [1] TRUE
+## 
+## $petType
+## [1] "dog"
+## 
+## $breed
+## [1] "Poochon"
+## 
+## $hasExercisedToday
+## [1] FALSE
+## 
+## attr(,"class")
+## [1] "list" "Pets"</code></pre></figure>
+
+<p>Now that we have created a class, we can create methods for this class. One example (similar to the example in the R tutorial) would be to set whether the pet has gotten exercise today.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">sethasExercisedToday</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">Object</span><span class="p">,</span><span class="w"> </span><span class="n">newValue</span><span class="p">)</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+                </span><span class="n">print</span><span class="p">(</span><span class="s2">"Calling the base sethasExercisedToday function"</span><span class="p">)</span><span class="w">
+                </span><span class="nf">UseMethod</span><span class="p">(</span><span class="s2">"sethasExercisedToday"</span><span class="p">,</span><span class="n">Object</span><span class="p">)</span><span class="w">
+                </span><span class="n">print</span><span class="p">(</span><span class="s2">"Note this is not executed!"</span><span class="p">)</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+
+</span><span class="n">sethasExercisedToday.default</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">Object</span><span class="p">,</span><span class="w"> </span><span class="n">newValue</span><span class="p">)</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+                </span><span class="n">print</span><span class="p">(</span><span class="s2">"You screwed up. I do not know how to handle this object."</span><span class="p">)</span><span class="w">
+                </span><span class="nf">return</span><span class="p">(</span><span class="n">Object</span><span class="p">)</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+
+
+</span><span class="n">sethasExercisedToday.Pets</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">Object</span><span class="p">,</span><span class="w"> </span><span class="n">newValue</span><span class="p">)</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+                </span><span class="n">print</span><span class="p">(</span><span class="s2">"In sethasExercisedToday.Pets and setting the value"</span><span class="p">)</span><span class="w">
+                </span><span class="n">Object</span><span class="o">$</span><span class="n">hasExercisedToday</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">newValue</span><span class="w">
+                </span><span class="nf">return</span><span class="p">(</span><span class="n">Object</span><span class="p">)</span><span class="w">
+        </span><span class="p">}</span></code></pre></figure>
+
+<p>This allows us to set whether a pet has gotten exercise today, so we can update that value once the pet gets exercise.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">Oslo</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">sethasExercisedToday</span><span class="p">(</span><span class="n">Oslo</span><span class="p">,</span><span class="kc">TRUE</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "Calling the base sethasExercisedToday function"
+## [1] "In sethasExercisedToday.Pets and setting the value"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">Olso</span><span class="o">$</span><span class="n">hasExercisedToday</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in eval(expr, envir, enclos): object 'Olso' not found</code></pre></figure>
+
+
+  </article>
+
+</div>
+
+      
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../scripts/jquery.min.js"></script>
+    <script src="../../../scripts/bootstrap.min.js"></script>
+  </body>
+</html>
