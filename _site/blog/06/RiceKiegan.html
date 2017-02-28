@@ -69,13 +69,24 @@
     <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Blog post 1: Literate Programming</h1>
-    <p class="post-meta">Feb 28, 2017 • Katie Will</p>
+    <h1 class="post-title">Decreasing the chances of messing up while coding</h1>
+    <p class="post-meta">Feb 28, 2017 • Kiegan Rice</p>
   </header>
 
   <article class="post-content">
-    <p>I remember an undergrad professor of mine looking back on the code she wrote for her dissertation and not being able to read it. I think it was then that I realized I should start documenting my code. Before coming to grad school, I just used some basic comments in my text to organize my thoughts. I found it hard to locate specific comments and chunks of code. I also had troubles writing what I wanted to within the code. With R Markdown, it is easy to decipher between comments and code. There is also much flexibility in writing with Latex in R Markdown. For these reasons, I find myself using literate programming almost on a daily basis. More specifically, I find R Markdown to be very useful in typing up homework assignments. Being the avid organizer that I am, I like that my code and my write-up are all in one document that looks nice. I also like how easy my projects are to read. I am never lost when I come back to a project I haven’t worked on in a while. I see myself continuing to use R Markdown (or some form of literate programming) throughout my academic and work career. I want to be able to look back on the work I did and make sense of it. I had to laugh when Knuth said that literate programming is addicting. I completely agree with him! It makes doing statistical projects so much easier, so why stop?</p>
+    <h2 id="regard-the-code-below-and-describe-in-what-ways-the-idea-of-functional-programming-makes-code-easier-to-write-and-maintain">Regard the code below and describe in what way(s) the idea of functional programming makes code easier to write and maintain.</h2>
 
+<div class="highlighter-rouge"><pre class="highlight"><code>x &lt;- 1:10
+funs &lt;- list(
+  sum = sum,
+  mean = mean,
+  median = median
+)
+lapply(funs, function(f) f(x, na.rm=TRUE))
+</code></pre>
+</div>
+
+<p>The idea of functional programming makes code easier to write and maintain by creating smaller pieces and combining those small pieces into a larger, more powerful action. In the example code above, it allows us to apply three functions that help us summarize our data at once, instead of having to call three functions separately. It also allows us to add in the <code class="highlighter-rouge">na.rm = TRUE</code> statement to each when we actually call the function, and know that it will call exactly that, instead of having to specify that statement for each function. As the chapter from Advanced R Programming mentions quite a bit, it is very easy to make mistakes using copy-and-paste or applying functions to an object separately when you could much more easily apply them all at the same time. The ease of writing comes from the fact that you don’t have to call a function for each specific event you want to apply it to – you can instead have a function that does what you want it to, and apply it to all scenarios at once. The ease of maintenance comes from the fact that you are using sets of smaller functions that allow you to go back and assess whether each small piece is doing what you desire, and fix a small piece rather than having to hunt through one huge function or a bunch of applications of a function to find where you messed up. Essentially, functional programming will decrease the chances of screwing up when coding (especially when you get into complicated functions), as well as make it easier to go back and fix a mistake if you do make one.</p>
 
   </article>
 
