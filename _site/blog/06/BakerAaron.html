@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Data Technologies for Statistics at Iowa State University.">
+    <meta name="author" content="Heike Hofmann <hofmann@iastate.edu>">
+    <!-- By The original uploader was Dick107 at English Wikipedia [GFDL (http://www.gnu.org/copyleft/fdl.html) or CC-BY-SA-3.0 (http://creativecommons.org/licenses/by-sa/3.0/)], via Wikimedia Commons https://commons.wikimedia.org/wiki/File%3APunch-card-5081.jpg-->
+
+    <title>Stat 585</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../css/extra.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../../../index.html">Stat 585</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              
+              
+      				  
+      				  
+      				  <li class="">
+      					<a href="/index.html">Home</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/syllabus.html">Schedule</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/labs.html">Labs</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="active">
+      					<a href="/blog">Blog</a>
+      				  </li>
+      				
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="https://bb.its.iastate.edu" target="_blank">BlackBoard</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+    <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Functional Programming</h1>
+    <p class="post-meta">Mar 2, 2017 • Aaron Baker</p>
+  </header>
+
+  <article class="post-content">
+    <h3 id="regard-the-code-below-and-describe-in-what-ways-the-idea-of-functional-programming-makes-code-easier-to-write-and-maintain">Regard the code below and describe in what way(s) the idea of functional programming makes code easier to write and maintain.</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>x &lt;- 1:10
+funs &lt;- list(
+  sum = sum,
+  mean = mean,
+  median = median
+)
+lapply(funs, function(f) f(x, na.rm=TRUE))
+</code></pre>
+</div>
+
+<p>Functional programming has the same end goal as such packages as purrr and dplyr-to create functions in such a way that they are easy to use and can be built component by component in a methodical and clear, concise, way. The more actual characters one has to type, the more mistake prone that code is, and the harder it is to find that code.</p>
+
+<p>I will never forget the 10000+ line code behemoth I wrote for an internship. It works. Forbid anyond try to debug it! Some simple uses of the principal of functional programming could have easily save 1000 or more lines of that code.</p>
+
+<p>In the above function, we see that we have combined some very common functions used to summarize data into one function that can be used multiple times over, together, all at once. This is nice because we don’t have to call these functions again and again and again. If there IS a problem with the code, then it will be caught quickly and fixed quickly because it will exist within everything we use that function to work with.</p>
+
+<p>Further, using lapply allows us to pass along an extra argument all at once to all of the functions, allowing more succinct and easier to debug coding once again.</p>
+
+
+  </article>
+
+</div>
+
+      
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../scripts/jquery.min.js"></script>
+    <script src="../../../scripts/bootstrap.min.js"></script>
+  </body>
+</html>

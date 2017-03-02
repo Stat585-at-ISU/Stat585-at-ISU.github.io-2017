@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Data Technologies for Statistics at Iowa State University.">
+    <meta name="author" content="Heike Hofmann <hofmann@iastate.edu>">
+    <!-- By The original uploader was Dick107 at English Wikipedia [GFDL (http://www.gnu.org/copyleft/fdl.html) or CC-BY-SA-3.0 (http://creativecommons.org/licenses/by-sa/3.0/)], via Wikimedia Commons https://commons.wikimedia.org/wiki/File%3APunch-card-5081.jpg-->
+
+    <title>Stat 585</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../css/extra.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../../../index.html">Stat 585</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              
+              
+      				  
+      				  
+      				  <li class="">
+      					<a href="/index.html">Home</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/syllabus.html">Schedule</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/labs.html">Labs</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="active">
+      					<a href="/blog">Blog</a>
+      				  </li>
+      				
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="https://bb.its.iastate.edu" target="_blank">BlackBoard</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+    <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Functional Programming</h1>
+    <p class="post-meta">Mar 2, 2017 • Haley Jeppson</p>
+  </header>
+
+  <article class="post-content">
+    <hr />
+
+<p>The underlying theme for <a href="http://adv-r.had.co.nz/Functional-programming.html">Functional Programming</a> is similar to the underlying themes of a couple past blog posts. That is, when tackling a large problem, it is advantageous to attack it in smaller, more manageable pieces. In other words, we can use simple functions as the building blocks for programming a complex structure. Doing so benefits us on many fronts - it <em>reduces</em> the room for human error by reducing code duplication and <em>increases</em> the versatility of the programming while making the code more compact.</p>
+
+<p>Duplicating any action creates an opportunity for human error and makes the code more rigid, difficult to debug, and difficult to adapt to new data. By utilizing functional programming, we can reduce duplication and are therefore better suited to adopt the DRY (Don’t Repeat Yourself) principle. Take the following code, for example.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>x &lt;- 1:10
+funs &lt;- list(
+  sum = sum,
+  mean = mean,
+  median = median
+)
+lapply(funs, function(f) f(x, na.rm=TRUE))
+</code></pre>
+</div>
+
+<p>In this code, we have a list of functions that can all be called simultaneously using <code class="highlighter-rouge">lapply()</code> and an anonymous function, another useful functional programming tool. Working with a list of functions allows you to do the work only once and makes it easier to work with groups of related functions. In addition, each of the three functions can still be called individually.</p>
+
+<p>By reducing the number of times you have to write out a function, or write out the function’s arguments, you are working to prevent mistakes that can occur while doing copy-and-paste while simultaneously writing stronger, more versatile code.</p>
+
+
+  </article>
+
+</div>
+
+      
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../scripts/jquery.min.js"></script>
+    <script src="../../../scripts/bootstrap.min.js"></script>
+  </body>
+</html>

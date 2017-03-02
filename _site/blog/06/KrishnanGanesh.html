@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Data Technologies for Statistics at Iowa State University.">
+    <meta name="author" content="Heike Hofmann <hofmann@iastate.edu>">
+    <!-- By The original uploader was Dick107 at English Wikipedia [GFDL (http://www.gnu.org/copyleft/fdl.html) or CC-BY-SA-3.0 (http://creativecommons.org/licenses/by-sa/3.0/)], via Wikimedia Commons https://commons.wikimedia.org/wiki/File%3APunch-card-5081.jpg-->
+
+    <title>Stat 585</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../css/extra.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../../../index.html">Stat 585</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              
+              
+      				  
+      				  
+      				  <li class="">
+      					<a href="/index.html">Home</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/syllabus.html">Schedule</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/labs.html">Labs</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="active">
+      					<a href="/blog">Blog</a>
+      				  </li>
+      				
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="https://bb.its.iastate.edu" target="_blank">BlackBoard</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+    <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Functional Programming</h1>
+    <p class="post-meta">Mar 2, 2017 • Ganesh Krishnan</p>
+  </header>
+
+  <article class="post-content">
+    <p>Functional programming by definition involves creating and using functions in creative ways so as to minimize 
+repetitive efforts, give clarity and to be able to efficiently manipulate different variables and functions itself. 
+Now lets look at the following code</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">x</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="w">
+</span><span class="n">funs</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="w">
+  </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum</span><span class="p">,</span><span class="w">
+  </span><span class="n">mean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">,</span><span class="w">
+  </span><span class="n">median</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">median</span><span class="w">
+</span><span class="p">)</span><span class="w">
+</span><span class="n">y</span><span class="o">&lt;-</span><span class="n">lapply</span><span class="p">(</span><span class="n">funs</span><span class="p">,</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in FUN(X[[i]], ...): could not find function "f"</code></pre></figure>
+
+<p>The above chunk of code first defines a vector x and then creates a list of summary functions. The
+lapply function is then used to apply an anonymous functions f over the list. We can visualize the working of the 
+code by imagining the anonymous function f to be applied over each member of the list funs. Calling a function from 
+a list is straightforward as we first extract it and then call it.</p>
+
+<p>We can see that the data vector x is already included in the anonymous function f and it performs an additional 
+work of removing the na’s from the vector x, therefore, when it is applied over each element of the list, we can 
+imagine something of the sort f(sum()), f(mean()), and f(median()) happening. Now if you look closely at the 
+anonymous function it takes f i.e. itself as the argument and by definition of f it contains the vector x (no 
+matter what the input is). Therefore the result of the lapply function here is similar to</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">sum</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span><span class="w">
+</span><span class="n">mean</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span><span class="w">
+</span><span class="n">median</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">median</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span></code></pre></figure>
+
+<p>We could have achieved the same, as given above, but doing so using functional programming is much more compact. 
+Also using list of functions lets us summarise an object in multiple ways. It also allows us to work with data 
+frames where there are multiple columns and ensures that we dont accidentally miss any column. Also functional 
+programming as in the first code chunk allows us to generalise the code and reuse it.  As we saw, using an 
+anonymous function is sometimes desired especially when it’s not worth the effort to give it a name. This helps is
+reducing redundancy and having an overload of named objects. Another important aspect of Functional programming is 
+that it makes use of Lexical scoping which determines where to look for values. This is helpful especially because 
+R looks for values when the function is run, not when it’s created, allowing the output of a function to be 
+different and depending on objects outside its own environment. Using functional programming therefore not only 
+makes is easier to write code but also makes
+the process of mainting and reusing it simpler.</p>
+
+  </article>
+
+</div>
+
+      
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../scripts/jquery.min.js"></script>
+    <script src="../../../scripts/bootstrap.min.js"></script>
+  </body>
+</html>

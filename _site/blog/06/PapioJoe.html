@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Data Technologies for Statistics at Iowa State University.">
+    <meta name="author" content="Heike Hofmann <hofmann@iastate.edu>">
+    <!-- By The original uploader was Dick107 at English Wikipedia [GFDL (http://www.gnu.org/copyleft/fdl.html) or CC-BY-SA-3.0 (http://creativecommons.org/licenses/by-sa/3.0/)], via Wikimedia Commons https://commons.wikimedia.org/wiki/File%3APunch-card-5081.jpg-->
+
+    <title>Stat 585</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../css/extra.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../../../index.html">Stat 585</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              
+              
+      				  
+      				  
+      				  <li class="">
+      					<a href="/index.html">Home</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/syllabus.html">Schedule</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/labs.html">Labs</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="active">
+      					<a href="/blog">Blog</a>
+      				  </li>
+      				
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="https://bb.its.iastate.edu" target="_blank">BlackBoard</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+    <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Functional Programming</h1>
+    <p class="post-meta">Mar 2, 2017 • Joe Papio</p>
+  </header>
+
+  <article class="post-content">
+    <h2 id="regard-the-code-below-and-describe-in-what-ways-the-idea-of-functional-programming-makes-code-easier-to-write-and-maintain">Regard the code below and describe in what way(s) the idea of functional programming makes code easier to write and maintain.</h2>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">x</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="w">
+</span><span class="n">funs</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="w">
+  </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum</span><span class="p">,</span><span class="w">
+  </span><span class="n">mean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">,</span><span class="w">
+  </span><span class="n">median</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">median</span><span class="w">
+</span><span class="p">)</span><span class="w">
+</span><span class="n">lapply</span><span class="p">(</span><span class="n">funs</span><span class="p">,</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in FUN(X[[i]], ...): could not find function "f"</code></pre></figure>
+
+<p>Functional programming makes code easier to write and maintain because it reduces the potential for typos and other common, easy-to-make human errors that occur in repetative tasks. It confers a further benefit of reducing redundancy, which makes implementing changes easier as well, since they need to be made in fewer places.</p>
+
+<p>There’s an initial draw back in that you need to maybe spend more time on the front end thinking about what it is you want to do and how you want to accompolish that. But this ends up ultimately being a benefit, as thinking through something like programming prior to starting the task is rarely a bad thing; when things go wrong in programming, the reason is almost never “I planned too much”.</p>
+
+<p>In the code above, a <em>lapply</em> takes <em>funs</em> (the list of functions which are each similar in that they take as their argument a set of numbers and return a single value), and applies each element to a vector of numbers. Despite <em>sum</em>, <em>mean</em>, and <em>median</em> being functions that already exist in base  <strong>R</strong>, this approach is more straightforward and ultimately more convenient than applying each function to <em>x</em> individually:</p>
+<ul>
+  <li>the list of numbers, as well as options, such as removal of <em>NAs</em>, can be specified only a single time, rather than once for each summary statistic</li>
+  <li>results can easily be stored in a single list object whose elements can then be called individually or all at once</li>
+  <li>additional summary statistic functions, such as standard deviation, can be easily added to the <em>funs</em> list with <strong>sd = sd</strong></li>
+</ul>
+
+<p>And in addition, if it were necessary to run this set of summary statistics frequently, it would be straight forward to name the function so it could be applied repetatively, and as mentioned at the onset, while minimizing the number of necessary changes and thus, the opportunity for errors:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">thing</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">){</span><span class="w">
+</span><span class="n">funs</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum</span><span class="p">,</span><span class="w">
+             </span><span class="n">mean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">,</span><span class="w">
+             </span><span class="n">median</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">median</span><span class="p">,</span><span class="w">
+             </span><span class="n">sd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sd</span><span class="w">
+</span><span class="p">)</span><span class="w">
+  </span><span class="n">lapply</span><span class="p">(</span><span class="n">funs</span><span class="p">,</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">))</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="w">
+</span><span class="n">thing</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in FUN(X[[i]], ...): could not find function "f"</code></pre></figure>
+
+
+  </article>
+
+</div>
+
+      
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../scripts/jquery.min.js"></script>
+    <script src="../../../scripts/bootstrap.min.js"></script>
+  </body>
+</html>
