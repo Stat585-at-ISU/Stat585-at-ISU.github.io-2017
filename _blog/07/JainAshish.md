@@ -1,0 +1,11 @@
+---
+title: "Ethics of Reproducible Research"
+author: "Ashish Jain"
+topic: "07"
+layout: post
+root: ../../../
+---
+
+####Question: How do you think LaCour was able to publish falsified data in such a prestigious journal as Science? 
+
+In my view, the credibility and the prominence of Dr. Donald Green in the field of political science are the main reason behind the publishing of the falsified data in *Science*. Having an experience and well-known person on the paper surely helps in publishing. His findings are also groundbreaking which also helped him in publishing with support from the name and fame of his mentor and his alma mater (UCLA). LaCour has also confessed that he misrepresents the funding sources in his paper. He put the names of various prominent funding agencies including The Ford Foundation, the Evelyn and Walter Haas Jr. Fund, and the Williams Institute on his paper in order to make his findings more credible. He also didn't present his raw data and nobody asked him about it. I would also like to point out that the peer reviewers in various journals don't have that much time to check each and every detail of a paper. They trust that the submitter is presenting true data and facts. I think it is the responsibility of the research community to verify the findings as done in this case.
