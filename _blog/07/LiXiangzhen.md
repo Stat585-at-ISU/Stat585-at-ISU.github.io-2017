@@ -1,6 +1,6 @@
 ---
 title: "Ethics of Reproducible Research"
-author: "Firstname Lastname"
+author: "Li Xiangzhen"
 topic: "07"
 layout: post
 root: ../../../
