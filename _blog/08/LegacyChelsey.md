@@ -1,0 +1,15 @@
+---
+title: "Issues with Reproducibility"
+author: "Chelsey Legacy"
+topic: "08"
+layout: post
+root: ../../../
+---
+
+
+
+
+In the first paper published we get introduced to the problems with reproducibility in research methods and publishing. Though the paper was published in 1995 it does a good job introducing this topic by providing examples of what can go wrong with reproducibility in research the still occur today.  Due to my lack of experience in publishing research, I was unaware that is was even possible to publish a paper with a graph or chart that was unreproducible, so I found some of this article surprising. However, once the authors started describing the different cases of reproducibility issues occurring in daily research, I understood. I relate to the problem of not knowing exactly what parameters or setting produced a certain graph. This was the main theme of both papers.  The solution suggested in the first paper was to create a piece of software that would help provide not only figures, but what went into making the figures, to collaborators and other researchers.  The authors succeeded in making a program that deals with this problem on a certain level. However, in the second paper they discover that there is still a lot to be done to improve their program. They explain in the later article that a main problem with the idea of reproducible code, is that it isn't widely adopted.  
+
+
+The authors also mention the problem of returning to code and research produced years earlier, by oneself or by another collaborating researcher, and not being able to get back into what the project is about. This is a problem I run into a lot, even if it is code that was written a semester before I look at it again. If the ideas of literate programming laid out in our first blog were always followed this wouldn't be such a common problem. We know that markdown files are a great way to avoid a lot of the problems described. We can make a lot of comments to elaborate on our code. In addition, we can make the code and text weaved together nicely so we always will know what parameters and code went into making the graph displayed in the papers produced in this way. 
