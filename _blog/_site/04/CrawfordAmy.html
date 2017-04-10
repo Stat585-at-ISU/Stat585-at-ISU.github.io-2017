@@ -1,0 +1,7 @@
+<h2 id="what-are-intervals-durations-periods-and-instants">What are intervals, durations, periods, and instants?</h2>
+<p>An <strong>instant</strong> specifies a specific moment in time, and an <strong>interval</strong> is the span of time that occurs between two instants. <strong>Intervals</strong> are associated with their start dates and end dates, and this restricts their usefulness. <strong>Durations</strong> are lengths of time measured in seconds and stored that way. They don’t have start and end dates associated with them and they are nice because they are invariant to leap year and daylight savings times. <strong>Periods</strong> record time spans in units that are more intuitive than durations. We don’t know exactly how long (in seconds) a period will be until we know when it happens.</p>
+
+<h2 id="why-do-we-need-these-distinctions">(Why) do we need these distinctions?</h2>
+<p>We need these distinctions because there are situations when we will want to do calculations with dates for a specified moment, or range of moments, in time. For these situations we will want to use instants, intervals, and maybe periods. In other situations we would rather measure time in an arbitrary moment and for this durations will be very useful.
+Periods are especially useful because we can work with the helper functions before anchoring the period to a moment in time. This becomes a very, very flexible way to perform arithmetic operations on dates.</p>
+

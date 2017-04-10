@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Data Technologies for Statistics at Iowa State University.">
+    <meta name="author" content="Heike Hofmann <hofmann@iastate.edu>">
+    <!-- By The original uploader was Dick107 at English Wikipedia [GFDL (http://www.gnu.org/copyleft/fdl.html) or CC-BY-SA-3.0 (http://creativecommons.org/licenses/by-sa/3.0/)], via Wikimedia Commons https://commons.wikimedia.org/wiki/File%3APunch-card-5081.jpg-->
+
+    <title>Stat 585</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../css/extra.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../../../index.html">Stat 585</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              
+              
+      				  
+      				  
+      				  <li class="">
+      					<a href="/index.html">Home</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/syllabus.html">Schedule</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/labs.html">Labs</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="active">
+      					<a href="/blog">Blog</a>
+      				  </li>
+      				
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="https://bb.its.iastate.edu" target="_blank">BlackBoard</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+    <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">My First R Package</h1>
+    <p class="post-meta">Apr 10, 2017 • Amy Crawford</p>
+  </header>
+
+  <article class="post-content">
+    <p>My only previous experience writing an <code class="highlighter-rouge">R</code> package is from a small guided workshop during graphics group. One of the biggest challenges that we had was getting the group connected to the package on GitHub, this part took up most of the class period and we only got a short start writing the actual funcitons for our package. Getting everyone to the point where we could commit, pull, and push from <code class="highlighter-rouge">RStudio</code> was challenging for us. Another challenge we had was with our data. Although everything looked right, the package broke when I tried to use the data. The problem was that I had accidentally saved the <code class="highlighter-rouge">.rda</code> file outside of the <code class="highlighter-rouge">data</code> folder, thought it was no big deal, and dragged it into the correct folder. I was looking at Hadley’s page for help and he recommends using <code class="highlighter-rouge">.RData</code> file extension, so that confused me. I finally figured out my problem (with help from Kiegan) was that I needed to use the <code class="highlighter-rouge">save()</code> function to directly place my <code class="highlighter-rouge">.rda</code> file into the <code class="highlighter-rouge">data</code> folder. This was painful. I couldn’t figure out what was wrong. Everything looked right but the code was breaking.</p>
+
+<p>It was exciting when everything finally worked! I can see how things could get very complex and intricate very quickly, but I also see the tremendous value in having the documentation that comes with encapsulating functions in a package.</p>
+
+  </article>
+
+</div>
+
+      
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../scripts/jquery.min.js"></script>
+    <script src="../../../scripts/bootstrap.min.js"></script>
+  </body>
+</html>

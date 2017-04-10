@@ -1,0 +1,13 @@
+<div class="highlighter-rouge"><pre class="highlight"><code>x &lt;- 1:10
+funs &lt;- list(
+  sum = sum,
+  mean = mean,
+  median = median
+)
+lapply(funs, function(f) f(x, na.rm=TRUE))
+</code></pre>
+</div>
+
+<p>Just to reiterate again, gunctional programming does make code easier to write and maintain. I would say functional programming is the building blocks for R programming. By looking at the code above, functional programming makes the code easier by remove the hassle of copy and paste action. My programming mind is that the more you “touch” on the code, the more chances of having mistakes or errors. By reducing the work, you can spend less time in debugging.</p>
+
+<p>Also, functional programming makes the code easy to maintain due to the flexibility or versatility of the programming. As you can see, from the code above, you can create a function or <code class="highlighter-rouge">funs</code> here. This function not only acts as a function but you can input some preexisting function like <code class="highlighter-rouge">mean</code>, <code class="highlighter-rouge">sum</code> or <code class="highlighter-rouge">median</code> into the function. Basically, it’s like nesting, but a cleaner way in functional programming. One thing that I do really like about this is that you do not have to rewrite the whole code if you want to update your code let say instead of <code class="highlighter-rouge">median</code>, <code class="highlighter-rouge">max</code> and <code class="highlighter-rouge">min</code>.</p>

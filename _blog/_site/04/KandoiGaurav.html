@@ -1,0 +1,35 @@
+<p><strong>Instants</strong></p>
+
+<p>A specific moment in the entire time space is referred to as being an <em>instant</em>. For instance, we can use the <em>now()</em> function from <em>lubridate</em> package to get an instant down upto a second.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">paste</span><span class="p">(</span><span class="s2">"This is an instant:"</span><span class="p">,</span><span class="n">now</span><span class="p">())</span><span class="w"> </span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "This is an instant: 2017-02-23 17:31:55"</code></pre></figure>
+
+<p><strong>Intervals</strong></p>
+
+<p>It is the simplest way to record timespans.The span of time that occurs between two specific instants is an <em>interval</em> which also suggests that it can never be ambiguous.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">paste</span><span class="p">(</span><span class="s2">"This is an Interval:"</span><span class="p">,</span><span class="w"> </span><span class="n">interval</span><span class="p">(</span><span class="n">today</span><span class="p">(),</span><span class="n">now</span><span class="p">())</span><span class="w"> </span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "This is an Interval: 2017-02-22 18:00:00 CST--2017-02-23 17:31:55 CST"</code></pre></figure>
+
+<p><strong>Durations</strong></p>
+
+<p><em>Durations</em> are when a generic length of time span between any interval is recorded in seconds. This elevates the problem of varying lengths of the same time span when measured in higher units like minutes or years. The durations are invariant to leap years, daylight savings and even leap seconds, because these are measured in seconds and provide an exact length.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">duration</span><span class="p">(</span><span class="m">46</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "46s"</code></pre></figure>
+
+<p><strong>Periods</strong></p>
+
+<p>When the length of time span between any interval is recorded in larger units like minutes or years, it is referred to as a <em>period</em>.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">years</span><span class="p">(</span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">months</span><span class="p">(</span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">days</span><span class="p">(</span><span class="m">10</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "1y 2m 10d 0H 0M 0S"</code></pre></figure>
+
+<p><strong>(Why) do we need these distinctions?</strong></p>
+
+<p>Not every place uses daylight saving. Not every year has the same number of seconds. Not all months have same number of days and subsequently hours, minutes and seconds. But, we would like to combine and analyze data from these different sources. It is therefore, essential that we have these distinctions between an <em>Instant</em>, <em>Interval</em>, <em>Duration</em> and <em>Period</em>. Depending on our data and question, we may want a specific measurement of time. Having these distinctions provide us with an option to choose the most approprate measurement unit. Suppose manufacturing industries would like to identify the <em>timespans</em> when the productivity is maximum. Now, a candy manufacturing industry would be interested in knowing the number of candies produced in a second and hence can use <em>durations</em>. However, a ship manufacturing industry would be interested in knowing the number of ships produced in one year. Using <em>durations</em> will be difficult to comprehend in this case. But, using periods will be much more appropriate and helpful. Given these distinctions, we can be more precise even down to split seconds when performing analyses.</p>

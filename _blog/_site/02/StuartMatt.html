@@ -1,0 +1,19 @@
+<h2 id="background">Background:</h2>
+
+<p>The <code class="highlighter-rouge">plyr</code> package has by now been replaced by other, even faster packages, but the idea of <em>Split, apply, combine</em> is as relevant as ever.</p>
+
+<p>Read the paper <a href="https://www.jstatsoft.org/article/view/v040i01">The Split-Apply-Combine Strategy for Data Analysis</a> by Hadley Wickham.</p>
+
+<p>Write a blog post addressing the questions:</p>
+
+<ol>
+  <li><strong>Which (base R) functions do you know that support the split-apply-combine strategy? In your opinion, are these sufficient - state why or why not?</strong>.</li>
+  <li><strong>Using a dataset of your choice, describe how you can use the split-apply-combine strategy for a part of the data analysis.</strong></li>
+</ol>
+
+<h2 id="base-r-functions-i-know">Base R functions I know:</h2>
+
+<p>One way I use the split-apply-combine strategy in base R is using for loops.  For example, let’s say I wanted to use the full weather station data used in class to get the average temperature from each station in the data set for each month over all years data.  The first thing I would do is to create a list of the unique weather stations by using the unique function.  Then I would create two for loops, one for the weather station IDs and another for the month, and use the mean function over a split data set to get the average temperature for that month at that station.  I would use the first data point to create another data frame to show the data and, for all other monthly data, I would use the rbind function to merge each data point into one final data set.</p>
+
+<p>I do not believe these are sufficient.  As we tested in STAT 579, for loops can take a long time to run and get the data you want, especially if the data set is large.  For most cases, time is of the essence and it is inconvenient to take a large amount of time to run the code, and it takes even more time if you run the code and realize there is a mistake in the code.  Obviously, for loops can get the job done, but in terms of efficiency, it is far behind what some packages allow you to do.</p>
+

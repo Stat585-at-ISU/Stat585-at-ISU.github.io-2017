@@ -1,0 +1,31 @@
+<p>Below is the code to explain how a user can define a new S3 class with objects and methods as a small example.  Say we have a race run by 5 men and we record the outcome in a list.  We can then append the class of that list to make it of class “Athlete”.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1">#Create an object
+</span><span class="w">
+</span><span class="n">runners</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">first</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Bob"</span><span class="p">,</span><span class="w"> </span><span class="n">second</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Steve"</span><span class="p">,</span><span class="w"> </span><span class="n">third</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Chris"</span><span class="p">,</span><span class="w"> </span><span class="n">fourth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Matt"</span><span class="p">,</span><span class="w"> </span><span class="n">fifth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Jim"</span><span class="p">)</span><span class="w">
+</span><span class="nf">class</span><span class="p">(</span><span class="n">runners</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "list"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1">#Assign the object groceries to class "food"
+</span><span class="nf">class</span><span class="p">(</span><span class="n">runners</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">append</span><span class="p">(</span><span class="nf">class</span><span class="p">(</span><span class="n">runners</span><span class="p">),</span><span class="s2">"Athlete"</span><span class="p">)</span><span class="w">
+</span><span class="nf">class</span><span class="p">(</span><span class="n">runners</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "list"    "Athlete"</code></pre></figure>
+
+<p>Next, we can define the method for this mini example. Suppose we want to know who the top three runners are for the men that ran this race. We can define a new method topThree() to give us that information from the vector of runners.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">topThree</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w">
+ </span><span class="p">{</span><span class="w">
+     </span><span class="nf">UseMethod</span><span class="p">(</span><span class="s2">"topThree"</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="w">
+ </span><span class="p">}</span><span class="w">
+
+ </span><span class="n">topThree</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w">
+ </span><span class="p">{</span><span class="w">
+    </span><span class="nf">return</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">x</span><span class="o">$</span><span class="n">first</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="o">$</span><span class="n">second</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="o">$</span><span class="n">third</span><span class="p">))</span><span class="w">
+ </span><span class="p">}</span><span class="w">
+
+ </span><span class="n">topThree</span><span class="p">(</span><span class="n">runners</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "Bob"   "Steve" "Chris"</code></pre></figure>
+

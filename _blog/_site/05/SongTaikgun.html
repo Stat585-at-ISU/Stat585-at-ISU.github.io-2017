@@ -1,0 +1,94 @@
+<h2 id="explain-how-a-user-can-define-a-new-s3-class-with-objects-and-methods-at-a-small-example-of-your-choice">Explain how a user can define a new S3 class with objects and methods at a small example of your choice.</h2>
+
+<p>I have created a short and naive algorithm for music recommendation using the S3 class system. The first step is to define ‘Class’ from my data.</p>
+
+<h3 id="define-class">Define Class</h3>
+<p>To begin with, I have created a toy data frame that has information of 8 musics with its title, genre, mood, and URL address.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">dat</span><span class="o">=</span><span class="n">cbind.data.frame</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"i will always love you"</span><span class="p">,</span><span class="w"> </span><span class="s2">"did youever love me"</span><span class="p">,</span><span class="w"> </span><span class="s2">"sexy and I know it"</span><span class="p">,</span><span class="w"> </span><span class="s2">"four to the floor remix"</span><span class="p">,</span><span class="w"> </span><span class="s2">"december, 1963 (oh, what a night)"</span><span class="p">,</span><span class="w"> </span><span class="s2">"forever"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Light Cavalry Overture"</span><span class="p">,</span><span class="w"> </span><span class="s2">"cavalleria rusticana intermezzo"</span><span class="p">),</span><span class="w">
+</span><span class="n">genre</span><span class="o">=</span><span class="nf">rep</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s2">"rnb/hiphop"</span><span class="p">,</span><span class="w"> </span><span class="s2">"house/dance/electronics"</span><span class="p">,</span><span class="w"> </span><span class="s2">"rock/metal"</span><span class="p">,</span><span class="w"> </span><span class="s2">"classic"</span><span class="p">),</span><span class="w"> </span><span class="n">each</span><span class="o">=</span><span class="m">2</span><span class="p">),</span><span class="w"> 
+</span><span class="n">mood</span><span class="o">=</span><span class="nf">rep</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s2">"positive"</span><span class="p">,</span><span class="w"> </span><span class="s2">"negative"</span><span class="p">),</span><span class="m">4</span><span class="p">),</span><span class="w"> 
+</span><span class="n">url</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"https://www.youtube.com/watch?v=3JWTaaS7LdU"</span><span class="p">,</span><span class="w"> </span><span class="s2">"https://www.youtube.com/watch?v=EAmVdgoghOw"</span><span class="p">,</span><span class="w"> </span><span class="s2">"https://www.youtube.com/watch?v=wyx6JDQCslE"</span><span class="p">,</span><span class="w"> </span><span class="s2">"https://www.youtube.com/watch?v=woE2h5k1NW4"</span><span class="p">,</span><span class="w"> </span><span class="s2">"https://www.youtube.com/watch?v=nDxhugRKZ8g"</span><span class="p">,</span><span class="w"> </span><span class="s2">"https://www.youtube.com/watch?v=WrQyPHzzfCA"</span><span class="p">,</span><span class="w"> </span><span class="s2">"https://www.youtube.com/watch?v=XFQpPbjJWTc"</span><span class="p">,</span><span class="w"> </span><span class="s2">"https://www.youtube.com/watch?v=BIQ2D6AIys8"</span><span class="p">),</span><span class="w"> </span><span class="n">stringsAsFactors</span><span class="o">=</span><span class="nb">F</span><span class="p">)</span></code></pre></figure>
+
+<p>Here, I have constructed a simple function ‘rec_music’ that would define and return the above data set as a class.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">rec_music</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="m">7</span><span class="p">)</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="n">my_music</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="w">
+    </span><span class="n">my_title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dat</span><span class="o">$</span><span class="n">title</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w">
+    </span><span class="n">my_genre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dat</span><span class="o">$</span><span class="n">genre</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w">
+    </span><span class="n">my_mood</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dat</span><span class="o">$</span><span class="n">mood</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w">
+    </span><span class="n">my_url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dat</span><span class="o">$</span><span class="n">url</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w">
+  </span><span class="p">)</span><span class="w">
+  
+  </span><span class="c1">## Set the name for the class
+</span><span class="w">  </span><span class="nf">class</span><span class="p">(</span><span class="n">my_music</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">append</span><span class="p">(</span><span class="nf">class</span><span class="p">(</span><span class="n">my_music</span><span class="p">),</span><span class="s2">"rec_music"</span><span class="p">)</span><span class="w">
+  </span><span class="nf">return</span><span class="p">(</span><span class="n">my_music</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">rec_music</span><span class="p">()</span><span class="w">
+</span><span class="o">$</span><span class="n">my_title</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"Light Cavalry Overture"</span><span class="w">
+
+</span><span class="o">$</span><span class="n">my_genre</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"classic"</span><span class="w">
+
+</span><span class="o">$</span><span class="n">my_mood</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"positive"</span><span class="w">
+
+</span><span class="o">$</span><span class="n">my_url</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"https://www.youtube.com/watch?v=XFQpPbjJWTc"</span><span class="w">
+
+</span><span class="nf">attr</span><span class="p">(,</span><span class="s2">"class"</span><span class="p">)</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"list"</span><span class="w">      </span><span class="s2">"rec_music"</span></code></pre></figure>
+
+<h3 id="define-method">Define Method</h3>
+
+<p>A generic function ‘setMusic’ was defined to reserve the function name. Then ‘UseMethod’ function was used to target the function with name ‘setMusic’. Then the code was written so that the class information of the object ‘rec_music’ was passed down to ‘setMusic.rec_music’. For ‘setMusic.rec_music’ a simple function ‘answer’ was written so that one could change their preference for music recommendation.  A simple ‘browseURL’ function maybe useful for checking out the music that was recommended for the user.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">setMusic</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">object</span><span class="p">)</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="n">print</span><span class="p">(</span><span class="s2">"Calling setMusic function"</span><span class="p">)</span><span class="w">
+  </span><span class="nf">UseMethod</span><span class="p">(</span><span class="s2">"setMusic"</span><span class="p">,</span><span class="n">object</span><span class="p">)</span><span class="w">
+  </span><span class="n">print</span><span class="p">(</span><span class="s2">"Note this is not executed!"</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span><span class="n">setMusic.rec_music</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">object</span><span class="p">)</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="n">answer</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">substr</span><span class="p">(</span><span class="n">readline</span><span class="p">(</span><span class="s2">"Please Select Your Favorite Genre\n 1. RnB/Hip-Hop Positive\n 2. RnB/Hip-Hop Negative\n 3. House/Dance/Electronics Positive\n 4. House/Dance/Electronics Negative\n 5. Rock/Metal Positive\n 6. Rock/Metal Negative\n 7. Classic Positive\n 8. Classic Negative"</span><span class="p">),</span><span class="w"> </span><span class="m">1L</span><span class="p">,</span><span class="w"> </span><span class="m">1L</span><span class="p">)</span><span class="w">
+  </span><span class="n">print</span><span class="p">(</span><span class="s2">"My music recommendation for you"</span><span class="p">)</span><span class="w">
+  </span><span class="n">object</span><span class="o">&lt;-</span><span class="n">rec_music</span><span class="p">(</span><span class="nf">as.numeric</span><span class="p">(</span><span class="n">answer</span><span class="p">))</span><span class="w">
+  </span><span class="n">browseURL</span><span class="p">(</span><span class="n">object</span><span class="o">$</span><span class="n">my_url</span><span class="p">)</span><span class="w">
+  </span><span class="nf">return</span><span class="p">(</span><span class="n">object</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&gt;</span><span class="w"> </span><span class="n">setMusic</span><span class="p">(</span><span class="n">rec_music</span><span class="p">())</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"Calling setMusic function"</span><span class="w">
+</span><span class="n">Please</span><span class="w"> </span><span class="n">Select</span><span class="w"> </span><span class="n">Your</span><span class="w"> </span><span class="n">Favorite</span><span class="w"> </span><span class="n">Genre</span><span class="w">
+ </span><span class="m">1</span><span class="n">.</span><span class="w"> </span><span class="n">RnB</span><span class="o">/</span><span class="n">Hip</span><span class="o">-</span><span class="n">Hop</span><span class="w"> </span><span class="n">Positive</span><span class="w">
+ </span><span class="m">2</span><span class="n">.</span><span class="w"> </span><span class="n">RnB</span><span class="o">/</span><span class="n">Hip</span><span class="o">-</span><span class="n">Hop</span><span class="w"> </span><span class="n">Negative</span><span class="w">
+ </span><span class="m">3</span><span class="n">.</span><span class="w"> </span><span class="n">House</span><span class="o">/</span><span class="n">Dance</span><span class="o">/</span><span class="n">Electronics</span><span class="w"> </span><span class="n">Positive</span><span class="w">
+ </span><span class="m">4</span><span class="n">.</span><span class="w"> </span><span class="n">House</span><span class="o">/</span><span class="n">Dance</span><span class="o">/</span><span class="n">Electronics</span><span class="w"> </span><span class="n">Negative</span><span class="w">
+ </span><span class="m">5</span><span class="n">.</span><span class="w"> </span><span class="n">Rock</span><span class="o">/</span><span class="n">Metal</span><span class="w"> </span><span class="n">Positive</span><span class="w">
+ </span><span class="m">6</span><span class="n">.</span><span class="w"> </span><span class="n">Rock</span><span class="o">/</span><span class="n">Metal</span><span class="w"> </span><span class="n">Negative</span><span class="w">
+ </span><span class="m">7</span><span class="n">.</span><span class="w"> </span><span class="n">Classic</span><span class="w"> </span><span class="n">Positive</span><span class="w">
+ </span><span class="m">8</span><span class="n">.</span><span class="w"> </span><span class="n">Classic</span><span class="w"> </span><span class="n">Negative</span><span class="w">
+
+</span><span class="m">3</span><span class="w">
+ 
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"My music recommendation for you"</span><span class="w">
+</span><span class="o">$</span><span class="n">my_title</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"sexy and I know it"</span><span class="w">
+
+</span><span class="o">$</span><span class="n">my_genre</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"house/dance/electronics"</span><span class="w">
+
+</span><span class="o">$</span><span class="n">my_mood</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"positive"</span><span class="w">
+
+</span><span class="o">$</span><span class="n">my_url</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"https://www.youtube.com/watch?v=wyx6JDQCslE"</span><span class="w">
+
+</span><span class="nf">attr</span><span class="p">(,</span><span class="s2">"class"</span><span class="p">)</span><span class="w">
+</span><span class="p">[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="s2">"list"</span><span class="w">      </span><span class="s2">"rec_music"</span></code></pre></figure>
+
+<p>If time permits, I would use S3 class system more efficiently by giving hierarchical class structure and inheritance. For example, the music class being at the top of the hierarchy, the next tier class would be the genre, and the information of the title and its URL would be stored at the lowest tier class. Maybe a scoring function that interacts with class(es) could be introduced in the recommendation system as well.</p>

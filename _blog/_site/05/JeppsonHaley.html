@@ -1,0 +1,93 @@
+<h2 id="defining-an-s3-class-with-objects-and-methods">Defining an S3 class with objects and methods</h2>
+
+<p>A <strong>class</strong> is an attribute associated with an object and an <strong>S3 object</strong> is an R object with an additional ‘class’ attribute</p>
+
+<p>One way to set the class attribute is to use the <code class="highlighter-rouge">class</code> command. Multiple classes can be declared with a vector decribing the the classes from most to least specific. For example, we can create a object called <code class="highlighter-rouge">obj</code> and assign it the class <code class="highlighter-rouge">'example'</code>.</p>
+
+<p>Create object:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">obj</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">()</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># object is a list
+</span><span class="nf">class</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "list"</code></pre></figure>
+
+<p>Assign class:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># but we can assign the class 'example'
+</span><span class="nf">class</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s1">'example'</span><span class="w">
+
+</span><span class="c1"># object is now of class 'example'
+</span><span class="nf">class</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "example"</code></pre></figure>
+
+<p>Alternatively, a new S3 class can be <em>created</em> with a constructor function. The constructor function below will create a new object of a class defined by the name of the object.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">color</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="n">object</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w">
+  </span><span class="nf">class</span><span class="p">(</span><span class="n">object</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">x</span><span class="w">
+  </span><span class="n">return</span><span class="w"> </span><span class="p">(</span><span class="n">object</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<h3 id="create-an-s3-method">Create an S3 Method</h3>
+
+<p>A <strong>method</strong> can then be defined for the class using the <code class="highlighter-rouge">UseMethod()</code> command. In doing this, we will define a set of functions and when the method is called, the function that is used will be determined by the class of the object that the function in called with.</p>
+
+<p>The first step is to define a generic function,</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># create the generic method
+</span><span class="n">hue</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="k">if</span><span class="p">(</span><span class="nf">is.null</span><span class="p">(</span><span class="nf">attr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="s2">"class"</span><span class="p">))){</span><span class="w">
+    </span><span class="n">print</span><span class="p">(</span><span class="s2">"no color group defined"</span><span class="p">)</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+  </span><span class="k">else</span><span class="w">  </span><span class="nf">UseMethod</span><span class="p">(</span><span class="s2">"hue"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>After creating the S3 generic, we can create the S3 methods which will be of the form <code class="highlighter-rouge">generic.class()</code>. These will be functions that will be used for specific classes.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># create the S3 methods for specific classes
+</span><span class="w">
+</span><span class="n">hue.black</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="c1"># Only if class of an S3 object is a vector
+</span><span class="w">  </span><span class="n">NextMethod</span><span class="p">()</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">hue.red</span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="c1"># First argument is an object of class "red"
+</span><span class="w">  </span><span class="n">print</span><span class="p">(</span><span class="n">x</span><span class="o">$</span><span class="n">name</span><span class="p">)</span><span class="w">
+  </span><span class="n">print</span><span class="p">(</span><span class="s2">"warm hue"</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">hue.blue</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w">  </span><span class="p">{</span><span class="w">
+  </span><span class="c1"># First argument is an object of class "blue"
+</span><span class="w">  </span><span class="n">print</span><span class="p">(</span><span class="n">x</span><span class="o">$</span><span class="n">name</span><span class="p">)</span><span class="w">
+  </span><span class="n">print</span><span class="p">(</span><span class="s2">"cool hue"</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>We can now use our class constructor function to create objects and then apply our newly contructed S3 method.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># Create object of class type 'red' and 'blue'
+</span><span class="n">a</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">color</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s2">"red"</span><span class="p">,</span><span class="s2">"blue"</span><span class="p">))</span><span class="w">
+</span><span class="nf">class</span><span class="p">(</span><span class="n">a</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "red"  "blue"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">hue</span><span class="p">(</span><span class="n">a</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "red"  "blue"
+## [1] "warm hue"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># Create object of class type 'black' and 'blue'
+</span><span class="n">b</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">color</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s2">"black"</span><span class="p">,</span><span class="s2">"blue"</span><span class="p">))</span><span class="w">
+</span><span class="n">hue</span><span class="p">(</span><span class="n">b</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "black" "blue" 
+## [1] "cool hue"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1"># the generic method
+</span><span class="n">hue</span><span class="p">(</span><span class="s2">"purple"</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "no color group defined"</code></pre></figure>
+

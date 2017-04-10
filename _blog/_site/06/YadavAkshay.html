@@ -1,0 +1,14 @@
+<p>Functional programming allows functions to be used objects that can be assigned to variables, stored in a list with multiple functions, passed to other functions as arguments and even returned from other functions, just like objects in other datatypes (vectors and dataframes). This property of funtions allows the user to create composite functions which can contain already existing functions.</p>
+
+<p>With reference to example given below, the in-built functions <em>sum()</em>, <em>mean()</em> and <em>median()</em> are applied on the given vector without explicitly passing the vector to each function individually. This is achieved by combining the functions (function names) in a list <em>funs</em> and then using <em>lapply()</em> to apply each function in the list on the vector <em>x</em> through a another function <em>function(f)</em>.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>x &lt;- 1:10
+funs &lt;- list(
+  sum = sum,
+  mean = mean,
+  median = median
+)
+lapply(funs, function(f) f(x, na.rm=TRUE))
+</code></pre>
+</div>
+

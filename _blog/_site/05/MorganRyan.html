@@ -1,0 +1,74 @@
+<p>For a small example of definining a new S3 class with objects and methods, I will create 3 different data frames. The first data frame will be a list of 3 NFL quarterbacks with their passing yards for the 2016 season, the second will be a list of 3 NFL runningbacks with their rushing yards for the 2016 season, and the third will be a list of 3 NFL wide receivers and their receiving yards for the 2016 season.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">qbs</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="n">players</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"Matt Ryan"</span><span class="p">,</span><span class="s2">"Kirk Cousins"</span><span class="p">,</span><span class="s2">"Aaron Rodgers"</span><span class="p">),</span><span class="w"> </span><span class="n">yards</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">4944</span><span class="p">,</span><span class="m">4917</span><span class="p">,</span><span class="m">4428</span><span class="p">))</span><span class="w">
+
+</span><span class="n">rbs</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="n">players</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"Zeke Elliot"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Jordan Howard"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Demarco Murray"</span><span class="p">),</span><span class="w"> </span><span class="n">yards</span><span class="w"> </span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">1631</span><span class="p">,</span><span class="w"> </span><span class="m">1313</span><span class="p">,</span><span class="w"> </span><span class="m">1287</span><span class="p">))</span><span class="w">
+
+</span><span class="n">wrs</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="n">players</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s2">"Julio Jones"</span><span class="p">,</span><span class="s2">"Odell Beckham Jr."</span><span class="p">,</span><span class="s2">"Mike Evans"</span><span class="p">),</span><span class="w"> </span><span class="n">yards</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1409</span><span class="p">,</span><span class="m">1367</span><span class="p">,</span><span class="m">1321</span><span class="p">))</span></code></pre></figure>
+
+<p>Currently, the class of all three dataframes (qbs, rbs, and wrs) is just “data.frame”. I will define the class of each dataframe as the position group they represent (ex: the class of the qbs dataframe will be “quarterback”).</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="nf">class</span><span class="p">(</span><span class="n">qbs</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s2">"quarterback"</span><span class="w">
+</span><span class="nf">class</span><span class="p">(</span><span class="n">rbs</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s2">"runningback"</span><span class="w">
+</span><span class="nf">class</span><span class="p">(</span><span class="n">wrs</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s2">"widereciever"</span></code></pre></figure>
+
+<p>Now say we want a funciton that gives us a summary stat of the player, but we want a different summary depending on what class we input (either quarterback, runningback, or widereciever). We can write a set of functions using the generic.class() format. In this case, we will use a set of summaryStat functions to print out a summary statement of the players and their yardage statistic.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">summaryStat</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="nf">UseMethod</span><span class="p">(</span><span class="s2">"summaryStat"</span><span class="p">)</span><span class="w">
+
+</span><span class="n">summaryStat.quarterback</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">){</span><span class="w">
+  </span><span class="n">numPlayers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="o">$</span><span class="n">players</span><span class="p">)</span><span class="w">
+  </span><span class="n">counter</span><span class="o">=</span><span class="m">1</span><span class="w">
+  
+  </span><span class="k">while</span><span class="p">(</span><span class="n">counter</span><span class="o">&lt;</span><span class="n">numPlayers</span><span class="m">+1</span><span class="p">){</span><span class="w">
+    </span><span class="n">statement</span><span class="o">=</span><span class="w"> </span><span class="n">paste</span><span class="p">(</span><span class="s2">"The number of passing yards for "</span><span class="p">,</span><span class="n">x</span><span class="o">$</span><span class="n">players</span><span class="p">[</span><span class="n">counter</span><span class="p">],</span><span class="s2">" was: "</span><span class="p">,</span><span class="n">x</span><span class="o">$</span><span class="n">yards</span><span class="p">[</span><span class="n">counter</span><span class="p">],</span><span class="w"> </span><span class="n">sep</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span><span class="w">
+    
+    </span><span class="n">print</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span><span class="w">
+    </span><span class="n">counter</span><span class="o">=</span><span class="n">counter</span><span class="m">+1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">summaryStat.runningback</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">){</span><span class="w">
+   </span><span class="n">numPlayers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="o">$</span><span class="n">players</span><span class="p">)</span><span class="w">
+  </span><span class="n">counter</span><span class="o">=</span><span class="m">1</span><span class="w">
+  
+  </span><span class="k">while</span><span class="p">(</span><span class="n">counter</span><span class="o">&lt;</span><span class="n">numPlayers</span><span class="m">+1</span><span class="p">){</span><span class="w">
+    </span><span class="n">statement</span><span class="o">=</span><span class="w"> </span><span class="n">paste</span><span class="p">(</span><span class="s2">"The number of rushing yards for "</span><span class="p">,</span><span class="n">x</span><span class="o">$</span><span class="n">players</span><span class="p">[</span><span class="n">counter</span><span class="p">],</span><span class="s2">" was: "</span><span class="p">,</span><span class="n">x</span><span class="o">$</span><span class="n">yards</span><span class="p">[</span><span class="n">counter</span><span class="p">],</span><span class="w"> </span><span class="n">sep</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span><span class="w">
+    
+    </span><span class="n">print</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span><span class="w">
+    </span><span class="n">counter</span><span class="o">=</span><span class="n">counter</span><span class="m">+1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">summaryStat.widereciever</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">){</span><span class="w">
+    </span><span class="n">numPlayers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="o">$</span><span class="n">players</span><span class="p">)</span><span class="w">
+  </span><span class="n">counter</span><span class="o">=</span><span class="m">1</span><span class="w">
+  
+  </span><span class="k">while</span><span class="p">(</span><span class="n">counter</span><span class="o">&lt;</span><span class="n">numPlayers</span><span class="m">+1</span><span class="p">){</span><span class="w">
+    </span><span class="n">statement</span><span class="o">=</span><span class="w"> </span><span class="n">paste</span><span class="p">(</span><span class="s2">"The number of receiving yards for "</span><span class="p">,</span><span class="n">x</span><span class="o">$</span><span class="n">players</span><span class="p">[</span><span class="n">counter</span><span class="p">],</span><span class="s2">" was: "</span><span class="p">,</span><span class="n">x</span><span class="o">$</span><span class="n">yards</span><span class="p">[</span><span class="n">counter</span><span class="p">],</span><span class="w"> </span><span class="n">sep</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span><span class="w">
+    
+    </span><span class="n">print</span><span class="p">(</span><span class="n">statement</span><span class="p">)</span><span class="w">
+    </span><span class="n">counter</span><span class="o">=</span><span class="n">counter</span><span class="m">+1</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>And so now we can use the summaryStat function on our three dataframes where the class of the dataframe determines which summaryStat() function is used.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">summaryStat</span><span class="p">(</span><span class="n">qbs</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "The number of passing yards for Matt Ryan was: 4944"
+## [1] "The number of passing yards for Kirk Cousins was: 4917"
+## [1] "The number of passing yards for Aaron Rodgers was: 4428"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">summaryStat</span><span class="p">(</span><span class="n">rbs</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "The number of rushing yards for Zeke Elliot was: 1631"
+## [1] "The number of rushing yards for Jordan Howard was: 1313"
+## [1] "The number of rushing yards for Demarco Murray was: 1287"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">summaryStat</span><span class="p">(</span><span class="n">wrs</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "The number of receiving yards for Julio Jones was: 1409"
+## [1] "The number of receiving yards for Odell Beckham Jr. was: 1367"
+## [1] "The number of receiving yards for Mike Evans was: 1321"</code></pre></figure>
+

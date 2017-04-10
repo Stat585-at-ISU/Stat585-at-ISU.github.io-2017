@@ -1,0 +1,58 @@
+<h2 id="explain-how-a-user-can-define-a-new-s3-class-with-objects-and-methods-at-a-small-example-of-your-choice">Explain how a user can define a new S3 class with objects and methods at a small example of your choice.</h2>
+
+<p>The most straight forward way to create a new S3 object class is to define it and assign its class directly:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">cellmeansstm</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">structure</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="n">Var1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"year"</span><span class="p">,</span><span class="w"> </span><span class="n">Var2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"partyID"</span><span class="p">,</span><span class="w"> </span><span class="n">Var3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"race"</span><span class="p">,</span><span class="w"> </span><span class="n">Var4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"gender"</span><span class="p">),</span><span class="w"> </span><span class="n">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"cellmeansstm"</span><span class="w"> </span><span class="p">)</span></code></pre></figure>
+
+<p>Then, for our new class, we need to identify a method or methods (ie function(s)) for it. For example, we can create functions which lists off the names and values in our new (basic) class:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">listVars</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">...</span><span class="p">){</span><span class="w">
+  </span><span class="nf">UseMethod</span><span class="p">(</span><span class="s2">"listVars"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">listVars</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">){</span><span class="w">
+    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="p">)){</span><span class="w">
+      </span><span class="n">print</span><span class="p">(</span><span class="n">x</span><span class="p">[[</span><span class="n">i</span><span class="p">]])</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+ </span><span class="p">}</span><span class="w">
+
+</span><span class="n">listVar</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">){</span><span class="w">
+    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="p">)){</span><span class="w">
+      </span><span class="n">print</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+ </span><span class="p">}</span><span class="w">
+
+</span><span class="n">varNames</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">){</span><span class="w">
+  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="p">)){</span><span class="w">
+    </span><span class="n">print</span><span class="p">(</span><span class="nf">names</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">listVars</span><span class="p">(</span><span class="n">cellmeansstm</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "year"
+## [1] "partyID"
+## [1] "race"
+## [1] "gender"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">listVar</span><span class="p">(</span><span class="n">cellmeansstm</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## $Var1
+## [1] "year"
+## 
+## $Var2
+## [1] "partyID"
+## 
+## $Var3
+## [1] "race"
+## 
+## $Var4
+## [1] "gender"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">varNames</span><span class="p">(</span><span class="n">cellmeansstm</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "Var1"
+## [1] "Var2"
+## [1] "Var3"
+## [1] "Var4"</code></pre></figure>
+

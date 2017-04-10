@@ -1,0 +1,13 @@
+<h3 id="regard-the-code-below-and-describe-in-what-ways-the-idea-of-functional-programming-makes-code-easier-to-write-and-maintain">Regard the code below and describe in what way(s) the idea of functional programming makes code easier to write and maintain.</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>x &lt;- 1:10
+funs &lt;- list(
+  sum = sum,
+  mean = mean,
+  median = median
+)
+lapply(funs, function(f) f(x, na.rm=TRUE))
+</code></pre>
+</div>
+
+<p>The idea of functional programming makes code easier to write and maintain because it is a non-repetitive way to write code. With regard to the code above, we see that instead of repeating the functions <code class="highlighter-rouge">sum</code>, <code class="highlighter-rouge">mean</code>, and <code class="highlighter-rouge">median</code> over and over again for any different <code class="highlighter-rouge">x</code> that we might want to find summary statistics for, we can write this slick function and use lapply. Thus, we don’t have to duplicate our summary statistic functions everytime we would like to use them, and our code is much less fragile. Storing the functions as lists further strengthens our code because we only need to type the <code class="highlighter-rouge">na.rm</code> statement once, and we are able to handle this group of related functions more easily while efficiently removing <code class="highlighter-rouge">NA</code>s. We have written a “simple function that can be understood in isolation and then composed”. This is very powerful and makes it easy for us to adapt to changing requirements.</p>

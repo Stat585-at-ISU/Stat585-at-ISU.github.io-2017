@@ -1,0 +1,16 @@
+<p><em>How does having a grammar help with creating charts?</em></p>
+
+<p>A grammar of graphics creates a efficient way to communicate with data visulization. 
+When I use <code class="highlighter-rouge">plot</code> function in base R with other function, say <code class="highlighter-rouge">lines</code>, there is no such concept of mapping, 
+layer at all. At very first, it might seem have to write more lines just to create a figure using <code class="highlighter-rouge">ggplot2</code> than 
+base R function. But once get used to it, it’s really super powerful using <code class="highlighter-rouge">ggplot2</code> to produce some complicated 
+figures. The first step <code class="highlighter-rouge">mapping</code> allows people to think about how to present/visulize the data in a better
+way, including not only the corordinates of each data point wanna present, but also including the shape, color
+and so on. The most powerful thing that I like ggplot2 is the characteristics of <code class="highlighter-rouge">layer</code>. It 
+allowers to add/customize figure when ever needed by simplil enough using a symbol <code class="highlighter-rouge">+</code>.<br />
+Before reading this paper, this always confuses me why this works even I get used to this. 
+Only after reading this paper, it mentions tha each layer is actually an object. That makes a lot sense to think 
+about a figure as an object and then later on could manipulate a plot. Another characterisitcs of <code class="highlighter-rouge">facet</code> is also very handy. 
+It makes the syntax much shorter to create a plot and facet by a certain variable using <code class="highlighter-rouge">ggplot2</code> than base R function.<br />
+Although sometimes the R is a little bit of longer by following such a grammer, it’s easier to understand the meaning of code 
+since the way of creating the figure is exactly the same of the way of thinking.</p>

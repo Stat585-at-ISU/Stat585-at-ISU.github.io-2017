@@ -1,0 +1,9 @@
+# Commonalities and changes in the themes and solutions between those two papers. 
+
+Those two papers from Dr.Donoho addressed the same issue -  many of the computational results are non-reproducible. When the first papers were published, this issue just started to be awared of. So, some packages, such as Wavelab, were designed to help to reproduce the datasets, code, graphics and details of parameters, and make them to be accessed to public. Several examples are in the first paper to show how necessary and important to have reproducible results, also as a motivation for researchers and statisticans to organize and construct your project in a reproducible maner for others at the first place. 
+
+After 15 years, reproducibility has been well adopted by most researchers. The National Science Foundation (NSF) and many prestigious journals also highly promote it. The second paper focus more on how reproducibility can be used to catch the errors in publications. As computation power develops in the last two decades, errors are more present as well. So, reproduce the results to test the validation is becoming necessary.  
+
+
+
+

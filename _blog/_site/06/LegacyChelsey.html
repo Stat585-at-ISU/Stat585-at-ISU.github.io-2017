@@ -1,0 +1,16 @@
+<p>This code chunk is a great way to show how functional programming can make code more concise and less prone to errors.  Functional programming makes it possible to avoid repeating code. When we avoid repeating code we can make our code shorter and avoid making errors in the code.  For this specific code chunk we could instead write:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">x</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="w">
+</span><span class="nf">sum</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 55</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 5.5</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">median</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 5.5</code></pre></figure>
+
+<p>This code would get us the same summary information, but we can see that we repeated the exact same argument for each desired summary statistics we wanted. In order to avoid this, we can use functional programming. In addition to eliminating the repeated arguments, we can also get the desired information returned in a single vector. We can create a list of functions that we would like to pass our arguments to, and then use lapply() to pass those arguments to that list of functions. If you decided that you wanted to add more summary statistics that take the same arguments, it is easy to just add the functions to the list and then they too would appear in the output from lapply(). I do not make use of lapply() as much as I should, but I hope to do so after reading this article and learning more about how useful it is.</p>

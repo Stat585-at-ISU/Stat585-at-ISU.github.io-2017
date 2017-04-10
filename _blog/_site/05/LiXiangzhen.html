@@ -1,0 +1,140 @@
+<ul>
+  <li>Explain how a user can define a new S3 class with objects and methods at a small example of your choice.</li>
+</ul>
+
+<p>R is an object-oriented programming language. For every object, it has one attributes which is <em>class</em>. When we create function of the same section, it is like to put a “label”” on the function. R uses generic function to determine which method to invoke, depending on the <em>class</em> of the incoming object.</p>
+
+<p>First, we use command <strong>class</strong> to set the class attributes of function. For example, we create two function called <em>TA</em> and <em>RA</em> which return a list. And set class to these functions <em>TA</em> and <em>RA</em>.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1">#---------TA
+</span><span class="n">TA</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">onduty</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="n">youname</span><span class="o">=</span><span class="s2">"XZL"</span><span class="p">)</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="n">me</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="w">
+    </span><span class="n">YouAreoOnDuty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">onduty</span><span class="p">,</span><span class="w">
+    </span><span class="n">YouName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">youname</span><span class="w">
+  </span><span class="p">)</span><span class="w">
+  </span><span class="c1">## Set the name for the class
+</span><span class="w">  </span><span class="nf">class</span><span class="p">(</span><span class="n">me</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">append</span><span class="p">(</span><span class="nf">class</span><span class="p">(</span><span class="n">me</span><span class="p">),</span><span class="s2">"TA"</span><span class="p">)</span><span class="w">
+  </span><span class="nf">return</span><span class="p">(</span><span class="n">me</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="c1">#----------RA
+</span><span class="n">RA</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">onduty</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="n">youname</span><span class="o">=</span><span class="s2">"QL"</span><span class="p">)</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="n">me</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="w">
+    </span><span class="n">YouAreoOnDuty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">onduty</span><span class="p">,</span><span class="w">
+    </span><span class="n">YouName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">youname</span><span class="w">
+  </span><span class="p">)</span><span class="w">
+  </span><span class="c1">## Set the name for the class
+</span><span class="w">  </span><span class="nf">class</span><span class="p">(</span><span class="n">me</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">append</span><span class="p">(</span><span class="nf">class</span><span class="p">(</span><span class="n">me</span><span class="p">),</span><span class="s2">"RA"</span><span class="p">)</span><span class="w">
+  </span><span class="nf">return</span><span class="p">(</span><span class="n">me</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="c1">#Test
+</span><span class="n">t</span><span class="m">1</span><span class="o">&lt;-</span><span class="n">TA</span><span class="p">()</span><span class="w">
+</span><span class="n">t</span><span class="m">1</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## $YouAreoOnDuty
+## [1] TRUE
+## 
+## $YouName
+## [1] "XZL"
+## 
+## attr(,"class")
+## [1] "list" "TA"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">t</span><span class="m">2</span><span class="o">&lt;-</span><span class="n">RA</span><span class="p">(</span><span class="n">onduty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">T</span><span class="p">,</span><span class="w"> </span><span class="n">youname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"XZ1"</span><span class="p">)</span><span class="w">
+</span><span class="n">t</span><span class="m">2</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## $YouAreoOnDuty
+## [1] TRUE
+## 
+## $YouName
+## [1] "XZ1"
+## 
+## attr(,"class")
+## [1] "list" "RA"</code></pre></figure>
+
+<p>Secondly, we create method associate to these class. We create a generic function outside the class to check if the objects has the class from the section that we want to check. Then command <strong>UseMethod</strong> could define the name of the function.</p>
+
+<p>For example, create a generic function called <em>setOnDuty</em>. First, check if the object is <em>RA</em> or <em>TA</em>. Second, apply the <em>newValue</em> to objects if it is RA or TA.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">setOnDuty</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">newValue</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">print</span><span class="p">(</span><span class="s2">"Calling the base function"</span><span class="p">)</span><span class="w">
+  </span><span class="nf">UseMethod</span><span class="p">(</span><span class="s2">"setOnDuty"</span><span class="p">,</span><span class="n">x</span><span class="p">)}</span><span class="w">
+
+</span><span class="n">setOnDuty.TA</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">newValue</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">print</span><span class="p">(</span><span class="s2">"You are in our school as a TA and setting the value"</span><span class="p">)</span><span class="w">
+  </span><span class="n">x</span><span class="o">$</span><span class="n">YouAreoOnDuty</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">newValue</span><span class="w">
+  </span><span class="nf">return</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+
+</span><span class="n">setOnDuty.RA</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">newValue</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">print</span><span class="p">(</span><span class="s2">"You are in our school as a RA and setting the value"</span><span class="p">)</span><span class="w">
+  </span><span class="n">x</span><span class="o">$</span><span class="n">YouAreoOnDuty</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">newValue</span><span class="w">
+  </span><span class="nf">return</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="n">setOnDuty.default</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">newValue</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">print</span><span class="p">(</span><span class="s2">"You are not in our school and I don't know how to deal with you"</span><span class="p">)</span><span class="w">
+  </span><span class="nf">return</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>Test the <strong>seOnDuty</strong> function.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">t</span><span class="m">1</span><span class="o">&lt;-</span><span class="n">TA</span><span class="p">()</span><span class="w">
+</span><span class="n">t</span><span class="m">1</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## $YouAreoOnDuty
+## [1] TRUE
+## 
+## $YouName
+## [1] "XZL"
+## 
+## attr(,"class")
+## [1] "list" "TA"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">t</span><span class="m">1</span><span class="o">$</span><span class="n">YouAreoOnDuty</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] TRUE</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">t</span><span class="m">1</span><span class="o">&lt;-</span><span class="n">setOnDuty</span><span class="p">(</span><span class="n">t</span><span class="m">1</span><span class="p">,</span><span class="kc">FALSE</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "Calling the base function"
+## [1] "You are in our school as a TA and setting the value"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">t</span><span class="m">1</span><span class="o">$</span><span class="n">YouAreoOnDuty</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] FALSE</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">t</span><span class="m">2</span><span class="o">&lt;-</span><span class="n">RA</span><span class="p">(</span><span class="n">onduty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">T</span><span class="p">,</span><span class="w"> </span><span class="n">youname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"XZ1"</span><span class="p">)</span><span class="w">
+</span><span class="n">t</span><span class="m">2</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## $YouAreoOnDuty
+## [1] TRUE
+## 
+## $YouName
+## [1] "XZ1"
+## 
+## attr(,"class")
+## [1] "list" "RA"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">t</span><span class="m">2</span><span class="o">$</span><span class="n">YouAreoOnDuty</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] TRUE</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">t</span><span class="m">2</span><span class="o">&lt;-</span><span class="n">setOnDuty</span><span class="p">(</span><span class="n">t</span><span class="m">2</span><span class="p">,</span><span class="s2">"Leave"</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "Calling the base function"
+## [1] "You are in our school as a RA and setting the value"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">t</span><span class="m">2</span><span class="o">$</span><span class="n">YouAreoOnDuty</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "Leave"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">t</span><span class="m">3</span><span class="o">&lt;-</span><span class="s2">"someone"</span><span class="w">
+</span><span class="n">t</span><span class="m">3</span><span class="o">&lt;-</span><span class="n">setOnDuty</span><span class="p">(</span><span class="n">t</span><span class="m">3</span><span class="p">,</span><span class="s2">"Leave"</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "Calling the base function"
+## [1] "You are not in our school and I don't know how to deal with you"</code></pre></figure>
+

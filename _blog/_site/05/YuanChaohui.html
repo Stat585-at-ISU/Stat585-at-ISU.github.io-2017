@@ -1,0 +1,72 @@
+<p>S3 objects are usually built on top of lists, or atomic vectors with attributes. Following is a simple example of how to create a S3 object of class student taking Stat585.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1">## a constructor functio for the "studentRecord" class: including first name, last name, maojr, grades array for each class taken, credit for each class
+</span><span class="n">studentRecord</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">firstName</span><span class="p">,</span><span class="w"> </span><span class="n">lastName</span><span class="p">,</span><span class="w"> </span><span class="n">major</span><span class="p">,</span><span class="w"> </span><span class="n">scoreVec</span><span class="p">,</span><span class="w"> </span><span class="n">creditVec</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nf">is.numeric</span><span class="p">(</span><span class="n">scoreVec</span><span class="p">))</span><span class="w"> </span><span class="n">stop</span><span class="p">(</span><span class="s2">"score must be numeric vector"</span><span class="p">)</span><span class="w">
+  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nf">is.numeric</span><span class="p">(</span><span class="n">creditVec</span><span class="p">))</span><span class="w"> </span><span class="n">stop</span><span class="p">(</span><span class="s2">"credit must be numeric vector"</span><span class="p">)</span><span class="w">
+  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nf">any</span><span class="p">(</span><span class="n">scoreVec</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nf">any</span><span class="p">(</span><span class="n">scoreVec</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">100</span><span class="p">))</span><span class="w"> </span><span class="n">stop</span><span class="p">(</span><span class="s2">"score must be between 0 and 100"</span><span class="p">)</span><span class="w">
+  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nf">any</span><span class="p">(</span><span class="n">creditVec</span><span class="w"> </span><span class="o">&lt;</span><span class="w">  </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nf">any</span><span class="p">(</span><span class="n">creditVec</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">4</span><span class="p">))</span><span class="w"> </span><span class="n">stop</span><span class="p">(</span><span class="s2">"credit must between 1 and 4"</span><span class="p">)</span><span class="w">
+  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">scoreVec</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">creditVec</span><span class="p">))</span><span class="w"> </span><span class="n">stop</span><span class="p">(</span><span class="s2">"length of score must be the same as length of credit"</span><span class="p">)</span><span class="w">
+  </span><span class="n">this</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="w">
+    </span><span class="n">firstName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">firstName</span><span class="p">,</span><span class="w"> 
+    </span><span class="n">lastName</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">lastName</span><span class="p">,</span><span class="w">
+    </span><span class="n">major</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">major</span><span class="p">,</span><span class="w"> 
+    </span><span class="n">score</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">scoreVec</span><span class="p">,</span><span class="w">
+    </span><span class="n">credit</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">creditVec</span><span class="w">
+  </span><span class="p">)</span><span class="w">
+  </span><span class="nf">class</span><span class="p">(</span><span class="n">this</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">append</span><span class="p">(</span><span class="nf">class</span><span class="p">(</span><span class="n">this</span><span class="p">),</span><span class="w"> </span><span class="s2">"studentRecord"</span><span class="p">)</span><span class="w">
+  </span><span class="nf">return</span><span class="p">(</span><span class="n">this</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+
+</span><span class="c1">## add a print method for studentRecord 
+</span><span class="w">
+</span><span class="n">print.studentRecord</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">cat</span><span class="p">(</span><span class="s2">"First Name  : "</span><span class="p">,</span><span class="w"> </span><span class="n">obj</span><span class="o">$</span><span class="n">firstName</span><span class="p">,</span><span class="w"> </span><span class="s2">"\n"</span><span class="p">)</span><span class="w">
+  </span><span class="n">cat</span><span class="p">(</span><span class="s2">"Last name   : "</span><span class="p">,</span><span class="w"> </span><span class="n">obj</span><span class="o">$</span><span class="n">lastName</span><span class="p">,</span><span class="w"> </span><span class="s2">"\n"</span><span class="p">)</span><span class="w">
+  </span><span class="n">cat</span><span class="p">(</span><span class="s2">"Major       : "</span><span class="p">,</span><span class="w"> </span><span class="n">obj</span><span class="o">$</span><span class="n">major</span><span class="p">,</span><span class="w"> </span><span class="s2">"\n"</span><span class="p">)</span><span class="w">
+  </span><span class="n">cat</span><span class="p">(</span><span class="s2">"The courses have taken:\n"</span><span class="p">)</span><span class="w">
+  </span><span class="n">totCourses</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">obj</span><span class="o">$</span><span class="n">score</span><span class="p">)</span><span class="w">
+  </span><span class="n">cat</span><span class="p">(</span><span class="s2">" Score \t\t\ GPA:\n"</span><span class="p">)</span><span class="w">
+  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="n">totCourses</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">cat</span><span class="p">(</span><span class="n">format</span><span class="p">(</span><span class="n">obj</span><span class="o">$</span><span class="n">score</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">nsmall</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">),</span><span class="w"> </span><span class="s2">"\t\t "</span><span class="p">,</span><span class="w"> 
+        </span><span class="n">format</span><span class="p">(</span><span class="n">obj</span><span class="o">$</span><span class="n">credit</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">nsmall</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">),</span><span class="w"> </span><span class="s2">"\n"</span><span class="p">)</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+  </span><span class="n">cat</span><span class="p">(</span><span class="s2">"\n"</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="c1">## calculate a weighted average of scores weighted by credits 
+</span><span class="n">mean.studentRecord</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">gpa</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">obj</span><span class="o">$</span><span class="n">score</span><span class="w">
+  </span><span class="n">credit</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">obj</span><span class="o">$</span><span class="n">credit</span><span class="w"> 
+  </span><span class="n">weight</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">credit</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">4.0</span><span class="w">
+  </span><span class="n">mean</span><span class="p">(</span><span class="n">gpa</span><span class="o">*</span><span class="n">weight</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1">## 
+</span><span class="n">cat</span><span class="p">(</span><span class="s2">"Initializing a studentRecord oject s\n"</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Initializing a studentRecord oject s</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">s</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">firstName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Liz"</span><span class="p">,</span><span class="w"> </span><span class="n">lastName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w"> </span><span class="n">major</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"stat"</span><span class="p">,</span><span class="w">
+          </span><span class="n">score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">98</span><span class="p">,</span><span class="w"> </span><span class="m">96</span><span class="p">,</span><span class="w"> </span><span class="m">86</span><span class="p">,</span><span class="w"> </span><span class="m">80</span><span class="p">,</span><span class="w"> </span><span class="m">90</span><span class="p">,</span><span class="w"> </span><span class="m">79</span><span class="p">),</span><span class="w"> </span><span class="n">credit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">3.9</span><span class="p">,</span><span class="w"> </span><span class="m">3.8</span><span class="p">,</span><span class="w"> </span><span class="m">3.7</span><span class="p">,</span><span class="w"> </span><span class="m">3.5</span><span class="p">,</span><span class="w"> </span><span class="m">3.4</span><span class="p">,</span><span class="w"> </span><span class="m">3.2</span><span class="p">))</span><span class="w">
+</span><span class="nf">class</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s2">"studentRecord"</span><span class="w">
+</span><span class="n">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## First Name  :  Liz 
+## Last name   :  Smith 
+## Major       :  stat 
+## The courses have taken:
+##  Score 		 GPA:
+## 98.0 		  3.9 
+## 96.0 		  3.8 
+## 86.0 		  3.7 
+## 80.0 		  3.5 
+## 90.0 		  3.4 
+## 79.0 		  3.2</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="c1">## weighted mean score 
+</span><span class="n">mean</span><span class="p">(</span><span class="n">s</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] 79.33333</code></pre></figure>
+

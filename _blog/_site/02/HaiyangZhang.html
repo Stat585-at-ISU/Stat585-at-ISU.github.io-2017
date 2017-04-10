@@ -1,0 +1,14 @@
+<ol>
+  <li><strong>Which (base R) functions do you know that support the split-apply-combine strategy? In your opinion, are these sufficient - state why or why not?</strong>.</li>
+</ol>
+
+<p>I learned split( ), apply( ), lapply( ), tapply( ), lapply( ), rbind( ), and cbind( ) in the Stat 579 class. And used them often when I did my homeworks and projects. There are also some other <em>split-apply-combine</em> functions in base R mentioned in the article by Hadley Wickham. For example, mapply( ), by( ), aggregate( ), sapply( ), and replicate( ). Personally, these functions are much better than writing long loops. These <em>split-apply-combine</em> functions in base R are much more concise and can save much time comparing to the loops. But comparing with <code class="highlighter-rouge">plyr</code> package, I will not say that these functions are as efficient as the <code class="highlighter-rouge">plyr</code> package functions. As mentioned in the article, we can replace multiple lines of base functions with only two lines with <code class="highlighter-rouge">plyr</code> functions sometimes. So I think it will be better if we can replace some base functions with the <code class="highlighter-rouge">plyr</code> package functions or use some base functions and <code class="highlighter-rouge">plyr</code> functions together. Therefore, I think the functions in the base R are not sufficient to support the <em>split-apply-combine</em> strategy.</p>
+
+<ol>
+  <li><strong>Using a dataset of your choice, describe how you can use the split-apply-combine strategy for a part of the data analysis.</strong></li>
+</ol>
+
+<p>I used the data set <em>Titanic</em> to see the relationship between survive status vs. the class of the ship. I used <code class="highlighter-rouge">ddply</code> to arrange the dataset by Class first, by Survived second, and then use function <code class="highlighter-rouge">mutate</code> to add a new column which is the sum of the total number of the passengers in each class with each survive status. Finally, I plot the results with a bar chart by using ggplot2.</p>
+
+<p>Code:</p>
+

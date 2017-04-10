@@ -1,0 +1,13 @@
+- What are intervals, durations, periods, and instants?
+
+They are the four object classes lubridate can create. An interval is a span of time that occurs between two specific instants.
+A duration object is like an interval but without the reference dates.
+Periods record a time span in units larger than seconds, such as years, months, weeks, days, hours, and minutes.
+An instant is a specific moment in time, such as January 1st, 2012. 
+
+
+- (Why) do we need these distinctions?
+
+These distinctions make it much easier to work with date-time data. For example, we can use instants to read and identify the exact time point, and then perform arithmetic with data times and handle time zones with duration object such as intervals, durations, periods class. By using duration type, we can have exact length in seconds. Periods can be added to instants, intervals and other periods. 
+
+

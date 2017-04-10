@@ -1,0 +1,94 @@
+<h2 id="explain-how-a-user-can-define-a-new-s3-class-with-objects-and-methods-at-a-small-example-of-your-choice">Explain how a user can define a new S3 class with objects and methods at a small example of your choice.</h2>
+<p>We know that <code class="highlighter-rouge">R</code> treats everything like an object. One common attribute associated with an object is its class, and a user can set the class attribute using the <code class="highlighter-rouge">class()</code> command. Understanding these basics, a user can define a new S3 class by writing a function that creates an object of a certain class, and returns a copy.
+The following example will demonstrate how a user can create an object of class type S3 and define methods.
+First, I create a list and set defaults for data entries that are stored in the list. I then procede to set the class.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">Cupcakes</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">myFlavor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"chocolate"</span><span class="p">,</span><span class="w"> </span><span class="n">myFrosting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Buttercream"</span><span class="p">,</span><span class="w"> </span><span class="n">isGlutenFree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">isNutFree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="n">myFavorite</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">favoriteFlavor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">myFlavor</span><span class="p">,</span><span class="w">
+                     </span><span class="n">favoriteFrosting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">myFrosting</span><span class="p">,</span><span class="w">
+                     </span><span class="n">isGlutenFree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">isGlutenFree</span><span class="p">,</span><span class="w">
+                     </span><span class="n">isNutFree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">isNutFree</span><span class="p">)</span><span class="w">
+
+        </span><span class="c1">## Set the name for the class
+</span><span class="w">        </span><span class="nf">class</span><span class="p">(</span><span class="n">myFavorite</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">append</span><span class="p">(</span><span class="nf">class</span><span class="p">(</span><span class="n">myFavorite</span><span class="p">),</span><span class="s2">"Cupcakes"</span><span class="p">)</span><span class="w">
+        </span><span class="nf">return</span><span class="p">(</span><span class="n">myFavorite</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<p>Now, I can create objects of class <em>Cupcake</em> by calling the function.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">John</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">Cupcakes</span><span class="p">(</span><span class="n">myFlavor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Red Velvet"</span><span class="p">,</span><span class="w"> </span><span class="n">myFrosting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Cream Cheese"</span><span class="p">)</span><span class="w">
+</span><span class="n">John</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## $favoriteFlavor
+## [1] "Red Velvet"
+## 
+## $favoriteFrosting
+## [1] "Cream Cheese"
+## 
+## $isGlutenFree
+## [1] FALSE
+## 
+## $isNutFree
+## [1] TRUE
+## 
+## attr(,"class")
+## [1] "list"     "Cupcakes"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">Jane</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">Cupcakes</span><span class="p">(</span><span class="n">myFlavor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Peanut Butter"</span><span class="p">,</span><span class="w"> </span><span class="n">myFrosting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Salted Caramel"</span><span class="p">,</span><span class="w"> </span><span class="n">isNutFree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"No - Includes Peanuts"</span><span class="p">)</span><span class="w">
+</span><span class="n">Jane</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## $favoriteFlavor
+## [1] "Peanut Butter"
+## 
+## $favoriteFrosting
+## [1] "Salted Caramel"
+## 
+## $isGlutenFree
+## [1] FALSE
+## 
+## $isNutFree
+## [1] "No - Includes Peanuts"
+## 
+## attr(,"class")
+## [1] "list"     "Cupcakes"</code></pre></figure>
+
+<p>Now I can create methods that are associated with the <em>Cupcakes</em> class. The methods are defined in a generic way, then in a way that is very specific to the <em>Cupcakes</em> class.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">setFavoriteFlavor</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span><span class="w"> </span><span class="n">newValue</span><span class="p">)</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+                </span><span class="n">print</span><span class="p">(</span><span class="s2">"Call the base setFavoriteFlavor function"</span><span class="p">)</span><span class="w">
+                </span><span class="nf">UseMethod</span><span class="p">(</span><span class="s2">"setFavoriteFlavor"</span><span class="p">,</span><span class="w"> </span><span class="n">obj</span><span class="p">)</span><span class="w">
+                </span><span class="n">print</span><span class="p">(</span><span class="s2">"This is not executed!"</span><span class="p">)</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+
+</span><span class="n">setFavoriteFlavor.default</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span><span class="w"> </span><span class="n">newValue</span><span class="p">)</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+                </span><span class="n">print</span><span class="p">(</span><span class="s2">"You screwed up. I do not know how to handle this object."</span><span class="p">)</span><span class="w">
+                </span><span class="nf">return</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+
+
+</span><span class="n">setFavoriteFlavor.Cupcakes</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span><span class="w"> </span><span class="n">newValue</span><span class="p">)</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+                </span><span class="n">print</span><span class="p">(</span><span class="s2">"In setFavoriteFlavor.Cupcakes and setting the value"</span><span class="p">)</span><span class="w">
+                </span><span class="n">obj</span><span class="o">$</span><span class="n">favoriteFlavor</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">newValue</span><span class="w">
+                </span><span class="nf">return</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span><span class="w">
+        </span><span class="p">}</span></code></pre></figure>
+
+<p>Let’s take a look at how the function works! The object class is recognized and the correct function is used.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">Jane</span><span class="o">$</span><span class="n">favoriteFlavor</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "Peanut Butter"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">Jane</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">setFavoriteFlavor</span><span class="p">(</span><span class="n">Jane</span><span class="p">,</span><span class="w"> </span><span class="s2">"Vanilla"</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "Call the base setFavoriteFlavor function"
+## [1] "In setFavoriteFlavor.Cupcakes and setting the value"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">Jane</span><span class="o">$</span><span class="n">favoriteFlavor</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "Vanilla"</code></pre></figure>
+
+<p>The object class is recognized and the correct function is used.</p>

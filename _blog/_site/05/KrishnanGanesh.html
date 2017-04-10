@@ -1,0 +1,82 @@
+<p>We know that most R functions are writtten in C. But writing Base R functions in no longer possible, instead R
+provides us a wih a neat object oriented programming based structure called the S3 which we can use to our benefit
+whenever we need to create an object oriented style program. While dealing with S3 objects its good practice to first figure out the following:
+1) class(X): This gives a class like objectt coming from object oriented programming (oops). Giving us a brief
+idea to what class/ classes of functions does the S3 object belong to
+2) Members of X: This will tell us about the hierarchy and kind of objects we need to deal with
+3) Methods(class=class(X)): what kinds of methods are available. These are special functions that can be
+implemented to accomplish a specialized task and deal with any required task as specified which is very much
+depends on the S3 class in hand</p>
+
+<p>A short program follows for making an S3 class that is essentially a description for each player a team (Club say 
+Bayern München) in the sport soccer (I would prefer to call it football though). The class associated helps us 
+define a set of attributes like player name, whether the player is in the first team, or the reserve team, the 
+position he plays in, his age and if he is currently injured.</p>
+
+<p>The FootballerDescription as defined below has therefore been made as a class.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">FootballerDescription</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"First Team"</span><span class="p">,</span><span class="w"> </span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Forward"</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> </span><span class="n">injured</span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="n">playerattrib</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w">
+                      </span><span class="n">category</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">category</span><span class="p">,</span><span class="w">
+                      </span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">position</span><span class="p">,</span><span class="w">
+                      </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w">
+                      </span><span class="n">injured</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">injured</span><span class="p">)</span><span class="w">
+    
+              </span><span class="nf">class</span><span class="p">(</span><span class="n">playerattrib</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">append</span><span class="p">(</span><span class="nf">class</span><span class="p">(</span><span class="n">playerattrib</span><span class="p">),</span><span class="s2">"FootballerDescription"</span><span class="p">)</span><span class="w">
+              </span><span class="nf">return</span><span class="p">(</span><span class="n">playerattrib</span><span class="p">)</span><span class="w">
+              </span><span class="p">}</span></code></pre></figure>
+
+<p>In the above definition we see that we use the function class() to actually assign a name to the class. In order to
+define a method for a class, the UseMethod command is used as shown below to define a hierarchy of functions for
+appropriate actions. The UseMethod command is used here in the function playerposition for setting up the position
+of the player if it needs to be changed.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">playerposition</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span><span class="w"> </span><span class="n">newposition</span><span class="p">)</span><span class="w">
+         </span><span class="p">{</span><span class="w">
+                   </span><span class="nf">UseMethod</span><span class="p">(</span><span class="s2">"playerposition"</span><span class="p">,</span><span class="n">pos</span><span class="p">)</span><span class="w">
+                    </span><span class="nf">return</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+
+</span><span class="n">playerposition.FootballerDescription</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span><span class="w"> </span><span class="n">newposition</span><span class="p">)</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+                      </span><span class="n">pos</span><span class="o">$</span><span class="n">position</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">newposition</span><span class="w">
+                      </span><span class="nf">return</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span><span class="w">
+              </span><span class="p">}</span></code></pre></figure>
+
+<p>Lets define a list for listing the 11 players with each element having the class list and the class
+FootballerDescription and describing one footballer.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">player</span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">()</span></code></pre></figure>
+
+<p>Lets go ahead and describe the first player, and then we can go ahead and define the whole set of 11 players say in
+FC Bayern München</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">player</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span><span class="o">&lt;-</span><span class="w"> </span><span class="n">FootballerDescription</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Philip Lahm"</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"29"</span><span class="p">)</span><span class="w">
+</span><span class="n">player</span><span class="p">[[</span><span class="m">2</span><span class="p">]]</span><span class="o">&lt;-</span><span class="w"> </span><span class="n">FootballerDescription</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Thomas Müller"</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"27"</span><span class="p">)</span></code></pre></figure>
+
+<p>Both player[[1]] and player[[2]] took the segment “position” of the player fied as default which is described as 
+Forward, but if we want to change the position of the first player i.e. Philip Lahm to say Left Back, we can do it 
+as below, and then verify if it has changed to the new value.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">player</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span><span class="o">$</span><span class="n">position</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "Forward"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">player</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span><span class="o">&lt;-</span><span class="w"> </span><span class="n">playerposition</span><span class="p">(</span><span class="n">player</span><span class="p">[[</span><span class="m">1</span><span class="p">]],</span><span class="w"> </span><span class="s2">"Left Back"</span><span class="p">)</span><span class="w">
+</span><span class="n">player</span><span class="p">[[</span><span class="m">1</span><span class="p">]]</span><span class="o">$</span><span class="n">position</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "Left Back"</code></pre></figure>
+
+<p>Now notice the different classes associated with player and player[[1]]. The former only has the class list while the latter has both the class list and FootballerDescription</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="nf">class</span><span class="p">(</span><span class="n">player</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "list"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="nf">class</span><span class="p">(</span><span class="n">player</span><span class="p">[[</span><span class="m">1</span><span class="p">]])</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] "list"                  "FootballerDescription"</code></pre></figure>
+
+<p>Thus we have an S3 class here and we can continue to create variables called players for this class, and change/
+set the positon of the players if needed seperately.</p>

@@ -1,0 +1,42 @@
+<p>One of the best advantages of R language over other scripting languages like PERL or PYTHON are the abilities to iterate over multidimentional arrays or lists without the annoying FOR/WHILE loops. For example, if we want calculate column-wise means for some tabular data in PERL or PYTHON, a nested for loop for rows inside a for loop for columns is required. 
+This can be easily achieved in R without the FOR/WHILE loops using the base functions, which split the matrix columns-wise; apply the mean function on each column and return the combined means of all the columns in form of an array. The R base functions that can use this split-apply-combine strategy on data structures are the functions from the apply family - lapply, sapply, mapply and other functions like aggregate
+The main limitation of these is that they require specific input formats and the output formats are restricted. For example, lapply will only return a list. Also, the R base functions cannot be used easily, if splitting on multiple columns is required.</p>
+
+<p>We will study the split-apply-combine strategy used by different functions on the <strong>Glass</strong> dataset from the <strong>mlbench</strong> package</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">plyr</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span><span class="w">
+</span><span class="n">data</span><span class="p">(</span><span class="n">Glass</span><span class="p">,</span><span class="n">package</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"mlbench"</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in find.package(package, lib.loc, verbose = verbose): there is no package called 'mlbench'</code></pre></figure>
+
+<p>There are 7 different Types of Glass in the dataset with other 9 columns giving the amount of different elements present in the corresponding type</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">Glass</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">glimpse</span><span class="p">()</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in eval(expr, envir, enclos): object 'Glass' not found</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">table</span><span class="p">(</span><span class="n">Glass</span><span class="o">$</span><span class="n">Type</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in table(Glass$Type): object 'Glass' not found</code></pre></figure>
+
+<p>We will calculate the mean of each element present in each type of Glass using the split-apply-combine strategy where first we will split data- rows-wise - according to the Glass type, apply the mean function to each portion of the data, and then combine the results</p>
+
+<h3 id="using-the-aggregate-function">Using the <strong>aggregate</strong> function</h3>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">aggregate</span><span class="p">(</span><span class="n">Glass</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">9</span><span class="p">],</span><span class="nf">list</span><span class="p">(</span><span class="n">Type</span><span class="o">=</span><span class="n">Glass</span><span class="o">$</span><span class="n">Type</span><span class="p">),</span><span class="n">mean</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in aggregate(Glass[1:9], list(Type = Glass$Type), mean): object 'Glass' not found</code></pre></figure>
+
+<h3 id="using-the-ddply-from-ply-package">Using the <strong>ddply</strong> from <strong>ply</strong> package</h3>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">ddply</span><span class="p">(</span><span class="n">Glass</span><span class="p">,</span><span class="n">.</span><span class="p">(</span><span class="n">Type</span><span class="p">),</span><span class="n">summarize</span><span class="p">,</span><span class="n">mean.RI</span><span class="o">=</span><span class="n">mean</span><span class="p">(</span><span class="n">RI</span><span class="p">),</span><span class="n">mean.Na</span><span class="o">=</span><span class="n">mean</span><span class="p">(</span><span class="n">Na</span><span class="p">),</span><span class="n">mean.Mg</span><span class="o">=</span><span class="n">mean</span><span class="p">(</span><span class="n">Mg</span><span class="p">),</span><span class="n">mean.Al</span><span class="o">=</span><span class="n">mean</span><span class="p">(</span><span class="n">Al</span><span class="p">),</span><span class="n">mean.Si</span><span class="o">=</span><span class="n">mean</span><span class="p">(</span><span class="n">Si</span><span class="p">),</span><span class="n">mean.K</span><span class="o">=</span><span class="n">mean</span><span class="p">(</span><span class="n">K</span><span class="p">),</span><span class="n">mean.Ca</span><span class="o">=</span><span class="n">mean</span><span class="p">(</span><span class="n">Ca</span><span class="p">),</span><span class="n">mean.Ba</span><span class="o">=</span><span class="n">mean</span><span class="p">(</span><span class="n">Ba</span><span class="p">),</span><span class="n">mean.Fe</span><span class="o">=</span><span class="n">mean</span><span class="p">(</span><span class="n">Fe</span><span class="p">))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in empty(.data): object 'Glass' not found</code></pre></figure>
+
+<h3 id="using-functions-from-dplyr-packages">Using functions from dplyr packages</h3>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">Glass</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">group_by</span><span class="p">(</span><span class="n">Type</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">summarise</span><span class="w"> </span><span class="p">(</span><span class="n">mean.RI</span><span class="o">=</span><span class="n">mean</span><span class="p">(</span><span class="n">RI</span><span class="p">),</span><span class="n">mean.Na</span><span class="o">=</span><span class="n">mean</span><span class="p">(</span><span class="n">Na</span><span class="p">),</span><span class="n">mean.Mg</span><span class="o">=</span><span class="n">mean</span><span class="p">(</span><span class="n">Mg</span><span class="p">),</span><span class="n">mean.Al</span><span class="o">=</span><span class="n">mean</span><span class="p">(</span><span class="n">Al</span><span class="p">),</span><span class="n">mean.Si</span><span class="o">=</span><span class="n">mean</span><span class="p">(</span><span class="n">Si</span><span class="p">),</span><span class="n">mean.K</span><span class="o">=</span><span class="n">mean</span><span class="p">(</span><span class="n">K</span><span class="p">),</span><span class="n">mean.Ca</span><span class="o">=</span><span class="n">mean</span><span class="p">(</span><span class="n">Ca</span><span class="p">),</span><span class="n">mean.Ba</span><span class="o">=</span><span class="n">mean</span><span class="p">(</span><span class="n">Ba</span><span class="p">),</span><span class="n">mean.Fe</span><span class="o">=</span><span class="n">mean</span><span class="p">(</span><span class="n">Fe</span><span class="p">))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error in eval(expr, envir, enclos): object 'Glass' not found</code></pre></figure>
+

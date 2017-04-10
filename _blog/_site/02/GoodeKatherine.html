@@ -1,0 +1,56 @@
+<h3 id="question-1">Question 1</h3>
+
+<p>The functions that I am aware of in base R that support the split-apply-combine strategies are the apply family of functions. However, to be honest, I never use these functions. When I first learned R, they were briefly mentioned, but there was not much emphasis put on them. I never took the time to go back and teach them to myself. Instead, I discovered the function <code class="highlighter-rouge">subset</code>. With <code class="highlighter-rouge">subset</code>, for loops, and square brackets, I have always able to accomplish the data manipulation that I needed to.</p>
+
+<p>I would say that the base R functions are sufficient in the sense that they allow one to get the data manipulation job done. However, the code often ends up being long and clunky (at least mine does). In this sense, the base R functions are lacking. Having functions that are specifically designed to streamline the data manipulation process would be a huge advantage.</p>
+
+<h3 id="question-2">Question 2</h3>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">knitr</span><span class="p">)</span></code></pre></figure>
+
+<p>The <code class="highlighter-rouge">Orange</code> dataset in base R contains information on the growth of 5 orange trees. The first few rows of the data are shown below. The circumferences of the trees are recorded at the same 7 ages for each tree.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">head</span><span class="p">(</span><span class="n">Orange</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##   Tree  age circumference
+## 1    1  118            30
+## 2    1  484            58
+## 3    1  664            87
+## 4    1 1004           115
+## 5    1 1231           120
+## 6    1 1372           142</code></pre></figure>
+
+<p>A plot of the change in circumference over time for each tree is included below.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">ggplot</span><span class="p">(</span><span class="n">Orange</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">circumference</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_line</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Tree</span><span class="p">))</span></code></pre></figure>
+
+<p><img src="../figure/02/GoodeKatherine-unnamed-chunk-3-1.png" alt="center" /></p>
+
+<p>It may be of interest to determine the mean and standard deviation of the circumferences at each age. To make use of the split-apply-combine strategy, the data would need to be split into groups by age. Then the mean and standard deviation of the circumferences would need to be calculated for each group. Finally, the means and standard deviations would need to get combined into a new dataset.</p>
+
+<p>To accomplish this task, I will make use of functions <code class="highlighter-rouge">group_by</code> and <code class="highlighter-rouge">summarise</code> from the <code class="highlighter-rouge">dplyr</code> package. I named this new dataset <code class="highlighter-rouge">summary</code>, and it is shown in the table below.</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">summary</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">Orange</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">group_by</span><span class="p">(</span><span class="n">age</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">summarise</span><span class="p">(</span><span class="n">mean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">circumference</span><span class="p">),</span><span class="w"> 
+              </span><span class="n">sd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sd</span><span class="p">(</span><span class="n">circumference</span><span class="p">))</span><span class="w">
+</span><span class="n">kable</span><span class="p">(</span><span class="n">summary</span><span class="p">)</span></code></pre></figure>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: right">mean</th>
+      <th style="text-align: right">sd</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: right">115.8571</td>
+      <td style="text-align: right">57.48818</td>
+    </tr>
+  </tbody>
+</table>
+
