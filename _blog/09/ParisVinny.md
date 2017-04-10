@@ -1,0 +1,8 @@
+---
+title: "Licensing"
+author: "Vinny Paris"
+topic: "09"
+layout: post
+root: ../../../
+---
+   I would choose BSD-2 license. I like the right of the person to change the package as they see fit. And I think I'd be okay if someone took my code and tweaked it for the better. Progress! I like the point on avoding warranties in order to safe guard against being sued. Beyond that I want people to be in control of the material as they see fit. To be honest this has more to do with my philophical/political views than anything. Copyright is a violation of the right of man to copy something even if they have the ability to recreate it. Then copyright (and patents) are actually a violation of property rights and breaks the non-aggression priciple. Sorry, but I'm faily active in politics and right now it's taking precedent over practical licenses. The only real reason I care about the license for this is to avoid being sued otherwise I'd just do a completely free and open code. Is no license qualify as an answer? For something like a popular package like ggplot2 I could see keeping one "master" package on cran/github but allow people to build their own. To me the goal of the sciences is the improvment of man, not the benefit of the individual or company and as such we should embrace people improving on what we build. But this is philosophical. So the pro's of BSD-2 is not being sued and it aligns as closely to my views as possible, cons being that it's unlikely to ever get to be a big well known package since someone can easily supplant it with a new and improved version. This would also restrict the monetary gain and the personal reconginition. So ultimately BSD-2 to avoid being sued; leaning toward no licensing at all.  
