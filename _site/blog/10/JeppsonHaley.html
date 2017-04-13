@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Data Technologies for Statistics at Iowa State University.">
+    <meta name="author" content="Heike Hofmann <hofmann@iastate.edu>">
+    <!-- By The original uploader was Dick107 at English Wikipedia [GFDL (http://www.gnu.org/copyleft/fdl.html) or CC-BY-SA-3.0 (http://creativecommons.org/licenses/by-sa/3.0/)], via Wikimedia Commons https://commons.wikimedia.org/wiki/File%3APunch-card-5081.jpg-->
+
+    <title>Stat 585</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../css/extra.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../../../index.html">Stat 585</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              
+              
+      				  
+      				  
+      				  <li class="">
+      					<a href="/index.html">Home</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/syllabus.html">Schedule</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/labs.html">Labs</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="active">
+      					<a href="/blog">Blog</a>
+      				  </li>
+      				
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="https://bb.its.iastate.edu" target="_blank">BlackBoard</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+    <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">My first R package</h1>
+    <p class="post-meta">Apr 13, 2017 • Haley Jeppson</p>
+  </header>
+
+  <article class="post-content">
+    <hr />
+<h4 id="by-now-all-of-you-have-collected-some-experience-in-writing-an-r-package-how-did-that-go-what-were-the-difficulties-have-you-got-a-story-to-share-about-a-cran-submission-that-went-particularly-well-or-not">By now all of you have collected some experience in writing an R package. How did that go? What were the difficulties? Have you got a story to share about a CRAN submission that went particularly well (or not)?</h4>
+
+<hr />
+
+<p>I wrote my first R package, <code class="highlighter-rouge">ggmosaic</code>, last summer with the help of Dr. Hofmann. To get going, I skimmed <a href="http://r-pkgs.had.co.nz/">R packages</a> by Hadley Whickham. It was a great resource and turned a daunting task into a relatively simple one. The more difficult parts of creating that package included troubleshooting bugs in the code, using the correct tags when documenting classes, generics, and methods, understanding how to fix the warnings from the CRAN check, and, finally, submitting to CRAN.</p>
+
+<p>It was those last two tasks that I found to be the most difficult. Dependencies in a package can be hard to navigate - especially when packages are continually being updated (in turn, breaking your code), or archived on CRAN (in turn, making functions you relied on no longer available). In addition, as Dr. Hofmann hinted to in class, there seems to be a set of unspoken rules that your package must follow when submitting to CRAN that are not checked for when running <code class="highlighter-rouge">devtools::check()</code>. For instance, when submitting to CRAN, I learned that the title field should be in title case, mosaicplots must be written as mosaic plots, how many examples should be included in the Rd files is subjective, and that it is not enough to credit well-known authors in the Rd file, but you may need to include them in the DESCRIPTION (after getting permission from them which may take some time). In the end, I learned a lot regarding the finer details of the package framework, and <code class="highlighter-rouge">ggmosaic</code> is now on CRAN with an average of over 600 downloads a month.</p>
+
+<p>Though there were a few bumps in the road, my first experience in writing an R package was a great one. It’s fun and motivating to see others using tools you spent a summer creating. I was pleasantly surprised with how manageable most of the process was and I look forward to writing more R packages in the future.</p>
+
+
+  </article>
+
+</div>
+
+      
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../scripts/jquery.min.js"></script>
+    <script src="../../../scripts/bootstrap.min.js"></script>
+  </body>
+</html>

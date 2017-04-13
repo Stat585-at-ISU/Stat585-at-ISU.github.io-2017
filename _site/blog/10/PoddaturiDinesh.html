@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Data Technologies for Statistics at Iowa State University.">
+    <meta name="author" content="Heike Hofmann <hofmann@iastate.edu>">
+    <!-- By The original uploader was Dick107 at English Wikipedia [GFDL (http://www.gnu.org/copyleft/fdl.html) or CC-BY-SA-3.0 (http://creativecommons.org/licenses/by-sa/3.0/)], via Wikimedia Commons https://commons.wikimedia.org/wiki/File%3APunch-card-5081.jpg-->
+
+    <title>Stat 585</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../css/extra.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../../../index.html">Stat 585</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              
+              
+      				  
+      				  
+      				  <li class="">
+      					<a href="/index.html">Home</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/syllabus.html">Schedule</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="">
+      					<a href="/labs.html">Labs</a>
+      				  </li>
+      				
+      				  
+      				  
+      				  <li class="active">
+      					<a href="/blog">Blog</a>
+      				  </li>
+      				
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="https://bb.its.iastate.edu" target="_blank">BlackBoard</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+    <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">My first R package</h1>
+    <p class="post-meta">Apr 13, 2017 • Dinesh Poddaturi</p>
+  </header>
+
+  <article class="post-content">
+    <p>This is the first time I wrote an R package. Working with a team helped me understand it very well. Our team did a good job building a small R package (LittleChickens). We followed all the instructions from the notes to build the package.</p>
+
+<p>It took us some trial and errors syncing the github repository to the R workspace, pushing and pulling code changes. Now I am comfortable syncing the repository and I am planning to use this technique in my project.  By doing so we can avoid sending/sharing code through emails or Dropbox.</p>
+
+<p>We encountered some issues with the data we used in the package. We saved our data as .Rda instead of .rda extension. After changing the extension, our function read the data successfully. We saved our chicks data in the R workspace using ‘save()’. Later we realized this command would save the data into the object ‘data’ instead of ‘Chicks’. After changing the data object we were able to fix all the issues related to data.</p>
+
+<p>In the future, I would save data carefully, write documentation for every function, write ample of examples, and follow all the other necessary steps to build a package.</p>
+
+
+  </article>
+
+</div>
+
+      
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../../../scripts/jquery.min.js"></script>
+    <script src="../../../scripts/bootstrap.min.js"></script>
+  </body>
+</html>
