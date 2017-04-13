@@ -19,6 +19,8 @@ navigation:
   layout:
     - post
     - blog
+- text: Final Projects
+  url: /projects.html
 collections:
   blog:
     output: true
