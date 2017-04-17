@@ -75,12 +75,14 @@
     <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Blog post 1: Literate Programming</h1>
-    <p class="post-meta">Apr 17, 2017 • Katie Will</p>
+    <h1 class="post-title">My first R package</h1>
+    <p class="post-meta">Apr 17, 2017 • Xiangmei Zhang</p>
   </header>
 
   <article class="post-content">
-    <p>I remember an undergrad professor of mine looking back on the code she wrote for her dissertation and not being able to read it. I think it was then that I realized I should start documenting my code. Before coming to grad school, I just used some basic comments in my text to organize my thoughts. I found it hard to locate specific comments and chunks of code. I also had troubles writing what I wanted to within the code. With R Markdown, it is easy to decipher between comments and code. There is also much flexibility in writing with Latex in R Markdown. For these reasons, I find myself using literate programming almost on a daily basis. More specifically, I find R Markdown to be very useful in typing up homework assignments. Being the avid organizer that I am, I like that my code and my write-up are all in one document that looks nice. I also like how easy my projects are to read. I am never lost when I come back to a project I haven’t worked on in a while. I see myself continuing to use R Markdown (or some form of literate programming) throughout my academic and work career. I want to be able to look back on the work I did and make sense of it. I had to laugh when Knuth said that literate programming is addicting. I completely agree with him! It makes doing statistical projects so much easier, so why stop?</p>
+    <p>My first time to write an R package is working on a team in lab 5. Our team built a small R package named LittleChickens. The major issue during bulding the package is how to attach the data in the package properly. The error message we came across is “can not find the data”. We tried several times and finally find where the problem is. We saved our data as .Rda instead of .rda extension and when we called function “save()” to save chicks data, the data object is named “data” while the saved file named “chicks”, which confused us for a while when we later want to use the data.</p>
+
+<p>I think we all learned from this experience about how to build a package and how to fix the problem. And there are many things we need to pay attention to, such ad attaching data in a package, writing help files, and I think one good way is to learn from other people’s (successful) packages, i.e. dare to read!</p>
 
 
   </article>
