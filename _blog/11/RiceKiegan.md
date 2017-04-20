@@ -1,0 +1,13 @@
+---
+title: "PRIM-9: the building blocks of interactivity"
+author: "Firstname Lastname"
+topic: "11"
+layout: post
+root: ../../../
+---
+
+## How have you experienced interactive statistical graphics (and in which systems)?  
+I have experienced interactive statistical graphics in a couple of different ways. One of the first ways, and probably the one that has had the biggest impact on me, is the New York Times. Their use of the d3 library to create powerfully interactive visual representations of data is what sparked my interest in statistical graphics in the first place. As I have learned more about interactive graphics (especially in 585) I have become a little more jaded about their graphics overall because there are so many cool new tools to be able to create similar graphics in R. However, they still do a lot of cool things that require much more computation and time when recreated in R. Obviously during this class we have been exposed to `shiny`, `plotly`, `ggvis`, and `crosstalk`, which are all really cool ways to create an interactive environment in which to explore data. Most of the interactivity I have experienced either centers around filtering the data based on different aspects, or being able to 'mouse over' certain elements of the data and learn more about them that way. 
+
+## What operations do you consider to be part of interactive statistical graphics now?  
+I loved how Tukey demonstrated the different buttons for the different operations you could execute in PRIM-9. I think of those operations are fairly comparable to many of the functions we have now. You can change how data is presented - i.e. change the axes and which elements of the data you want to explore, and you can also filter out to specific data (like the isolation aspect of PRIM-9). Although obviously that system is fairly old, it was SO cool to see how many of the elements implemented in different interactive graphics systems are similar to (and perhaps based upon) the elements that Tukey and the rest of the team introduced with PRIM-9. Even that rotation (and 9 dimensions!) element isn't quite as present yet in R (at least to my knowledge), but Tukey made it possible for that exploration to occur so early in the age of computing. I think he stated it well: "The dynamic aspects of rotation are extremely valuable, more usful that stereoscopy, color, flicker, or distinctive characters". I definitely believe the other elements are very useful and can completely change a graphic and how it communicates information, but the ability to rotate is also a great advantage to have and a fantastic addition to interaction with data. 
